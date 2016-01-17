@@ -8,5 +8,6 @@
 hs_err_pid*
 
 *.iws
-
+lib
+out
 jobmatch/target/
