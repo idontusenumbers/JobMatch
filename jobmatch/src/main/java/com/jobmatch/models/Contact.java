@@ -1,8 +1,14 @@
 package com.jobmatch.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Emilia on 1/21/2016.
  */
+@Entity
 public class Contact {
 
     /**
@@ -11,6 +17,8 @@ public class Contact {
      * @param user_id foreign key
      */
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int user_id;
     private String email;
@@ -62,5 +70,20 @@ public class Contact {
 
     public String getLast_name() {
         return last_name;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                ", website='" + website + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                '}';
     }
 }

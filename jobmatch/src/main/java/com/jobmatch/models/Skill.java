@@ -1,8 +1,14 @@
 package com.jobmatch.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Emilia on 1/21/2016.
  */
+@Entity
 public class Skill {
 
     /**
@@ -10,6 +16,8 @@ public class Skill {
      * @param id primary key
      */
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String skill_name;
 
@@ -22,5 +30,13 @@ public class Skill {
 
     public String getSkill_name() {
         return skill_name;
+    }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "id=" + id +
+                ", skill_name='" + skill_name + '\'' +
+                '}';
     }
 }

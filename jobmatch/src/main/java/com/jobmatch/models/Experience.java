@@ -1,8 +1,14 @@
 package com.jobmatch.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Emilia on 1/21/2016.
  */
+@Entity
 public class Experience {
 
     /**
@@ -13,6 +19,8 @@ public class Experience {
      * @param end_date regex calendar specific
      */
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int user_id;
     private String title;

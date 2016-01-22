@@ -1,7 +1,7 @@
 package com.jobmatch.controllers;
 
-import com.jobmatch.Entities.User;
-import com.jobmatch.repository.UserRepository;
+import com.jobmatch.models.User;
+import com.jobmatch.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,9 @@ public class IndexController {
 
     @RequestMapping("/create")
     public String create() {
-        User user = userRepository.save(new User(1, false, null));
+        int userNum = Long.valueOf(userRepository.count()).intValue();
+
+        User user = userRepository.save(new User(1, "user" + Integer.valueOf(userNum + 1).toString(), "letmein", false));
 
         return user.toString();
     }

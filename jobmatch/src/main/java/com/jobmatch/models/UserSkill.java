@@ -1,8 +1,14 @@
 package com.jobmatch.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Emilia on 1/21/2016.
  */
+@Entity
 public class UserSkill {
 
     /**
@@ -12,6 +18,8 @@ public class UserSkill {
      * @param user_id foreign key
      */
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int skill_id;
     private int user_id;
