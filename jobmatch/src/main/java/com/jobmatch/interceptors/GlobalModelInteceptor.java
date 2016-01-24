@@ -14,11 +14,6 @@ import javax.servlet.http.HttpSession;
 @Service
 public class GlobalModelInteceptor extends HandlerInterceptorAdapter {
 
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
-																									   Exception {
-		return super.preHandle(request, response, handler);
-
-	}
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
