@@ -4,12 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Emilia on 1/21/2016.
  */
 @Entity
-public class Contact {
+public class Contact implements Serializable {
 
     /**
      * User contact card.
@@ -18,9 +19,8 @@ public class Contact {
      */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int user_id;
     private String email;
     private String phone;
     private String address;
@@ -32,51 +32,84 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(User user_id) {
-
+    public Contact(String email, String phone, String address, String zipcode, String website, String first_name, String last_name) {
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.website = website;
+        this.first_name = first_name;
+        this.last_name = last_name;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPhone() {
         return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getZipcode() {
         return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 
     public String getWebsite() {
         return website;
     }
 
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
     public String getFirst_name() {
         return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getLast_name() {
         return last_name;
     }
 
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
     @Override
     public String toString() {
         return "Contact{" +
                 "id=" + id +
-                ", user_id=" + user_id +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +

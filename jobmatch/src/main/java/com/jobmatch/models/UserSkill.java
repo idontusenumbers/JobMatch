@@ -1,9 +1,6 @@
 package com.jobmatch.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Emilia on 1/21/2016.
@@ -19,28 +16,53 @@ public class UserSkill {
      */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int skill_id;
-    private int user_id;
-    private int skill_rank;
 
-    public UserSkill() {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Skill skill;
+    private int rank;
+
+    protected UserSkill() {
+
+    }
+
+    public UserSkill(Skill skill, int rank) {
+        this.skill = skill;
+        this.rank = rank;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getSkill_id() {
-        return skill_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public Skill getSkill() {
+        return skill;
     }
 
-    public int getSkill_rank() {
-        return skill_rank;
+    public void setSkill(Skill skill) {
+        this.skill = skill;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    @Override
+    public String toString() {
+        return "UserSkill{" +
+                "id=" + id +
+                ", skill=" + skill +
+                ", rank=" + rank +
+                '}';
     }
 }
