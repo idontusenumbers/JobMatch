@@ -1,10 +1,9 @@
 package com.jobmatch.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Emilia on 1/21/2016.
@@ -26,6 +25,12 @@ public class JobPost implements Serializable {
     private String industry;
     private String jobType;
     private int yearsExperience;
+
+    @ManyToMany
+    @JoinTable(name = "USER_FAVE_POSTS",
+    joinColumns = @JoinColumn(name = "job_post_id"),
+    inverseJoinColumns = @JoinColumn(name = "user_id"))
+    protected Set<User> users;
 
     public JobPost() {
     }
@@ -84,6 +89,10 @@ public class JobPost implements Serializable {
 
     public void setYearsExperience(int yearsExperience) {
         this.yearsExperience = yearsExperience;
+    }
+
+    public Set<User> getUsers() {
+        return users;
     }
 
     @Override

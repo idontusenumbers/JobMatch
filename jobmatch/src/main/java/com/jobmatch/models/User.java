@@ -2,6 +2,7 @@ package com.jobmatch.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -40,6 +41,12 @@ public class User implements Serializable {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected Set<Experience> experiences;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_FAVE_POSTS",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "job_post_id"))
+    protected Set<JobPost> favePosts = new HashSet<>();
 
     /**
      * Default Constructor
@@ -133,6 +140,14 @@ public class User implements Serializable {
         this.experiences = experiences;
     }
 
+    public Set<JobPost> getFavePosts() {
+        return favePosts;
+    }
+
+    public void setFavePosts(Set<JobPost> favePosts) {
+        this.favePosts = favePosts;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -140,11 +155,12 @@ public class User implements Serializable {
                 ", role=" + role +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", opt_in=" + optIn +
+                ", optIn=" + optIn +
                 ", contact=" + contact +
                 ", education=" + education +
                 ", skills=" + skills +
                 ", experiences=" + experiences +
+                ", favePosts=" + favePosts +
                 '}';
     }
 }
