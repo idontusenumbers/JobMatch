@@ -17,14 +17,14 @@ public class UserSkill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    protected int id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
-    private Skill skill;
-    private int rank;
+    protected Skill skill;
+    protected int rank;
 
-    protected UserSkill() {
+    public UserSkill() {
 
     }
 
@@ -35,10 +35,6 @@ public class UserSkill {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Skill getSkill() {

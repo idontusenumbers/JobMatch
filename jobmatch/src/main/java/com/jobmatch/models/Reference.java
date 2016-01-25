@@ -1,15 +1,13 @@
 package com.jobmatch.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Emilia on 1/21/2016.
  */
 @Entity
-public class Reference {
+public class Reference implements Serializable {
 
     /**
      * User's person of reference.
@@ -19,25 +17,12 @@ public class Reference {
      */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int user_id;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String title;
-    private String company_name;
-    private int phone;
-
-    @Override
-    public String toString() {
-        return "Reference{" +
-                "id=" + id +
-                ", user_id=" + user_id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", title='" + title + '\'' +
-                ", company_name='" + company_name + '\'' +
-                ", phone=" + phone +
-                '}';
-    }
+    private String companyName;
+    @Column(length = 12)
+    private String phone;
 }

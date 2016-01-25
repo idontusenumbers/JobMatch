@@ -26,20 +26,20 @@ public class Contact implements Serializable {
     private String address;
     private String zipcode;
     private String website;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
 
     public Contact() {
     }
 
-    public Contact(String email, String phone, String address, String zipcode, String website, String first_name, String last_name) {
+    public Contact(String email, String phone, String address, String zipcode, String website, String firstName, String lastName) {
         this.email = email;
         this.phone = phone;
         this.address = address;
         this.zipcode = zipcode;
         this.website = website;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public int getId() {
@@ -90,20 +90,20 @@ public class Contact implements Serializable {
         this.website = website;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
@@ -115,8 +115,8 @@ public class Contact implements Serializable {
                 ", address='" + address + '\'' +
                 ", zipcode='" + zipcode + '\'' +
                 ", website='" + website + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }
