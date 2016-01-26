@@ -1,9 +1,6 @@
 package com.jobmatch.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Emilia on 1/21/2016.
@@ -17,11 +14,17 @@ public class Role {
      */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String role_name;
+
+    @Column(nullable = false, unique = true)
+    private String roleName;
 
     public Role() {
+    }
+
+    public Role(String roleName) {
+        this.roleName = roleName;
     }
 
     public int getId() {
@@ -29,14 +32,34 @@ public class Role {
     }
 
     public String getRole_name() {
-        return role_name;
+        return roleName;
+    }
+
+    public void setRole_name(String role_name) {
+        this.roleName = role_name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Role role = (Role) o;
+
+        return roleName.equals(role.roleName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return roleName.hashCode();
     }
 
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", role_name='" + role_name + '\'' +
+                ", role_name='" + roleName + '\'' +
                 '}';
     }
 }

@@ -1,9 +1,8 @@
 package com.jobmatch.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  * Created by Emilia on 1/21/2016.
@@ -19,28 +18,69 @@ public class UserSkill {
      */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int skill_id;
-    private int user_id;
-    private int skill_rank;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected int id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false)
+    protected Skill skill;
+    @Min(0) @Max(10)
+    protected int rank;
 
     public UserSkill() {
+
+    }
+
+    public UserSkill(Skill skill, int rank) {
+        this.skill = skill;
+        this.rank = rank;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getSkill_id() {
-        return skill_id;
+    public Skill getSkill() {
+        return skill;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public void setSkill(Skill skill) {
+        this.skill = skill;
     }
 
-    public int getSkill_rank() {
-        return skill_rank;
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserSkill userSkill = (UserSkill) o;
+
+        if (rank != userSkill.rank) return false;
+        return skill.equals(userSkill.skill);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = skill.hashCode();
+        result = 31 * result + rank;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "UserSkill{" +
+                "id=" + id +
+                ", skill=" + skill +
+                ", rank=" + rank +
+                '}';
     }
 }

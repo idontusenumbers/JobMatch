@@ -1,17 +1,15 @@
 package com.jobmatch.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by Emilia on 1/21/2016.
  */
 @Entity
-public class JobPost {
-
-    // REMOVED "_" from originally in ERD
+public class JobPost implements Serializable {
 
     /**
      * Employer's job posting.
@@ -20,43 +18,118 @@ public class JobPost {
      */
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int user_id;
-    private String job_title;
-    private String job_country;
+    private String jobTitle;
+    private String jobCountry;
     private String industry;
-    private String job_type;
-    private int years_experience;
+    private String jobType;
+    @Min(0)
+    private int yearsExperience;
+
+    @ManyToMany
+    @JoinTable(name = "USER_FAVE_POSTS",
+    joinColumns = @JoinColumn(name = "job_post_id"),
+    inverseJoinColumns = @JoinColumn(name = "user_id"))
+    protected Set<User> users;
 
     public JobPost() {
+    }
+
+    public JobPost(String jobTitle, String jobCountry, String industry, String jobType, int yearsExperience) {
+        this.jobTitle = jobTitle;
+        this.jobCountry = jobCountry;
+        this.industry = industry;
+        this.jobType = jobType;
+        this.yearsExperience = yearsExperience;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getJob_title() {
-        return job_title;
+    public String getJobTitle() {
+        return jobTitle;
     }
 
-    public String getJob_country() {
-        return job_country;
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getJobCountry() {
+        return jobCountry;
+    }
+
+    public void setJobCountry(String jobCountry) {
+        this.jobCountry = jobCountry;
     }
 
     public String getIndustry() {
         return industry;
     }
 
-    public String getJob_type() {
-        return job_type;
+    public void setIndustry(String industry) {
+        this.industry = industry;
     }
 
-    public int getYears_experience() {
-        return years_experience;
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
+    }
+
+    public int getYearsExperience() {
+        return yearsExperience;
+    }
+
+    public void setYearsExperience(int yearsExperience) {
+        this.yearsExperience = yearsExperience;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        JobPost jobPost = (JobPost) o;
+
+        if (yearsExperience != jobPost.yearsExperience) return false;
+        if (!jobTitle.equals(jobPost.jobTitle)) return false;
+        if (!jobCountry.equals(jobPost.jobCountry)) return false;
+        if (!industry.equals(jobPost.industry)) return false;
+        return jobType.equals(jobPost.jobType);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = jobTitle.hashCode();
+        result = 31 * result + jobCountry.hashCode();
+        result = 31 * result + industry.hashCode();
+        result = 31 * result + jobType.hashCode();
+        result = 31 * result + yearsExperience;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "JobPost{" +
+                "id=" + id +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", jobCountry='" + jobCountry + '\'' +
+                ", industry='" + industry + '\'' +
+                ", jobType='" + jobType + '\'' +
+                ", yearsExperience=" + yearsExperience +
+                '}';
     }
 }
