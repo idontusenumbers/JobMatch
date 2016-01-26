@@ -1,6 +1,8 @@
 package com.jobmatch.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  * Created by Emilia on 1/21/2016.
@@ -20,8 +22,9 @@ public class UserSkill {
     protected int id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
+    @JoinColumn(nullable = false)
     protected Skill skill;
+    @Min(0) @Max(10)
     protected int rank;
 
     public UserSkill() {
@@ -51,6 +54,25 @@ public class UserSkill {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserSkill userSkill = (UserSkill) o;
+
+        if (rank != userSkill.rank) return false;
+        return skill.equals(userSkill.skill);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = skill.hashCode();
+        result = 31 * result + rank;
+        return result;
     }
 
     @Override

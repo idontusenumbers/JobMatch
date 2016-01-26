@@ -45,6 +45,22 @@ public class Culture implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Culture culture = (Culture) o;
+
+        return name.equals(culture.name);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "Culture{" +
                 "id=" + id +

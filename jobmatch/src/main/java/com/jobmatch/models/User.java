@@ -30,23 +30,31 @@ public class User implements Serializable {
     @JoinColumn
     protected Contact contact;
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    protected Set<Education> education;
+    protected Set<Education> education = new HashSet<>();
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    protected Set<UserSkill> skills;
+    protected Set<UserSkill> skills = new HashSet<>();
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    protected Set<Experience> experiences;
+    protected Set<Experience> experiences = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "USER_FAVE_POSTS",
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "job_post_id"))
     protected Set<JobPost> favePosts = new HashSet<>();
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    protected Set<Reference> references = new HashSet<>();
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    protected Set<UserCulture> cultures = new HashSet<>();
 
     /**
      * Default Constructor
@@ -59,13 +67,13 @@ public class User implements Serializable {
      * @param role
      * @param username
      * @param password
-     * @param opt_in
+     * @param optIn
      */
-    public User(Role role, String username, String password, Boolean opt_in) {
+    public User(Role role, String username, String password, Boolean optIn) {
         this.role = role;
         this.username = username;
         this.password = password;
-        this.optIn = opt_in;
+        this.optIn = optIn;
     }
 
     /**
@@ -120,32 +128,49 @@ public class User implements Serializable {
         return education;
     }
 
-    public void setEducation(Set<Education> education) {
-        this.education = education;
-    }
-
     public Set<UserSkill> getSkills() {
         return skills;
-    }
-
-    public void setSkills(Set<UserSkill> skills) {
-        this.skills = skills;
     }
 
     public Set<Experience> getExperiences() {
         return experiences;
     }
 
-    public void setExperiences(Set<Experience> experiences) {
-        this.experiences = experiences;
-    }
-
     public Set<JobPost> getFavePosts() {
         return favePosts;
     }
 
-    public void setFavePosts(Set<JobPost> favePosts) {
-        this.favePosts = favePosts;
+    public Set<Reference> getReferences() {
+        return references;
+    }
+
+    public Set<UserCulture> getCultures() {
+        return cultures;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!role.equals(user.role)) return false;
+        if (!username.equals(user.username)) return false;
+        if (!password.equals(user.password)) return false;
+        if (!optIn.equals(user.optIn)) return false;
+        return contact.equals(user.contact);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = role.hashCode();
+        result = 31 * result + username.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + optIn.hashCode();
+        result = 31 * result + contact.hashCode();
+        return result;
     }
 
     @Override
@@ -161,6 +186,8 @@ public class User implements Serializable {
                 ", skills=" + skills +
                 ", experiences=" + experiences +
                 ", favePosts=" + favePosts +
+                ", references=" + references +
+                ", cultures=" + cultures +
                 '}';
     }
 }

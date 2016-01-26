@@ -1,8 +1,8 @@
 package com.jobmatch.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -24,6 +24,7 @@ public class JobPost implements Serializable {
     private String jobCountry;
     private String industry;
     private String jobType;
+    @Min(0)
     private int yearsExperience;
 
     @ManyToMany
@@ -93,6 +94,31 @@ public class JobPost implements Serializable {
 
     public Set<User> getUsers() {
         return users;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        JobPost jobPost = (JobPost) o;
+
+        if (yearsExperience != jobPost.yearsExperience) return false;
+        if (!jobTitle.equals(jobPost.jobTitle)) return false;
+        if (!jobCountry.equals(jobPost.jobCountry)) return false;
+        if (!industry.equals(jobPost.industry)) return false;
+        return jobType.equals(jobPost.jobType);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = jobTitle.hashCode();
+        result = 31 * result + jobCountry.hashCode();
+        result = 31 * result + industry.hashCode();
+        result = 31 * result + jobType.hashCode();
+        result = 31 * result + yearsExperience;
+        return result;
     }
 
     @Override

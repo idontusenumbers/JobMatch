@@ -1,6 +1,9 @@
 package com.jobmatch.controllers;
 
-import com.jobmatch.models.*;
+import com.jobmatch.models.Contact;
+import com.jobmatch.models.Education;
+import com.jobmatch.models.User;
+import com.jobmatch.models.UserSkill;
 import com.jobmatch.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,12 +33,10 @@ public class UserController {
 
     @RequestMapping("")
     public String users(Map<String, Object> model) {
-
-        log.info("=== users ===");
-
-
         model.put("users", userRepository.findAll());
         model.put("title", "Users");
+
+
 		return "users/index";
 
     }
@@ -52,15 +53,13 @@ public class UserController {
         user.setUsername("epfeiffer");
         user.setContact(new Contact("email", "1234567", "address", "", "", "", ""));
 
-        Set<Education> educationSet = new HashSet<Education>();
-        educationSet.add(new Education("DePaul University", "US", "BS", "Computer Science", 2016));
-        user.setEducation(educationSet);
+        user.getEducation().add(new Education("DePaul University", "US", "BS", "Computer Science", 2016));
 
         Set<UserSkill> skills = new HashSet<>();
         skills.add(new UserSkill(skillRepository.findByName("C++"), 10));
         skills.add(new UserSkill(skillRepository.findByName("Java"), 8));
 
-        user.setSkills(skills);
+        user.getSkills().addAll(skills);
 
         userRepository.save(user);
 

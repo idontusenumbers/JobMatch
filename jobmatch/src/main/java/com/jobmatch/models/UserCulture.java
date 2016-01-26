@@ -1,6 +1,8 @@
 package com.jobmatch.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 /**
@@ -13,9 +15,10 @@ public class UserCulture implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false)
     protected Culture culture;
+    @Min(0) @Max(10)
     protected int rank;
 
     public UserCulture() {
@@ -44,6 +47,25 @@ public class UserCulture implements Serializable {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserCulture that = (UserCulture) o;
+
+        if (rank != that.rank) return false;
+        return culture.equals(that.culture);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = culture.hashCode();
+        result = 31 * result + rank;
+        return result;
     }
 
     @Override

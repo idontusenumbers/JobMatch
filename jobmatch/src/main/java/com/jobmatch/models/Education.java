@@ -1,6 +1,9 @@
 package com.jobmatch.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -35,10 +38,6 @@ public class Education implements Serializable {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getSchoolName() {
@@ -79,6 +78,31 @@ public class Education implements Serializable {
 
     public void setYearGraduated(int yearGraduated) {
         this.yearGraduated = yearGraduated;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Education education = (Education) o;
+
+        if (yearGraduated != education.yearGraduated) return false;
+        if (!schoolName.equals(education.schoolName)) return false;
+        if (!country.equals(education.country)) return false;
+        if (!degree.equals(education.degree)) return false;
+        return major.equals(education.major);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = schoolName.hashCode();
+        result = 31 * result + country.hashCode();
+        result = 31 * result + degree.hashCode();
+        result = 31 * result + major.hashCode();
+        result = 31 * result + yearGraduated;
+        return result;
     }
 
     @Override

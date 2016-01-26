@@ -80,6 +80,31 @@ public class Reference implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Reference reference = (Reference) o;
+
+        if (!firstName.equals(reference.firstName)) return false;
+        if (!lastName.equals(reference.lastName)) return false;
+        if (!title.equals(reference.title)) return false;
+        if (!companyName.equals(reference.companyName)) return false;
+        return phone.equals(reference.phone);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + companyName.hashCode();
+        result = 31 * result + phone.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Reference{" +
                 "id=" + id +

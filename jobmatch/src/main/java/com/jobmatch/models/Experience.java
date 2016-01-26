@@ -92,6 +92,31 @@ public class Experience implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Experience that = (Experience) o;
+
+        if (!title.equals(that.title)) return false;
+        if (!companyName.equals(that.companyName)) return false;
+        if (!companyAddress.equals(that.companyAddress)) return false;
+        if (!startDate.equals(that.startDate)) return false;
+        if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
+        return responsibilities != null ? responsibilities.equals(that.responsibilities) : that.responsibilities == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result = 31 * result + companyName.hashCode();
+        result = 31 * result + companyAddress.hashCode();
+        result = 31 * result + startDate.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Experience{" +
                 "id=" + id +
