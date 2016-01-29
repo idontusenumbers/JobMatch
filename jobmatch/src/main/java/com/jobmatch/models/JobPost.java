@@ -9,20 +9,6 @@ import java.util.Set;
 @Entity
 public class JobPost implements Serializable {
 
-    @ManyToMany
-    @JoinTable(name = "USER_FAVE_POSTS",
-            joinColumns = @JoinColumn(name = "job_post_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    protected Set<User> users;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable
-    protected Set<Skill> skills = new HashSet<>();
-    /**
-     * Employer's job posting.
-     * @param id primary key
-     * @param user_id foreign key
-     */
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,6 +16,14 @@ public class JobPost implements Serializable {
     private String jobCountry;
     private String industry;
     private String jobType;
+    @ManyToMany
+    @JoinTable(name = "USER_FAVE_POSTS",
+            joinColumns = @JoinColumn(name = "job_post_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    protected Set<User> users = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable
+    protected Set<Skill> skills = new HashSet<>();
     @Min(0)
     private int yearsExperience;
 
