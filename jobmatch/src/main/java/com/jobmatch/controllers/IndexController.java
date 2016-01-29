@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Map;
 
 @Controller
-public class IndexController {
-    private static final Logger log = LoggerFactory.getLogger(IndexController.class);
-    private final UserRepository userRepository;
+public class IndexController extends BaseController{
 
     @Autowired
     IndexController(UserRepository userRepository) {

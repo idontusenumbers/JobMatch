@@ -1,9 +1,10 @@
 package com.jobmatch.repositories;
 
-import com.jobmatch.models.Education;
+import com.jobmatch.models.Contact;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EducationRepository extends CrudRepository<Education,Integer> {
+public interface ContactRepository extends CrudRepository<Contact, Integer> {
+
 }

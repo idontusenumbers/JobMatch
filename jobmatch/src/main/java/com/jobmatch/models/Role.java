@@ -2,9 +2,6 @@ package com.jobmatch.models;
 
 import javax.persistence.*;
 
-/**
- * Created by Emilia on 1/21/2016.
- */
 @Entity
 public class Role {
 

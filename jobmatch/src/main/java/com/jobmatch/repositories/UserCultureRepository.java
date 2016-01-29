@@ -1,9 +1,9 @@
 package com.jobmatch.repositories;
 
-import com.jobmatch.models.Education;
+import com.jobmatch.models.UserCulture;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EducationRepository extends CrudRepository<Education,Integer> {
+public interface UserCultureRepository extends CrudRepository<UserCulture,Integer> {
 }

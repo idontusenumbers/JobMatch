@@ -4,9 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-/**
- * Created by Emilia on 1/21/2016.
- */
 @Entity
 public class UserSkill {
 

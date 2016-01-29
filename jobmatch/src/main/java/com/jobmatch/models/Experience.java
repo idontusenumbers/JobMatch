@@ -7,9 +7,6 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-/**
- * Created by Emilia on 1/21/2016.
- */
 @Entity
 public class Experience implements Serializable {
 
