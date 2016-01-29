@@ -3,9 +3,6 @@ package com.jobmatch.models;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by Emilia on 1/21/2016.
- */
 @Entity
 public class Reference implements Serializable {
 

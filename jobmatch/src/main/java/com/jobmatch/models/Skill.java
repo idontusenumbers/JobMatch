@@ -4,9 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-/**
- * Created by Emilia on 1/21/2016.
- */
 @Entity
 public class Skill implements Serializable {
 

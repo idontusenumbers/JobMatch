@@ -6,9 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by Emilia on 1/21/2016.
- */
 @Entity
 public class Contact implements Serializable {
 

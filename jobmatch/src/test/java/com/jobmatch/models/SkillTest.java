@@ -12,10 +12,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by eric on 1/28/16.
- */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @IntegrationTest({"spring.jpa.hibernate.ddl-auto=create-drop","server.port=0"})
