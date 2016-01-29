@@ -1,7 +1,6 @@
 package com.jobmatch.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -9,9 +8,9 @@ public class Skill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @NotNull @Column(unique = true, nullable = false)
-    private String name;
+    protected int id;
+    @Column(unique = true, nullable = false)
+    protected String name;
 
     /**
      * Default Constructor

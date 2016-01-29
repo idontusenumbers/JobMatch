@@ -1,9 +1,10 @@
 package com.jobmatch.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Role {
+public class Role implements Serializable {
 
     /**
      * Defines user account type.
@@ -12,28 +13,28 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    protected int id;
 
     @Column(nullable = false, unique = true)
-    private String roleName;
+    protected String name;
 
     public Role() {
     }
 
-    public Role(String roleName) {
-        this.roleName = roleName;
+    public Role(String name) {
+        this.name = name;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getRole_name() {
-        return roleName;
+    public String getName() {
+        return name;
     }
 
-    public void setRole_name(String role_name) {
-        this.roleName = role_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -43,20 +44,20 @@ public class Role {
 
         Role role = (Role) o;
 
-        return roleName.equals(role.roleName);
+        return name.equals(role.name);
 
     }
 
     @Override
     public int hashCode() {
-        return roleName.hashCode();
+        return name.hashCode();
     }
 
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", role_name='" + roleName + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

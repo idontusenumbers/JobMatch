@@ -9,6 +9,14 @@ import java.util.Set;
 @Entity
 public class JobPost implements Serializable {
 
+    @ManyToMany
+    @JoinTable(name = "USER_FAVE_POSTS",
+            joinColumns = @JoinColumn(name = "job_post_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    protected Set<User> users;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable
+    protected Set<Skill> skills = new HashSet<>();
     /**
      * Employer's job posting.
      * @param id primary key
@@ -25,16 +33,6 @@ public class JobPost implements Serializable {
     @Min(0)
     private int yearsExperience;
 
-    @ManyToMany
-    @JoinTable(name = "USER_FAVE_POSTS",
-    joinColumns = @JoinColumn(name = "job_post_id"),
-    inverseJoinColumns = @JoinColumn(name = "user_id"))
-    protected Set<User> users;
-
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    protected Set<JobPostSkill> skills = new HashSet<>();
-
     public JobPost() {
     }
 
@@ -48,10 +46,6 @@ public class JobPost implements Serializable {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getJobTitle() {
@@ -98,7 +92,7 @@ public class JobPost implements Serializable {
         return users;
     }
 
-    public Set<JobPostSkill> getSkills() {
+    public Set<Skill> getSkills() {
         return skills;
     }
 
@@ -136,6 +130,8 @@ public class JobPost implements Serializable {
                 ", industry='" + industry + '\'' +
                 ", jobType='" + jobType + '\'' +
                 ", yearsExperience=" + yearsExperience +
+                ", users=" + users +
+                ", skills=" + skills +
                 '}';
     }
 }

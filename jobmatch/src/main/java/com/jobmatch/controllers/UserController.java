@@ -4,10 +4,6 @@ import com.jobmatch.models.Contact;
 import com.jobmatch.models.Education;
 import com.jobmatch.models.User;
 import com.jobmatch.models.UserSkill;
-import com.jobmatch.repositories.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,7 +31,7 @@ public class UserController extends BaseController {
         model.put("title", "Users");
 
         User user = new User();
-        user.setRole(roleRepository.findByRoleName("company"));
+        user.setRole(roleRepository.findByName("admin"));
         user.setOptIn(true);
         user.setPassword("password");
         user.setUsername("epfeiffer");
