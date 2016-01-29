@@ -1,10 +1,8 @@
 package com.jobmatch.algorithm;
 
-import com.jobmatch.models.JobPost;
-import com.jobmatch.models.Skill;
-import com.jobmatch.models.User;
-import com.jobmatch.models.UserSkill;
+import com.jobmatch.models.*;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,21 +10,25 @@ import java.util.Set;
  */
 public class Distance {
 
-    //List<JobMatch> findMatchingJobs (User user, Set<JobPost> allJobPosts)
-    //List<CandidateMatch> findMatchingCandidates (JobPost jobPost, Set<User> allUsers)
-    //findDistance(User user, JobPost jobPost)
+/*
+    static public List<JobMatch> findMatchingJobs(User user, Set<JobPost> allJobPosts) {
 
-    private User user;
-    private JobPost jobpost;
+        for (JobPost allJobPost : allJobPosts) {
 
-    public Distance(User us, JobPost jp){
-        this.user = us;
-        this.jobpost = jp;
+            int distance = findDistance(user, allJobPost);
+            Set<JobPostSkill> skills = allJobPost.getSkills();
+
+        }
     }
 
-    public void findDistance(){
+    static public List<CandidateMatch> findMatchingCandidates(JobPost jobPost, Set<User> allUsers) {
+
+    }
+*/
+    static public int findDistance(User user, JobPost jobPost) {
         //user.getSkills();
         //jobpost.getSkills();
+        return 0;
     }
 
 }
