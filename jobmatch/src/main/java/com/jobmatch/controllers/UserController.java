@@ -17,19 +17,7 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
-    private static final Logger log = LoggerFactory.getLogger(UserController.class);
-
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private EducationRepository educationRepository;
-    @Autowired
-    private SkillRepository skillRepository;
-    @Autowired
-    private JobPostRepository jobPostRepository;
+public class UserController extends BaseController {
 
     @RequestMapping("")
     public String users(Map<String, Object> model) {
