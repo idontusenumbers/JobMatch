@@ -3,16 +3,11 @@ package com.jobmatch.models;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class JobPost implements Serializable {
-
-    /**
-     * Employer's job posting.
-     * @param id primary key
-     * @param user_id foreign key
-     */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,14 +16,16 @@ public class JobPost implements Serializable {
     private String jobCountry;
     private String industry;
     private String jobType;
-    @Min(0)
-    private int yearsExperience;
-
     @ManyToMany
     @JoinTable(name = "USER_FAVE_POSTS",
-    joinColumns = @JoinColumn(name = "job_post_id"),
-    inverseJoinColumns = @JoinColumn(name = "user_id"))
-    protected Set<User> users;
+            joinColumns = @JoinColumn(name = "job_post_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    protected Set<User> users = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable
+    protected Set<Skill> skills = new HashSet<>();
+    @Min(0)
+    private int yearsExperience;
 
     public JobPost() {
     }
@@ -43,10 +40,6 @@ public class JobPost implements Serializable {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getJobTitle() {
@@ -93,6 +86,10 @@ public class JobPost implements Serializable {
         return users;
     }
 
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -127,6 +124,8 @@ public class JobPost implements Serializable {
                 ", industry='" + industry + '\'' +
                 ", jobType='" + jobType + '\'' +
                 ", yearsExperience=" + yearsExperience +
+                ", users=" + users +
+                ", skills=" + skills +
                 '}';
     }
 }

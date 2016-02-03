@@ -6,7 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class BaseController {
-    private static final Logger log = LoggerFactory.getLogger(UserController.class);
+    protected static final Logger log = LoggerFactory.getLogger(BaseController.class);
+
     @Autowired
     protected UserRepository userRepository;
     @Autowired
@@ -14,7 +15,7 @@ public class BaseController {
     @Autowired
     protected SkillRepository skillRepository;
     @Autowired
-    private EducationRepository educationRepository;
+    protected EducationRepository educationRepository;
     @Autowired
-    private JobPostRepository jobPostRepository;
+    protected JobPostRepository jobPostRepository;
 }
