@@ -1,5 +1,8 @@
 package com.jobmatch.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -20,7 +23,7 @@ public class User implements Serializable {
     @JoinColumn
     protected Role role;
     protected String username;
-    protected String password; // hash later
+    protected String password;
     protected Boolean optIn;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -69,8 +72,9 @@ public class User implements Serializable {
     public User(Role role, String username, String password, Boolean optIn) {
         this.role = role;
         this.username = username;
-        this.password = password;
         this.optIn = optIn;
+
+        this.setPassword(password);
     }
 
     /**
@@ -102,7 +106,8 @@ public class User implements Serializable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        this.password = encoder.encode(password);
     }
 
     public Boolean getOptIn() {
