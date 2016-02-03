@@ -22,7 +22,7 @@ public class UserSkill {
     @JoinColumn(nullable = false)
     protected Skill skill;
 
-//    @Min(0) @Max(10)
+    @Min(0) @Max(10)
     protected int rank;
 
     public UserSkill() {

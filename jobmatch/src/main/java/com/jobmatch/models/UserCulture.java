@@ -16,7 +16,7 @@ public class UserCulture implements Serializable {
     @JoinColumn(nullable = false)
     protected Culture culture;
 
-//    @Min(0) @Max(10)
+    @Min(0) @Max(10)
     protected int rank;
 
     public UserCulture() {
