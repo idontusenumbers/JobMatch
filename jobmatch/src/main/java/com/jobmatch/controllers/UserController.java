@@ -16,37 +16,49 @@ import java.util.Set;
 public class UserController extends BaseController {
 
     @RequestMapping("")
-    public String users(Map<String, Object> model) {
-        model.put("users", userRepository.findAll());
-        model.put("title", "Users");
+    public String list(Map<String, Object> context) {
+        context.put("title", "Users");
+        context.put("users", userRepository.findAll());
 
 
-		return "users/index";
+		return "users/list";
 
     }
 
     @RequestMapping("/create")
-    public String create(Map<String, Object> model) {
-        model.put("users", userRepository.findAll());
-        model.put("title", "Users");
+    public String create(Map<String, Object> context, boolean optIn, String username, String password, String roleName) {
+        context.put("title", "Users");
+        context.put("users", userRepository.findAll());
 
         User user = new User();
-        user.setRole(roleRepository.findByName("admin"));
-        user.setOptIn(true);
-        user.setPassword("password");
-        user.setUsername("epfeiffer");
-        user.setContact(new Contact("email", "1234567", "address", "", "", "", ""));
+        user.setRole(roleRepository.findByName(roleName));
+        user.setOptIn(optIn);
+        user.setPassword(password);
+        user.setUsername(username);
+//        user.setContact(new Contact("email", "1234567", "address", "", "", "", ""));
+//
 
-        user.getEducation().add(new Education("DePaul University", "US", "BS", "Computer Science", 2016));
+//        Set<UserSkill> skills = new HashSet<>();
+//        skills.add(new UserSkill(skillRepository.findByName("C++"), 10));
+//        skills.add(new UserSkill(skillRepository.findByName("Java"), 8));
 
-        Set<UserSkill> skills = new HashSet<>();
-        skills.add(new UserSkill(skillRepository.findByName("C++"), 10));
-        skills.add(new UserSkill(skillRepository.findByName("Java"), 8));
-
-        user.getSkills().addAll(skills);
+//        user.getSkills().addAll(skills);
 
         userRepository.save(user);
 
-        return "users/index";
+        return "user/index";
     }
+
+    @RequestMapping("/addEducation")
+    public String addEducation(Map<String, Object> context,
+                               Integer userId, String degree, String schoolName, String country, String major, int year){
+
+        User user = userRepository.findOne(userId);
+        user.getEducation().add(new Education(schoolName, country, degree, major, year));
+        userRepository.save(user);
+        return "user/education";
+    }
+
+
+
 }
