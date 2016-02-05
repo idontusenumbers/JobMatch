@@ -3,21 +3,13 @@
   <component name="FacetManager">
     <facet type="web" name="Web">
       <configuration>
-        <webroots />
+        <webroots>
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+        </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
-      </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/com/jobmatch/Application.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/jobmatch/configuration/CustomFreemarkerConfiguration.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/jobmatch/configuration/CustomInterceptorConfiguration.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/jobmatch/configuration/SecurityConfiguration.java</file>
-        </fileset>
       </configuration>
     </facet>
   </component>
