@@ -23,7 +23,7 @@ public class JobPost implements Serializable {
     protected Set<User> users = new HashSet<>();
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable
-    protected Set<Skill> skills = new HashSet<>();
+    protected Set<UserSkill> skills = new HashSet<>();
     @Min(0)
     private int yearsExperience;
 
@@ -86,7 +86,7 @@ public class JobPost implements Serializable {
         return users;
     }
 
-    public Set<Skill> getSkills() {
+    public Set<UserSkill> getSkills() {
         return skills;
     }
 

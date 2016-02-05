@@ -1,6 +1,10 @@
 package com.jobmatch.algorithm;
 
-import com.jobmatch.models.*;
+import com.jobmatch.models.JobPost;
+import com.jobmatch.models.Skill;
+import com.jobmatch.models.User;
+import com.jobmatch.models.UserSkill;
+
 import java.util.List;
 import java.util.Set;
 
@@ -34,9 +38,9 @@ public class Distance {
     static public int findDistance(User user, JobPost jobPost) {
         int result = 0;
         Set<UserSkill> us = user.getSkills();
-        Set<JobPostSkill> jps = jobPost.getSkills();
+        Set<UserSkill> jps = jobPost.getSkills();
 
-        for (JobPostSkill jp : jps) {
+        for (UserSkill jp : jps) {
             Skill s = jp.getSkill();
             for (UserSkill u : us) {
                 int r = u.getRank();

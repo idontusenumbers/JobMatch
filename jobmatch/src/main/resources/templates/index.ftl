@@ -1,18 +1,25 @@
-<#include "base.ftl">
+<#include "authentication-base.ftl">
 
 
-<#macro page_body>
-<h1>Welcome!!!</h1>
-
-<form action="/" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <label for="username">Username:</label>
-    <input type="text" name="username"/><br/>
-    <label for="password">Password:</label>
-    <input type="password" name="password"/><br/>
-
-    <input type="submit"/>
+<#macro auth_page_body>
+<form action="" method="post" class="form form-login">
+    <div class="form-field">
+        <input id="login-username" type="text" class="form-input" placeholder="Email" required>
+    </div>
+    <div class="form-field">
+        <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+    </div>
+    <div class="form-field">
+        <input type="submit" value="Login">
+    </div>
+    <div class="clear"></div>
 </form>
-</#macro>
 
+<div class="form-text">
+    <p>
+        <a href="#" class="forgot-password">Forgot your password?</a>
+        <button type="button" class="register-button">Register</button>
+    </p>
+</div>
+</#macro>
 <@display_page/>
