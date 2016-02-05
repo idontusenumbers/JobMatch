@@ -1,106 +1,106 @@
-html,body{
-    height:100%;
+html, body {
+    height: 100%;
 }
 
-body{
-    background-color:#E4E4E4;
-    color:#999999;
-    margin:0;
-    min-height:100%;
-    font-family:'Open Sans',sans-serif;
+body {
+    background-color: #E4E4E4;
+    color: #999999;
+    margin: 0;
+    min-height: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 
-h1{
-    font-family:'Montserrat',sans-serif;
-    font-weight:400;
-    margin:5px;
-    font-size:20px;
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin: 5px;
+    font-size: 20px;
 }
 
-.logo{
-    color:#FF9933!important;
-    font-weight:700!important;
+.logo {
+    color: #FF9933 !important;
+    font-weight: 700 !important;
 }
 
-a{
-    color:#FF9933;
-    outline:0;
-    text-decoration:none;
+a {
+    color: #FF9933;
+    outline: 0;
+    text-decoration: none;
 }
 
-a:focus,a:hover{
-    text-decoration:underline;
+a:focus, a:hover {
+    text-decoration: underline;
 }
 
-.site-container{
-    padding:120px 0;
+.site-container {
+    padding: 120px 0;
 }
 
-.grid-container{
-    margin:0 auto;
-    text-align:center;
-    width:25%;
-    max-width:90%;
-    background-color:white;
-    padding:40px;
+.grid-container {
+    margin: 0 auto;
+    text-align: center;
+    width: 25%;
+    max-width: 90%;
+    background-color: white;
+    padding: 40px;
 }
 
-.form-field{
-    margin:0 auto;
-    position:relative;
-    margin-bottom:20px;
+.form-field {
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 20px;
 }
 
-.form-register{
-    color:#333333;
+.form-register {
+    color: #333333;
 }
 
-.form input[type='submit']{
-    display:block;
-    border:none;
-    float:right;
+.form input[type='submit'] {
+    display: block;
+    border: none;
+    float: right;
 }
 
 .form input[type="password"],
-.form input[type="text"]{
-    width:90%;
+.form input[type="text"] {
+    width: 90%;
 }
 
-.form input[type="submit"],{
-    width:40%;
+.form input[type="submit"] {
+    width: 40%;
 }
 
 .form-login label,
 .form-login input[type="text"],
-.form-login input[type="password"]{
-    border-radius:3px;
-    padding:15px;
+.form-login input[type="password"] {
+    border-radius: 3px;
+    padding: 15px;
 }
 
-.form-login input[type="submit"]{
-    border-radius:5px;
-    padding:15px;
+.form-login input[type="submit"] {
+    border-radius: 5px;
+    padding: 15px;
 }
 
-.form-register label{
-    padding:5px;
+.form-register label {
+    padding: 5px;
 }
 
-.radio-button{
-    display:inline;
-    padding-right:50px;
+.radio-button {
+    display: inline;
+    padding-right: 50px;
 }
 
-textarea{
-    width:95%;
-    height:100px;
+textarea {
+    width: 95%;
+    height: 100px;
 }
 
 .form-login input[type="text"],
 .form-login input[type="password"],
-.form-register textarea{
-    background-color:white;
-    border:1px solid #E4E4E4;
+.form-register textarea {
+    background-color: white;
+    border: 1px solid #E4E4E4;
 }
 
 .form-login input[type="text"]:focus,
@@ -108,76 +108,76 @@ textarea{
 .form-login input[type="password"]:focus,
 .form-login input[type="password"]:hover,
 .form-register textarea:focus,
-.form-register textarea:hover{
-    background-color:white;
-    border:1px solid #D7D7D7;
+.form-register textarea:hover {
+    background-color: white;
+    border: 1px solid #D7D7D7;
 }
 
-.form-login input[type="submit"]{
-    color:white;
-    background:#FF9933;
-    padding:10px 20px 10px 20px;
-    font-family:'Montserrat',sans-serif;
-    font-weight:700;
-    text-decoration:none;
-    text-transform:uppercase;
+.form-login input[type="submit"] {
+    color: white;
+    background: #FF9933;
+    padding: 10px 20px 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
-.form-login input[type="submit"]:hover{
-    background:#E58A2E;
-    text-decoration:none;
-    cursor:pointer;
+.form-login input[type="submit"]:hover {
+    background: #E58A2E;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.form input, textarea{
-    font-family:'Open Sans',sans-serif;
+.form input, textarea {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.form textarea{
-    padding:15px 0 0 15px;
+.form textarea {
+    padding: 15px 0 0 15px;
 }
 
-.form-register input[type="text"]#login-first{
-    width:30%;
+.form-register input[type="text"]#login-first {
+    width: 30%;
 }
 
-.form-register input[type="text"]#login-last{
-    width:50%;
+.form-register input[type="text"]#login-last {
+    width: 50%;
 }
 
-.form-text{
-    position:relative;
-    top:75px;
-    text-align:left;
-    font-size:12px;
-    display:inline;
+.form-text {
+    position: relative;
+    top: 75px;
+    text-align: left;
+    font-size: 12px;
+    display: inline;
 }
 
-.forgot-password{
-    width:50%;
-    display:block;
-    float:left;
-    padding-top:15px;
+.forgot-password {
+    width: 50%;
+    display: block;
+    float: left;
+    padding-top: 15px;
 }
 
-.register-button{
-    width:30%;
-    float:right;
-    border:none;
-    border-radius:5px;
-    color:#FF9933;
-    background:white;
-    padding:10px 20px 10px 20px;
-    font-family:'Montserrat',sans-serif;
-    font-weight:400;
-    text-decoration:none;
+.register-button {
+    width: 30%;
+    float: right;
+    border: none;
+    border-radius: 5px;
+    color: #FF9933;
+    background: white;
+    padding: 10px 20px 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
 }
 
-.register-button:hover{
-    cursor:pointer;
+.register-button:hover {
+    cursor: pointer;
     border: 1px #FF9933 solid;
 }
 
-.clear{
-    clear:both;
+.clear {
+    clear: both;
 }
