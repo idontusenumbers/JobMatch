@@ -62,7 +62,10 @@ a:focus, a:hover {
 }
 
 .form input[type="password"],
-.form input[type="text"] {
+.form input[type="text"],
+.form input[type="tel"],
+.form input[type="email"],
+.form input[type="number"] {
     width: 90%;
 }
 
@@ -71,8 +74,11 @@ a:focus, a:hover {
 }
 
 .form-login label,
-.form-login input[type="text"],
-.form-login input[type="password"] {
+.form input[type="password"],
+.form input[type="text"],
+.form input[type="tel"],
+.form input[type="email"],
+.form input[type="number"] {
     border-radius: 3px;
     padding: 15px;
 }
@@ -96,8 +102,11 @@ textarea {
     height: 100px;
 }
 
-.form-login input[type="text"],
-.form-login input[type="password"],
+.form input[type="password"],
+.form input[type="text"],
+.form input[type="tel"],
+.form input[type="email"],
+.form input[type="number"],
 .form-register textarea {
     background-color: white;
     border: 1px solid #E4E4E4;
