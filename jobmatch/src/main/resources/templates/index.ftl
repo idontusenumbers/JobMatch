@@ -1,5 +1,6 @@
 <#include "authentication-base.ftl">
 
+<#macro header>LOGIN</#macro>
 
 <#macro auth_page_body>
 <form action="" method="post" class="form form-login">
@@ -18,7 +19,7 @@
 <div class="form-text">
     <p>
         <a href="#" class="forgot-password">Forgot your password?</a>
-        <button type="button" class="register-button">Register</button>
+        <button type="button" class="register-button" onclick="parent.location='/register'">Register</button>
     </p>
 </div>
 </#macro>

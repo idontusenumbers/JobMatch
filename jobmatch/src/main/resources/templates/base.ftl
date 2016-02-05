@@ -21,11 +21,11 @@
 <html>
 <head>
     <@page_head/>
-    <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
 <div id="nav"><a href="${s.mvcUrl("IC#index").build()}">Home</a></div>
     <@page_body/>
+<script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
 </#macro>
