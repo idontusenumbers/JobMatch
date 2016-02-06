@@ -3,12 +3,13 @@
 <#macro header>LOGIN</#macro>
 
 <#macro auth_page_body>
-<form action="" method="post" class="form form-login">
+<form action="login" method="post" class="form form-login">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="form-field">
-        <input id="login-username" type="text" class="form-input" placeholder="Email" required>
+        <input id="login-username" name="username" type="text" class="form-input" placeholder="Email" required>
     </div>
     <div class="form-field">
-        <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+        <input id="login-password" name="password" type="password" class="form-input" placeholder="Password" required>
     </div>
     <div class="form-field">
         <input type="submit" value="Login">

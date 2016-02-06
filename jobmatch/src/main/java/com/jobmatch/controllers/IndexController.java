@@ -6,20 +6,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 
 @Controller
 public class IndexController extends BaseController{
 
-    @Autowired
-    IndexController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @RequestMapping("/")
     public String index(Map<String, Object> model) {
 
 		return "index";
+
+    }
+
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public String login(Map<String, Object> model, String error) {
+        if (error != null)
+            model.put("errors", Arrays.asList("Unknown user or password"));
+
+        return "index";
 
     }
 
