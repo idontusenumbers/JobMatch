@@ -1,64 +1,54 @@
 package com.jobmatch.controllers;
 
-import com.jobmatch.models.Contact;
+import com.github.javafaker.Faker;
 import com.jobmatch.models.Education;
 import com.jobmatch.models.User;
-import com.jobmatch.models.UserSkill;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/users")
 public class UserController extends BaseController {
 
     @RequestMapping("")
-    public String list(Map<String, Object> context) {
-        context.put("title", "Users");
-        context.put("users", userRepository.findAll());
+    public String index(Model context) {
+        context.addAttribute("title", "Users");
+        context.addAttribute("users", userRepository.findAll());
 
-
-		return "users/list";
-
+        return "users/index";
     }
 
-    @RequestMapping("/create")
-    public String create(Map<String, Object> context, boolean optIn, String username, String password, String roleName) {
-        context.put("title", "Users");
-        context.put("users", userRepository.findAll());
+    /**
+     * Adds Random Education to user (for now)
+     *
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/addEducation/{userId}")
+    public String addEducation(@PathVariable Integer userId) {
+        Faker faker = new Faker(Locale.ENGLISH);
 
-        User user = new User();
-        user.setRole(roleRepository.findByName(roleName));
-        user.setOptIn(optIn);
-        user.setPassword(password);
-        user.setUsername(username);
-//        user.setContact(new Contact("email", "1234567", "address", "", "", "", ""));
-//
+        try {
+            User user = userRepository.findOne(userId);
+            Education education = new Education(
+                    faker.company().name(),
+                    faker.country().name(),
+                    faker.lorem().word(),
+                    faker.lorem().word(),
+                    faker.date().past(365, TimeUnit.DAYS).getYear()
+            );
+            user.getEducation().add(education);
+            userRepository.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
 
-//        Set<UserSkill> skills = new HashSet<>();
-//        skills.add(new UserSkill(skillRepository.findByName("C++"), 10));
-//        skills.add(new UserSkill(skillRepository.findByName("Java"), 8));
-
-//        user.getSkills().addAll(skills);
-
-        userRepository.save(user);
-
-        return "user/index";
+        return "users/education";
     }
-
-    @RequestMapping("/addEducation")
-    public String addEducation(Map<String, Object> context,
-                               Integer userId, String degree, String schoolName, String country, String major, int year){
-
-        User user = userRepository.findOne(userId);
-        user.getEducation().add(new Education(schoolName, country, degree, major, year));
-        userRepository.save(user);
-        return "user/education";
-    }
-
-
-
 }

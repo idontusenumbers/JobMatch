@@ -2,32 +2,36 @@ package com.jobmatch.services;
 
 import com.jobmatch.models.User;
 import com.jobmatch.repositories.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
-public class JobMatchUserDetailsService implements UserDetailsService {
-    protected static final Logger log = LoggerFactory.getLogger(JobMatchUserDetailsService.class);
+import java.util.List;
 
-    private final UserRepository userRepository;
+@Service
+public class Users implements UserDetailsService {
+
+    private UserRepository repository;
 
     @Autowired
-    public JobMatchUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public Users(UserRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+        User user = repository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User %s does not exist!", username));
         }
 
-        return new UserRepositoryUserDetails(user);
+        List<GrantedAuthority> auth = AuthorityUtils
+                .commaSeparatedStringToAuthorityList("ROLE_USER");
+
+        return new org.springframework.security.core.userdetails.User(username, user.getPassword(), auth);
     }
 }

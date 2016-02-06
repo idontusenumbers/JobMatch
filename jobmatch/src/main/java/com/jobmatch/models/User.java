@@ -1,5 +1,6 @@
 package com.jobmatch.models;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -22,8 +23,10 @@ public class User implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     protected Role role;
+    @Column(unique = true)
     protected String username;
     protected String password;
+    @ColumnDefault("false")
     protected Boolean optIn;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -60,6 +63,7 @@ public class User implements Serializable {
      * Default Constructor
      */
     public User() {
+        this.optIn = false;
     }
 
     /**
@@ -161,21 +165,17 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        if (!role.equals(user.role)) return false;
         if (!username.equals(user.username)) return false;
         if (!password.equals(user.password)) return false;
-        if (!optIn.equals(user.optIn)) return false;
-        return contact.equals(user.contact);
+        return optIn != null ? optIn.equals(user.optIn) : user.optIn == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = role.hashCode();
-        result = 31 * result + username.hashCode();
+        int result = username.hashCode();
         result = 31 * result + password.hashCode();
-        result = 31 * result + optIn.hashCode();
-        result = 31 * result + contact.hashCode();
+        result = 31 * result + (optIn != null ? optIn.hashCode() : 0);
         return result;
     }
 

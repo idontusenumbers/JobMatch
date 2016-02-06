@@ -25,6 +25,15 @@ public class Education implements Serializable {
     public Education() {
     }
 
+    /**
+     * Constructor
+     *
+     * @param schoolName
+     * @param country
+     * @param degree
+     * @param major
+     * @param yearGraduated
+     */
     public Education(String schoolName, String country, String degree, String major, int yearGraduated) {
         this.schoolName = schoolName;
         this.country = country;
