@@ -49,16 +49,13 @@
         <input id="optIn" name="optIn" type="checkbox" class="form-input" required/>
     </div>
 
+
+    <a href="/" class="forgot-password">Login</a>
     <div class="form-field">
         <input type="submit" value="Register"/>
     </div>
     <div class="clear"></div>
 </form>
-<div class="form-text">
-    <p>
-        <a href="/" class="forgot-password">Already Have An Account? Login Here</a>
-    </p>
-</div>
 
 </#macro>
 <@display_page/>

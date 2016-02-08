@@ -39,10 +39,11 @@ a:focus, a:hover {
 .grid-container {
     margin: 0 auto;
     text-align: center;
-    width: 25%;
-    max-width: 90%;
+    width: 90%;
+    max-width: 350px;
     background-color: white;
     padding: 40px;
+    position: relative;
 }
 
 .form-field {
@@ -66,7 +67,7 @@ a:focus, a:hover {
 .form input[type="tel"],
 .form input[type="email"],
 .form input[type="number"] {
-    width: 90%;
+    width: 100%;
 }
 
 .form input[type="submit"] {
@@ -155,24 +156,23 @@ textarea {
 }
 
 .form-text {
-    position: relative;
-    top: 75px;
-    text-align: left;
     font-size: 12px;
     display: inline;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -70px;
 }
 
 .forgot-password {
     width: 50%;
     display: block;
     float: left;
-    padding-top: 15px;
+    padding-top: 6px;
 }
 
 .register-button {
-    width: 30%;
-    float: right;
-    border: none;
     border-radius: 5px;
     color: #FF9933;
     background: white;
@@ -180,6 +180,7 @@ textarea {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     text-decoration: none;
+    border: 1px solid transparent;
 }
 
 .register-button:hover {

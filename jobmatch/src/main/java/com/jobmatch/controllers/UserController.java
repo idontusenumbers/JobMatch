@@ -29,7 +29,7 @@ public class UserController extends BaseController {
      * @param userId
      * @return
      */
-    @RequestMapping("/addEducation/{userId}")
+    @RequestMapping("{userId}/addEducation/")
     public String addEducation(@PathVariable Integer userId) {
         Faker faker = new Faker(Locale.ENGLISH);
 

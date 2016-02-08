@@ -11,6 +11,8 @@
     <div class="form-field">
         <input id="login-password" name="password" type="password" class="form-input" placeholder="Password" required>
     </div>
+
+    <a href="#" class="forgot-password">Reset</a>
     <div class="form-field">
         <input type="submit" value="Login">
     </div>
@@ -19,7 +21,6 @@
 
 <div class="form-text">
     <p>
-        <a href="#" class="forgot-password">Forgot your password?</a>
         <button type="button" class="register-button" onclick="parent.location='/register'">Register</button>
     </p>
 </div>
