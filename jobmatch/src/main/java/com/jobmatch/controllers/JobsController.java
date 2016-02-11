@@ -1,24 +1,18 @@
 package com.jobmatch.controllers;
 
-import com.github.javafaker.Faker;
-import com.jobmatch.algorithm.CandidateMatch;
-import com.jobmatch.algorithm.Distance;
-import com.jobmatch.models.Education;
+import com.jobmatch.algorithm.CandidateScore;
+import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.JobPost;
 import com.jobmatch.models.Role;
-import com.jobmatch.models.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/jobs")
@@ -32,7 +26,7 @@ public class JobsController extends BaseController {
                 posts = jobPostRepository.findAll();
                 break;
             case Role.STUDENT:
-                Distance.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
+                JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
                 break;
             case Role.EMPLOYER:
                 posts = jobPostRepository.findByCreator(getCurrentUser());
@@ -77,8 +71,8 @@ public class JobsController extends BaseController {
         if (!jobPost.getCreator().equals(getCurrentUser()))
             throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
 
-        List<CandidateMatch> matchingCandidates =
-                Distance.findMatchingCandidates(jobPost, userRepository.findByRole(Role.STUDENT));
+        List<CandidateScore> matchingCandidates =
+                JobCandidateEvaluator.findMatchingCandidates(jobPost, userRepository.findByRole(Role.STUDENT));
 
         model.addAttribute("candidates", matchingCandidates);
 
