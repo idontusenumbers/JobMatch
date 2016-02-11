@@ -24,7 +24,6 @@ public class JobsController extends BaseController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listJobs(@ModelAttribute JobPost jobPost, Model model) {
-        // TODO: get list of jobs that this user created
         Iterable<JobPost> posts = null;
         switch (getCurrentUser().getRole().getId()){
             case 1: // admin
