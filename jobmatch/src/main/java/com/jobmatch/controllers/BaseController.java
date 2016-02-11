@@ -1,5 +1,6 @@
 package com.jobmatch.controllers;
 
+import com.jobmatch.models.User;
 import com.jobmatch.repositories.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +16,20 @@ import javax.servlet.http.HttpSession;
 public class BaseController {
 	protected static final Logger log = LoggerFactory.getLogger(BaseController.class);
 
+	Authentication auth;
+
+	public Authentication getAuth() {
+		if (auth == null)
+			auth = SecurityContextHolder.getContext().getAuthentication();
+		return auth;
+	}
+	public User getCurrentUser(){
+		return (User) getAuth().getPrincipal();
+	}
 
 	@ModelAttribute
     public void addAuthToModel(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		model.addAttribute("auth", auth);
+		model.addAttribute("auth", getAuth());
 	}
 
 	@Autowired

@@ -36,7 +36,7 @@
     </div>
 
     <div class="form-field">
-        <input id="zipcode" name="contact.zipcode" type="number" class="form-input" placeholder="ZipCode" required/>
+        <input id="zipcode" name="contact.zipcode" type="text" class="form-input" placeholder="ZipCode" required/>
     </div>
 
     <div class="form-field">

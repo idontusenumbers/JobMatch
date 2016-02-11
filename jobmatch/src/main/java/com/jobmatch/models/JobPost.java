@@ -27,6 +27,11 @@ public class JobPost implements Serializable {
     @Min(0)
     private int yearsExperience;
 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    protected User creator;
+
     public JobPost() {
     }
 
@@ -88,6 +93,10 @@ public class JobPost implements Serializable {
 
     public Set<UserSkill> getSkills() {
         return skills;
+    }
+
+    public User getCreator() {
+        return creator;
     }
 
     @Override

@@ -12,7 +12,7 @@ public class Distance {
     private static List<JobMatch> userMatchedToJobs;
     private static List<CandidateMatch> jobsMatchedToCandidates;
 
-    static public List<JobMatch> findMatchingJobs(User user, Set<JobPost> allJobPosts) {
+    static public List<JobMatch> findMatchingJobs(User user, Iterable<JobPost> allJobPosts) {
         for (JobPost jobpost : allJobPosts) {
             int distance = findDistance(user, jobpost);
             //Set<JobPostSkill> skills = allJobPost.getSkills();
@@ -22,7 +22,7 @@ public class Distance {
         return userMatchedToJobs;
     }
 
-    static public List<CandidateMatch> findMatchingCandidates(JobPost jobPost, Set<User> allUsers) {
+    static public List<CandidateMatch> findMatchingCandidates(JobPost jobPost, Iterable<User> allUsers) {
         for (User user : allUsers) {
             int distance = findDistance(user, jobPost);
             CandidateMatch cm = new CandidateMatch(user, jobPost, distance);
