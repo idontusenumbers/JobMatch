@@ -6,6 +6,13 @@ import java.io.Serializable;
 @Entity
 public class Role implements Serializable {
 
+    public static final int ADMIN = 1;
+    public static final int STUDENT = 2;
+    public static final int EMPLOYER = 3;
+
+
+    // TODO Asert constants are correct
+
     /**
      * Defines user account type.
      * Can be admin, student, or employer.

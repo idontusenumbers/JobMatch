@@ -1,9 +1,11 @@
 package com.jobmatch.controllers;
 
 import com.github.javafaker.Faker;
+import com.jobmatch.algorithm.CandidateMatch;
 import com.jobmatch.algorithm.Distance;
 import com.jobmatch.models.Education;
 import com.jobmatch.models.JobPost;
+import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -26,13 +28,13 @@ public class JobsController extends BaseController {
     public String listJobs(@ModelAttribute JobPost jobPost, Model model) {
         Iterable<JobPost> posts = null;
         switch (getCurrentUser().getRole().getId()){
-            case 1: // admin
+            case Role.ADMIN:
                 posts = jobPostRepository.findAll();
                 break;
-            case 2: // student
+            case Role.STUDENT:
                 Distance.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
                 break;
-            case 3: // employer
+            case Role.EMPLOYER:
                 posts = jobPostRepository.findByCreator(getCurrentUser());
                 break;
         }
@@ -68,5 +70,21 @@ public class JobsController extends BaseController {
         jobPostRepository.delete(jobPost);
         return "redirect:/jobs";
     }
+
+
+    @RequestMapping(value = "/{jobPost}/candidates", method = RequestMethod.GET)
+    public String findCandidates(@ModelAttribute JobPost jobPost, Model model) {
+        if (!jobPost.getCreator().equals(getCurrentUser()))
+            throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
+
+        List<CandidateMatch> matchingCandidates =
+                Distance.findMatchingCandidates(jobPost, userRepository.findByRole(Role.STUDENT));
+
+        model.addAttribute("candidates", matchingCandidates);
+
+        return "/jobs/candidates";
+    }
+
+
 
 }
