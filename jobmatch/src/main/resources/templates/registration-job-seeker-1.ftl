@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Register | Job Seeker | JobMatch</title>
   <meta name="description" content="JobMatch">
-  <link rel="stylesheet" href="../../../../../../../frontend/css/login.css">
+  <link rel="stylesheet" href="css/login.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>
 <body>

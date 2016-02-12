@@ -12,26 +12,33 @@ html, body {
     height: 100%;
 }
 
-header {
-    text-align: center;
-    background: #F2F2F2;
-    color: #999999;
-    height: 35px;
-    padding: 10px;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
+header{
+    text-align:center;
+    background:#F2F2F2;
+    color:#999999;
+    height:35px;
+    padding:10px;
+    width:100%;
+    position:absolute;
+    z-index:-1;
 }
 
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    margin: 5px;
-    font-size: 20px;
+h1{
+    font-family:'Montserrat',sans-serif;
+    font-weight:400;
+    margin:5px;
+    font-size:20px;
 }
 
-.headline {
-    padding-left: 320px;
+h3{
+    font-family:'Montserrat',sans-serif;
+    font-weight:200;
+    margin:5px;
+    font-size:20px;
+}
+
+.headline{
+    padding-left:320px;
 }
 
 .logo {
@@ -109,12 +116,97 @@ h2.company {
     color: white;
 }
 
-#content {
-    float: left;
-    width: 80%;
-    height: 100%;
+#content{
+    float:left;
+    width:75%;
 }
 
-.clear {
-    clear: both;
+/*job posting*/
+#job-post{
+    width: 600px;
+    padding:150px 0 0 150px;
 }
+
+.form-field{
+    margin:0 auto;
+    position:relative;
+    margin-bottom:20px;
+}
+
+.form-jobpost input[type="text"]{
+    width:88%;
+    border-radius:3px;
+    padding:15px;
+}
+
+label {
+    float: right;
+    padding: 0 1em;
+    text-align: center;
+}
+
+.form-jobpost select{
+    width:36%;
+    border-radius:3px;
+    padding:15px;
+}
+
+.form-jobpost label{
+    padding:5px;
+}
+
+.radio-button{
+    display:inline;
+    padding:10px;
+    border: 1px solid #E4E4E4;
+}
+
+.form-jobpost select,
+.form-jobpost input[type="text"],
+.form-jobpost textarea{
+    background-color:white;
+    border:1px solid #E4E4E4;
+}
+
+.form-jobpost select:focus,
+.form-jobpost select:hover,
+.form-jobpost input[type="text"]:focus,
+.form-jobpost input[type="text"]:hover,
+.form-jobpost textarea:focus,
+.form-jobpost textarea:hover{
+    background-color:white;
+    border:1px solid #D7D7D7;
+}
+
+.form-jobpost input, textarea, select{
+    font-family:'Open Sans',sans-serif;
+}
+
+.select-text{
+    margin:1px;
+}
+
+.form-jobpost textarea{
+    padding:15px 0 0 15px;
+}
+
+.form-jobpost input[type="submit"]{
+    color:white;
+    background:#FF9933;
+    padding:10px 20px 10px 20px;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    text-decoration:none;
+    text-transform:uppercase;
+    border:none;
+    border-radius:5px;
+    padding:15px;
+    width:25%;
+}
+
+.form-jobpost input[type="submit"]:hover{
+    background:#E58A2E;
+    text-decoration:none;
+    cursor:pointer;
+}
+

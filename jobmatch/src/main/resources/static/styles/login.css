@@ -192,32 +192,33 @@ textarea {
     clear: both;
 }
 
-.progress {
-    height: 20px;
-    position: relative;
-    background: #555;
-    -moz-border-radius: 25px;
-    -webkit-border-radius: 25px;
-    border-radius: 25px;
-    padding: 10px;
-    box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+progress {
+    width: 75%;
+    height: 14px;
+    margin: auto;
+    display: block;
+    -webkit-appearance: none;
+    border: none;
 }
 
-.progress > span {
-    display: block;
-    height: 100%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background-color: rgb(43,194,83);
-    background-image: linear-gradient(center bottom, rgb(43,194,83) 37%, rgb(84,240,84) 69%);
-    box-shadow:
-            inset 0 2px 9px  rgba(255,255,255,0.3),
-            inset 0 -2px 6px rgba(0,0,0,0.4);
-    position: relative;
-    overflow: hidden;
+progress::-webkit-progress-bar {
+    background: #ccc;
+    border-radius: 50px;
+    padding: 2px;
+    box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2);
 }
+
+progress::-webkit-progress-value {
+    border-radius: 50px;
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+    background:
+            -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+            -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+            -webkit-linear-gradient(left, #FF9933, #FF9933);
+
+    background-size: 25px 14px, 100% 100%, 100% 100%;
+}
+
 
 h3{
     font-family:'Montserrat',sans-serif;

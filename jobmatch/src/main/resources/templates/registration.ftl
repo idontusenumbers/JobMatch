@@ -3,7 +3,7 @@
 <#macro header>REGISTER</#macro>
 
 <#macro auth_page_body>
-<form action="" name="user" method="post" class="form form-login form-register">
+<form action="/registration" name="user" method="post" class="form form-login">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="form-field">
         <div class="radio-button">
