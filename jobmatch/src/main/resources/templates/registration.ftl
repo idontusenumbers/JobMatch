@@ -3,7 +3,8 @@
 <#macro header>REGISTER</#macro>
 
 <#macro auth_page_body>
-<form action="" method="post" class="form form-login form-register">
+<form action="" name="user" method="post" class="form form-login form-register">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="form-field">
         <div class="radio-button">
             <input type="radio" name="user-type" id="employer" value="employer" checked>
@@ -15,13 +16,14 @@
         </div>
     </div>
     <div class="form-field">
-        <input id="login-username" type="text" class="form-input" placeholder="Email" required>
+        <input id="login-username" name="username" type="text" class="form-input" placeholder="Email" required>
     </div>
     <div class="form-field">
-        <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+        <input id="login-password" name="password" type="password" class="form-input" placeholder="Password" required>
     </div>
     <div class="form-field">
-        <input id="login-confirm" type="password" class="form-input" placeholder="Confirm password" required>
+        <input id="login-confirm" name="password" type="password" class="form-input" placeholder="Confirm password"
+               required>
     </div>
     <div class="form-field">
         <input type="submit" value="create my account">
@@ -30,7 +32,7 @@
 </form>
 
 <div class="form-text">
-    <p><a href="#" class="forgot-password">&lt; Back to login page</a></p>
+    <p><a href="/login" class="forgot-password">&lt; Back to login page</a></p>
 </div>
 </#macro>
 <@display_page/>
