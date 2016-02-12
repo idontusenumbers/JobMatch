@@ -1,18 +1,13 @@
 package com.jobmatch.controllers;
 
 import com.jobmatch.models.User;
-import com.jobmatch.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Map;
 
 @Controller
 public class IndexController extends BaseController{
@@ -23,16 +18,14 @@ public class IndexController extends BaseController{
         model.addAttribute("user", user);
 
 		return "index";
-
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(Map<String, Object> model, String error) {
+    public String login(Model model, String error) {
         if (error != null)
-            model.put("errors", Arrays.asList("Unknown user or password"));
+            model.addAttribute("errors", Arrays.asList("Unknown user or password"));
 
         return "index";
-
     }
 
     @RequestMapping("/register")
