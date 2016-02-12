@@ -9,5 +9,4 @@
 	</#list>
   </ul>
 </#macro>
-
-<@display_page/<button type="button" class="register-button" onclick="parent.location='/register'">Register</button>>
+<@display_page />
