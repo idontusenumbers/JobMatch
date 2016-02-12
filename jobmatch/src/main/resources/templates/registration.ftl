@@ -32,6 +32,5 @@
 <div class="form-text">
     <p><a href="#" class="forgot-password">&lt; Back to login page</a></p>
 </div>
-
 </#macro>
 <@display_page/>
