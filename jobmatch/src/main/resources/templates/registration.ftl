@@ -3,27 +3,25 @@
 <#macro header>REGISTER</#macro>
 
 <#macro auth_page_body>
-<form action="/registration" name="user" method="post" class="form form-login">
+<form action="/register" name="user" method="post" class="form form-login">
+    <@spring.bind "user" />
+    <@spring.showErrors '*', 'errors' />
+
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="form-field">
-        <div class="radio-button">
-            <input type="radio" name="user-type" id="employer" value="employer" checked>
-            <label for="employer">Employer</label>
-        </div>
-        <div class="radio-button">
-            <input type="radio" name="user-type" id="job-seeker" value="job-seeker">
-            <label for="job-seeker">Job Seeker</label>
-        </div>
+        <@spring.formRadioButtons path="user.role" separator="" attributes="required" options=roleMap />
     </div>
     <div class="form-field">
-        <input id="login-username" name="username" type="text" class="form-input" placeholder="Email" required>
+        <@spring.formInput path="user.username" attributes="placeholder='Username' class='form-input' required" />
+        <@spring.showErrors separator="user.username" classOrStyle="error" />
     </div>
     <div class="form-field">
-        <input id="login-password" name="password" type="password" class="form-input" placeholder="Password" required>
+        <@spring.formPasswordInput path="user.password" attributes="placeholder='Password' class='form-input' required"/>
+        <@spring.showErrors separator="user.password" classOrStyle="error"/>
     </div>
     <div class="form-field">
         <input id="login-confirm" name="password" type="password" class="form-input" placeholder="Confirm password"
-               required>
+               required/>
     </div>
     <div class="form-field">
         <input type="submit" value="create my account">

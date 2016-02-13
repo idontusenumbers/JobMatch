@@ -4,13 +4,17 @@
 
 <#macro auth_page_body>
 <form action="/register" name="user" method="post" class="form form-login">
+    <@spring.bind "user" />
+    <@spring.showErrors '*', 'errors' />
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="form-field">
-        <input id="username" name="username" type="text" class="form-input" placeholder="Username" required/>
+        <@spring.formInput path="user.username" attributes="placeholder='Username' class='form-input' required" />
+        <@spring.showErrors separator="user.username" classOrStyle="error" />
     </div>
 
     <div class="form-field">
-        <input id="password" name="password" type="password" class="form-input" placeholder="Password" required/>
+        <@spring.formPasswordInput path="user.password" attributes="placeholder='Password' class='form-input' required"/>
+        <@spring.showErrors separator="user.password" classOrStyle="error"/>
     </div>
 
     <!-- Start Contact Model Input -->

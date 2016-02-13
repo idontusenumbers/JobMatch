@@ -27,22 +27,17 @@
     <@page_head/>
 </head>
 <body>
-    <#if errors??>
-        <#list errors as error>
-            <li>${error}</li>
-        </#list>
-    </#if>
-
-
 <div id="nav">
-
-
     <a href="${s.mvcUrl("IC#index").build()}">Home</a>
     <#if auth.principal?? && auth.principal?is_hash && auth.principal.enabled>
         <a href="/logout">Logout</a>
     </#if>
-
 </div>
+    <#if errors??>
+        <#list errors as error>
+        <li>${error}</li>
+        </#list>
+    </#if>
     <@page_body/>
 <script type="text/javascript" src="/js/main.js"></script>
 </body>

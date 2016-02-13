@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +25,9 @@ public class User implements Serializable {
     @JoinColumn
     protected Role role;
     @Column(unique = true)
+    @Size(min = 2, max = 254)
     protected String username;
+    @Size(min = 6)
     protected String password;
     @ColumnDefault("false")
     protected Boolean optIn;
@@ -47,8 +50,8 @@ public class User implements Serializable {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "USER_FAVE_POSTS",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "job_post_id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_post_id"))
     protected Set<JobPost> favePosts = new HashSet<>();
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -68,6 +71,7 @@ public class User implements Serializable {
 
     /**
      * Constructor
+     *
      * @param role
      * @param username
      * @param password
@@ -82,6 +86,7 @@ public class User implements Serializable {
 
     /**
      * Get User Id
+     *
      * @return id
      */
     public int getId() {
