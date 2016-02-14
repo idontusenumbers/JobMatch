@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
 @Controller
 public class BaseController extends WebMvcConfigurerAdapter {
     protected static final Logger log = LoggerFactory.getLogger(BaseController.class);
@@ -29,9 +30,12 @@ public class BaseController extends WebMvcConfigurerAdapter {
     @Autowired
     protected JobPostRepository jobPostRepository;
     @Autowired
-    private HttpServletRequest context;
+    protected HttpServletRequest context;
     @Autowired
-    private HttpSession session;
+    protected HttpSession session;
+
+
+
 
     Authentication auth;
 

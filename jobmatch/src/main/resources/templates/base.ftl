@@ -39,7 +39,7 @@
 	<body>
 		<div id="nav">
 			<a href="${s.mvcUrl("IC#index").build()}">Home</a>
-			<#if auth.principal?? && auth.principal?is_hash && auth.principal.enabled>
+			<#if auth.principal?? && auth.principal?is_hash>
 				<a href="/logout">Logout</a>
 			</#if>
 		</div>

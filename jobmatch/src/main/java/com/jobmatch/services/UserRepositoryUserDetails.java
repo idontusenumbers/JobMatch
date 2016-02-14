@@ -1,8 +1,8 @@
 package com.jobmatch.services;
 
+import com.jobmatch.configuration.SecurityConfiguration;
 import com.jobmatch.models.User;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -16,7 +16,7 @@ public class UserRepositoryUserDetails implements UserDetails {
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList("ROLE_USER");
+        return SecurityConfiguration.getAuthoritiesCollection();
     }
 
     public String getUsername() {

@@ -19,6 +19,11 @@
         <@spring.formPasswordInput path="user.password" attributes="placeholder='Password' class='form-input' required"/>
         <@spring.showErrors separator="user.password" classOrStyle="error"/>
     </div>
+    <div class="form-field">
+        <@spring.formCheckbox path="user.optIn" attributes="class='form-input' required"/>
+        <label for="optIn">Opt in</label>
+        <@spring.showErrors separator="user.optIn" classOrStyle="error"/>
+    </div>
     <a href="/login" class="forgot-password">&lt; login</a>
     <input type="submit" value="create" class="call-to-action">
 </form>

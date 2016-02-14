@@ -7,7 +7,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 // From http://stackoverflow.com/questions/31500935/spring-add-session-attribute-in-every-controller-model
 
