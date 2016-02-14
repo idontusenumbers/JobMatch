@@ -5,7 +5,7 @@
 </#macro>
 
 <#macro page_head>
-<link rel="stylesheet" href="/styles/login.css">
+<link rel="stylesheet" href="/static/styles/login.css">
 </#macro>
 
 <#macro page_body>

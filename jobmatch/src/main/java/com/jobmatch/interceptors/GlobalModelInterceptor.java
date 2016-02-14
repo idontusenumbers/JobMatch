@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 // From http://stackoverflow.com/questions/31500935/spring-add-session-attribute-in-every-controller-model
 
 @Service
-public class GlobalModelInteceptor extends HandlerInterceptorAdapter {
+public class GlobalModelInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {

@@ -1,6 +1,6 @@
 package com.jobmatch.configuration;
 
-import com.jobmatch.interceptors.GlobalModelInteceptor;
+import com.jobmatch.interceptors.GlobalModelInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class CustomInterceptorConfiguration extends WebMvcConfigurerAdapter {
 
 	@Autowired
-	GlobalModelInteceptor globalModHandlerInterceptor;
+	GlobalModelInterceptor globalModHandlerInterceptor;
 
 
 	public HandlerInterceptor getGlobalModHandlerInterceptor() {
