@@ -28,15 +28,16 @@ public class BaseController extends WebMvcConfigurerAdapter {
     protected EducationRepository educationRepository;
     @Autowired
     protected JobPostRepository jobPostRepository;
-    Authentication auth;
     @Autowired
     private HttpServletRequest context;
     @Autowired
     private HttpSession session;
 
+    Authentication auth;
+
     public Authentication getAuth() {
-        if (auth == null)
-            auth = SecurityContextHolder.getContext().getAuthentication();
+
+        auth = SecurityContextHolder.getContext().getAuthentication();
         return auth;
     }
 
