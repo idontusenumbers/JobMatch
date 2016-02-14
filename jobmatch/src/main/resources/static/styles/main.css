@@ -139,11 +139,6 @@ h2.company {
     padding:15px;
 }
 
-label {
-    padding: 0 1em;
-    text-align: center;
-}
-
 .form-jobpost select{
     width:36%;
     border-radius:3px;
@@ -189,23 +184,37 @@ label {
     padding:15px 0 0 15px;
 }
 
-.form-jobpost input[type="submit"]{
-    color:white;
-    background:#FF9933;
+.call-to-action,
+.button{
     padding:10px 20px 10px 20px;
-    font-family:'Montserrat',sans-serif;
-    font-weight:700;
-    text-decoration:none;
-    text-transform:uppercase;
-    border:none;
+    text-decoration: none;
     border-radius:5px;
-    padding:15px;
-    width:25%;
+    text-transform:uppercase;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
-.form-jobpost input[type="submit"]:hover{
+.call-to-action{
+    color:white;
+    background:#FF9933;
+    border:none;
+}
+
+.call-to-action:hover{
     background:#E58A2E;
-    text-decoration:none;
     cursor:pointer;
 }
 
+
+.button {
+    border-radius: 5px;
+    color: #FF9933;
+    background: white;
+    border: 1px solid rgba(255, 153, 51, .4);
+}
+
+.button:hover {
+    cursor: pointer;
+    border: 1px rgb(255, 153, 51) solid;
+}

@@ -44,22 +44,17 @@ a:focus, a:hover {
     background-color: white;
     padding: 40px;
     position: relative;
+    border-radius: 10px;
 }
 
 .form-field {
-    margin: 0 auto;
     position: relative;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
+    text-align: left;
 }
 
 .form-register {
     color: #333333;
-}
-
-.form input[type='submit'] {
-    display: block;
-    border: none;
-    float: right;
 }
 
 .form input[type="password"],
@@ -74,18 +69,12 @@ a:focus, a:hover {
     width: 40%;
 }
 
-.form-login label,
 .form input[type="password"],
 .form input[type="text"],
 .form input[type="tel"],
 .form input[type="email"],
 .form input[type="number"] {
     border-radius: 3px;
-    padding: 15px;
-}
-
-.form-login input[type="submit"] {
-    border-radius: 5px;
     padding: 15px;
 }
 
@@ -123,23 +112,7 @@ textarea {
     border: 1px solid #D7D7D7;
 }
 
-.form-login input[type="submit"] {
-    color: white;
-    background: #FF9933;
-    padding: 10px 20px 10px 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.form-login input[type="submit"]:hover {
-    background: #E58A2E;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.form input, textarea {
+.form input[type=text], textarea {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -169,24 +142,11 @@ textarea {
     width: 50%;
     display: block;
     float: left;
-    padding-top: 6px;
+    padding-top: 8px;
+    font-size: 12px;
 }
 
-.register-button {
-    border-radius: 5px;
-    color: #FF9933;
-    background: white;
-    padding: 10px 20px 10px 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    text-decoration: none;
-    border: 1px solid transparent;
-}
 
-.register-button:hover {
-    cursor: pointer;
-    border: 1px #FF9933 solid;
-}
 
 .clear {
     clear: both;
