@@ -4,6 +4,10 @@
     oops, you forgot to implement an auth_page_body in your template!
 </#macro>
 
+<#macro page_head>
+<link rel="stylesheet" href="/styles/login.css">
+</#macro>
+
 <#macro page_body>
 <div class="site-container">
     <div class="grid-container">

@@ -7,12 +7,7 @@
 
 
 <#macro page_head>
-<title>${title}</title>
-<link rel="stylesheet" href="/styles/main.css">
-<link rel="stylesheet" href="/styles/login.css">
 
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic'
-      rel='stylesheet' type='text/css'>
 </#macro>
 
 <#macro page_body>
@@ -24,7 +19,12 @@
 <!doctype html>
 <html>
 <head>
-    <@page_head/>
+	<title>${title}</title>
+	<link rel="stylesheet" href="/styles/main.css">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic'
+		  rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="/js/jquery-2.2.0.js"></script>
+	<@page_head/>
 </head>
 <body>
 <div id="nav">
