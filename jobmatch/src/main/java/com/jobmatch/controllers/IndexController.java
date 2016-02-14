@@ -69,7 +69,7 @@ public class IndexController extends BaseController {
 
 
         if (result.hasErrors()) {
-            return "register";
+            return getRegisterForm(user, model);
         } else {
             userRepository.save(user);
             SecurityConfiguration.loginUser(user);

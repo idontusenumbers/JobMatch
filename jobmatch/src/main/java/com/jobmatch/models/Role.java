@@ -62,9 +62,6 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return String.valueOf(id); // This allows the silly spring macro to compare instances to role IDs to preselect radio buttons etc
     }
 }
