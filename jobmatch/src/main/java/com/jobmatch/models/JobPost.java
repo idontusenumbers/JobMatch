@@ -16,19 +16,23 @@ public class JobPost implements Serializable {
     private String jobCountry;
     private String industry;
     private String jobType;
+
     @ManyToMany
     @JoinTable(name = "USER_FAVE_POSTS",
             joinColumns = @JoinColumn(name = "job_post_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     protected Set<User> users = new HashSet<>();
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    // TODO: Create a JobPostSkill Class for ranking how important each skill is for the job.
+    // The userSkill needs a user id, which won't work for a job post.
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable
     protected Set<UserSkill> skills = new HashSet<>();
     @Min(0)
     private int yearsExperience;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn
     protected User creator;
 

@@ -18,7 +18,7 @@ public class UserSkill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     protected Skill skill;
 

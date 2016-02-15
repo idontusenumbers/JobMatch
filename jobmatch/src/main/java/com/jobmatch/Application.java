@@ -21,17 +21,18 @@ import java.util.Map;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class Application extends WebMvcConfigurerAdapter {
 
-	public static final String TITLE = "JobMatch";
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    public static final String TITLE = "JobMatch";
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 
-	public static Map<String, Object> getGlobalContext(){
-		Map<String, Object> result = new HashMap<>();
+    public static Map<String, Object> getGlobalContext() {
+        Map<String, Object> result = new HashMap<>();
 
-		result.put("title", Application.TITLE); // Base template references title so it must be defined. Actions can override.
+        result.put("title", Application.TITLE); // Base template references title so it must be defined. Actions can override.
 
-		return result;
-	}
+        return result;
+    }
 }

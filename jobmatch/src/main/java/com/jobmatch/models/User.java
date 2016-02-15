@@ -48,7 +48,7 @@ public class User implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected Set<Experience> experiences = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "USER_FAVE_POSTS",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "job_post_id"))
@@ -93,9 +93,6 @@ public class User implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
     public Role getRole() {
         return role;
     }
