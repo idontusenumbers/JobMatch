@@ -14,7 +14,7 @@
       <h1 class="headline"><span class="logo">JobMatch</span> | EMPLOYER</h1><hr><br>
       <div><progress value="100" max="100"></progress></div><br>
       <p>Key contact person information:</p>
-      <form action="dashboard-employer.html" method="post" class="form form-login form-register">
+      <form action="dashboard-employer.ftl" method="post" class="form form-login form-register">
         <div class="form-field">
           <input id="login-first" type="text" class="form-input" placeholder="First name">
           <input id="login-last" type="text" class="form-input" placeholder="Last name">
