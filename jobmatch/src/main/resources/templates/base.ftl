@@ -38,8 +38,9 @@
 	</head>
 	<body>
 		<div id="nav">
-			<a href="${s.mvcUrl("IC#index").build()}">Home</a>
 			<#if auth.principal?? && auth.principal?is_hash>
+				<a href="${s.mvcUrl("IC#index").build()}">Home</a>
+				<a href="${s.mvcUrl("UC#getProfile").arg(0, auth.principal.user.id).build()}">${auth.principal.username}</a>
 				<a href="/logout">Logout</a>
 			</#if>
 		</div>

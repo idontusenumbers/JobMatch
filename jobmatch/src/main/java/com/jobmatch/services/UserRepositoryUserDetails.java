@@ -42,4 +42,8 @@ public class UserRepositoryUserDetails implements UserDetails {
     public String getPassword() {
         return user.getPassword();
     }
+
+    public User getUser() {
+        return user;
+    }
 }

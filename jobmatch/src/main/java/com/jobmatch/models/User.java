@@ -21,7 +21,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn
     protected Role role;
     @Column(unique = true)
@@ -93,6 +93,9 @@ public class User implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public Role getRole() {
         return role;
     }

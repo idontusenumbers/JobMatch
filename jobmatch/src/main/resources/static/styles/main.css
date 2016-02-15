@@ -218,3 +218,13 @@ h2.company {
     cursor: pointer;
     border: 1px rgb(255, 153, 51) solid;
 }
+.button[disabled]{
+    color: silver;
+    border-color: silver;
+    cursor: default;
+}
+
+
+section[data-page]:not(:first-of-type){
+    display:none;
+}

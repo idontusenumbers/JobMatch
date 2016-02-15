@@ -17,15 +17,17 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class IndexController extends BaseController {
 
 
     @RequestMapping("/")
-    public String index(@ModelAttribute User user, Model model) {
-        model.addAttribute("user", user);
-
+    public String index(Model model) {
+        if (getCurrentUser() != null)
+            return "forward:/home";
         return "index";
     }
 
@@ -39,18 +41,18 @@ public class IndexController extends BaseController {
 
     @RequestMapping("/register")
     public String getRegisterForm(@ModelAttribute User user, Model model) {
+        // TODO prevent logged in users from registering
+
         model.addAttribute("user", user);
 
         /*
          * Populate radio buttons dynamically from the database for account role.
          * Exclude Admin role for obvious reasons.
          */
-        Map<String, String> roles = new HashMap<>();
-        List<Role> roleList = (List<Role>) roleRepository.findAll();
-        roleList.remove(0);
-        for (Role role : roleList) {
-            roles.put(String.valueOf(role.getId()), role.getName());
-        }
+
+        Map<String, String> roles = StreamSupport.stream(roleRepository.findAll().spliterator(), false)
+                .filter(role -> role.getId() != Role.ADMIN)
+                .collect(Collectors.toMap(role -> String.valueOf(role.getId()), Role::getName));
 
         model.addAttribute("roleMap", roles);
 
@@ -58,7 +60,8 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String postRegister(@ModelAttribute @Valid User user, BindingResult result, Model model  ) {
+    public String postRegister(@ModelAttribute @Valid User user, BindingResult result, Model model) {
+        // TODO prevent logged in users from registering
 
         if (user.getRole().getId() == Role.ADMIN)
             result.addError(new ObjectError("role", "You cannot create an admin"));
@@ -73,10 +76,7 @@ public class IndexController extends BaseController {
         } else {
             userRepository.save(user);
             SecurityConfiguration.loginUser(user);
-            return "redirect:/home";
+            return "redirect:/users/" + user.getId() + "/profile";
         }
-
     }
-
-
 }

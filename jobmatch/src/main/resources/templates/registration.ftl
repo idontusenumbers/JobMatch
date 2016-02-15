@@ -1,4 +1,4 @@
-<#include "authentication-base.ftl">
+<#include "auth-base.ftl">
 
 <#macro header>REGISTER</#macro>
 

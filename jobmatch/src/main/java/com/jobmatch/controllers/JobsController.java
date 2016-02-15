@@ -21,7 +21,7 @@ public class JobsController extends BaseController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listJobs(@ModelAttribute JobPost jobPost, Model model) {
         Iterable<JobPost> posts = null;
-        switch (getCurrentUser().getRole().getId()){
+        switch (getCurrentUser().getRole().getId()) {
             case Role.ADMIN:
                 posts = jobPostRepository.findAll();
                 break;
@@ -49,18 +49,18 @@ public class JobsController extends BaseController {
         return "/jobs/view";
     }
 
-    @RequestMapping(value = "/{jobPost}/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{jobPost}/update", method = RequestMethod.POST)
     public String updateJob(@ModelAttribute JobPost jobPost, Model model) {
-        if (!jobPost.getCreator().equals(getCurrentUser()))
-            throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
+        enforceSameUserUnlessAdmin(jobPost.getCreator());
+
         jobPostRepository.save(jobPost);
         return "redirect:/jobs/" + jobPost.getId();
     }
 
-    @RequestMapping(value = "/{jobPost}/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{jobPost}/delete", method = RequestMethod.POST)
     public String deleteJob(@ModelAttribute JobPost jobPost, Model model) {
-        if (!jobPost.getCreator().equals(getCurrentUser()))
-            throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
+        enforceSameUserUnlessAdmin(jobPost.getCreator());
+
         jobPostRepository.delete(jobPost);
         return "redirect:/jobs";
     }
@@ -68,8 +68,7 @@ public class JobsController extends BaseController {
 
     @RequestMapping(value = "/{jobPost}/candidates", method = RequestMethod.GET)
     public String findCandidates(@ModelAttribute JobPost jobPost, Model model) {
-        if (!jobPost.getCreator().equals(getCurrentUser()))
-            throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
+        enforceSameUserUnlessAdmin(jobPost.getCreator());
 
         List<CandidateScore> matchingCandidates =
                 JobCandidateEvaluator.findMatchingCandidates(jobPost, userRepository.findByRole(Role.STUDENT));
@@ -78,7 +77,4 @@ public class JobsController extends BaseController {
 
         return "/jobs/candidates";
     }
-
-
-
 }

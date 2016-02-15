@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/register", "/static/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
     }
 
     @Autowired
@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     public static void loginUser(User user) {
         UsernamePasswordAuthenticationToken authentication =
-                new UsernamePasswordAuthenticationToken(user, user.getPassword(), getAuthoritiesCollection());
+                new UsernamePasswordAuthenticationToken(new UserRepositoryUserDetails(user), user.getPassword(), getAuthoritiesCollection());
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }

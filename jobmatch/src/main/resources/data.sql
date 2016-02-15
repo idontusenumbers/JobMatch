@@ -18,5 +18,5 @@ WHEN NOT MATCHED THEN INSERT VALUES vals.a, vals.b;
 -- add username:password admin:admin
 MERGE INTO USER USING (VALUES(1,1,'admin','$2a$10$YqRRWHt2cBc8iW/4MCl9bO2u6Bj.W2eZR5yiPUoggnWK1Wc6h9wpW')) AS vals(id,role_id, username, password)
 ON USER.ID=vals.id
-WHEN MATCHED THEN UPDATE SET USERNAME=vals.username, password=vals.password
-WHEN NOT MATCHED THEN INSERT (id, username, password) VALUES (vals.id, vals.username, vals.password);
+WHEN MATCHED THEN UPDATE SET role_id = vals.role_id, username=vals.username, password=vals.password
+WHEN NOT MATCHED THEN INSERT (id, role_id, username, password) VALUES (vals.id, vals.role_id, vals.username, vals.password);
