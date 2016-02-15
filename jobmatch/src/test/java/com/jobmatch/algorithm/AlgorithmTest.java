@@ -1,10 +1,7 @@
 package com.jobmatch.algorithm;
 
 import com.jobmatch.Application;
-import com.jobmatch.models.JobPost;
-import com.jobmatch.models.Skill;
-import com.jobmatch.models.User;
-import com.jobmatch.models.UserSkill;
+import com.jobmatch.models.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.IntegrationTest;
@@ -44,14 +41,14 @@ public class AlgorithmTest {
         i = 1;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            jobPostA.getSkills().add(new UserSkill(skill, i));
+            jobPostA.getSkills().add(new JobSkill(skill, i));
         }
 
         JobPost jobPostB = new JobPost("Programmer", "USA", "Cell Phone", "Full time", 1);
         i = 1;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            jobPostB.getSkills().add(new UserSkill(skill, i));
+            jobPostB.getSkills().add(new JobSkill(skill, i));
         }
 
         List<JobPost> jp = new ArrayList<>();

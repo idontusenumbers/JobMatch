@@ -23,11 +23,11 @@ public class JobPost implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     protected Set<User> users = new HashSet<>();
 
-    // TODO: Create a JobPostSkill Class for ranking how important each skill is for the job.
-    // The userSkill needs a user id, which won't work for a job post.
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable
-    protected Set<UserSkill> skills = new HashSet<>();
+    @JoinTable(name = "JOB_POST_SKILLS",
+            joinColumns = @JoinColumn(name = "job_post_id"),
+            inverseJoinColumns = @JoinColumn(name = "job_skill_id"))
+    protected Set<JobSkill> skills = new HashSet<>();
     @Min(0)
     private int yearsExperience;
 
@@ -95,7 +95,7 @@ public class JobPost implements Serializable {
         return users;
     }
 
-    public Set<UserSkill> getSkills() {
+    public Set<JobSkill> getSkills() {
         return skills;
     }
 
