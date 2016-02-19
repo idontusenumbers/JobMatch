@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.servlet.View;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -48,28 +49,28 @@ public class UserController extends BaseController {
 
 
     @RequestMapping(value = "{userId}/profile", method = RequestMethod.POST)
-    public String putProfile(@PathVariable int userId, @ModelAttribute User updatedUser, Model model) {
+    public View putProfile(@PathVariable int userId, @ModelAttribute User updatedUser, Model model) {
         enforceSameUserUnlessAdmin(userId);
 
         User user = userRepository.findOne(userId);
         BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn", "contact.email");
         userRepository.save(user);
 
-        return "redirect:/home";
+        return getRedirectView("/home");
     }
 
 
     @RequestMapping(value = "{userId}/delete")
-    public String delete(@PathVariable int userId, Model model) {
+    public View delete(@PathVariable int userId, Model model) {
         User user = userRepository.findOne(userId);
         enforceSameUserUnlessAdmin(user);
 
         userRepository.delete(user.getId());
 
         if (getCurrentUser().getRole().getId() == Role.ADMIN) {
-            return "redirect:../";
+            return getRedirectView("../");
         } else {
-            return "redirect:/logout";
+            return getRedirectView("/logout");
         }
     }
 

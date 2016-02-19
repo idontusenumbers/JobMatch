@@ -14,7 +14,6 @@
         <h1><span class="logo">JobMatch</span> <@header/></h1>
         <hr>
         <@error_list errors/>
-        <br>
         <@auth_page_body/>
     </div>
 </div>

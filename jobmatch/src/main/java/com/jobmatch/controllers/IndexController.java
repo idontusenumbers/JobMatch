@@ -11,6 +11,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.View;
 
 import javax.validation.Valid;
 import java.util.Arrays;
@@ -58,7 +59,7 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String postRegister(@ModelAttribute @Valid User user, BindingResult result, Model model) {
+    public View postRegister(@ModelAttribute @Valid User user, BindingResult result, Model model) {
         // TODO prevent logged in users from registering
 
         if (user.getRole().getId() == Role.ADMIN)
@@ -70,11 +71,11 @@ public class IndexController extends BaseController {
 
 
         if (result.hasErrors()) {
-            return getRegisterForm(user, model);
+            return getRedirectView(getRegisterForm(user, model));
         } else {
             userRepository.save(user);
             SecurityConfiguration.loginUser(user);
-            return "redirect:/users/" + user.getId() + "/profile";
+            return getRedirectView("/users/" + user.getId() + "/profile");
         }
     }
 }

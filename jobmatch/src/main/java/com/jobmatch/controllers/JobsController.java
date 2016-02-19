@@ -4,13 +4,12 @@ import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.JobPost;
 import com.jobmatch.models.Role;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.servlet.View;
 
 import java.util.List;
 
@@ -38,9 +37,9 @@ public class JobsController extends BaseController {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createJob(@ModelAttribute JobPost jobPost, Model model) {
+    public View createJob(@ModelAttribute JobPost jobPost, Model model) {
         jobPostRepository.save(jobPost);
-        return "redirect:/jobs/" + jobPost.getId();
+        return getRedirectView("/jobs/" + jobPost.getId());
     }
 
     @RequestMapping(value = "/{jobPostId}", method = RequestMethod.GET)
@@ -50,19 +49,19 @@ public class JobsController extends BaseController {
     }
 
     @RequestMapping(value = "/{jobPost}/update", method = RequestMethod.POST)
-    public String updateJob(@ModelAttribute JobPost jobPost, Model model) {
+    public View updateJob(@ModelAttribute JobPost jobPost, Model model) {
         enforceSameUserUnlessAdmin(jobPost.getCreator());
 
         jobPostRepository.save(jobPost);
-        return "redirect:/jobs/" + jobPost.getId();
+        return getRedirectView("/jobs/" + jobPost.getId());
     }
 
     @RequestMapping(value = "/{jobPost}/delete", method = RequestMethod.POST)
-    public String deleteJob(@ModelAttribute JobPost jobPost, Model model) {
+    public View deleteJob(@ModelAttribute JobPost jobPost, Model model) {
         enforceSameUserUnlessAdmin(jobPost.getCreator());
 
         jobPostRepository.delete(jobPost);
-        return "redirect:/jobs";
+        return getRedirectView("/jobs");
     }
 
 

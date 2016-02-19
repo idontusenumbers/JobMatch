@@ -28,10 +28,6 @@ action="profile" name="user" method="post"
     <div class="form-field">
 		<@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' />
     </div>
-
-    <div class="form-field">
-		<@spring.formInput path="user.email" attributes='class="form-input" placeholder="email" required' />
-    </div>
 </section>
 
 </#macro>

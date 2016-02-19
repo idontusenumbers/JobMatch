@@ -20,9 +20,6 @@
           <input id="login-last" type="text" class="form-input" placeholder="Last name">
         </div>
         <div class="form-field">
-          <input id="login-email" type="text" class="form-input" placeholder="Email">
-        </div>
-        <div class="form-field">
           <input type="submit" value="next">
         </div>
         <div class="clear"></div>
