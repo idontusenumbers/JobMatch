@@ -33,7 +33,6 @@
 		<link rel="stylesheet" href="/static/styles/main.css">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic'
 			  rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="/static/js/lib/jquery-2.2.0.js"></script>
 		<@page_head/>
 	</head>
 	<body>
@@ -46,7 +45,12 @@
 		</div>
 
 		<@page_body/>
-		<script type="text/javascript" src="/static/js/main.js"></script>
+            <@page_body_footer/>
 	</body>
 </html>
+</#macro>
+
+<#macro page_body_footer>
+<script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
 </#macro>

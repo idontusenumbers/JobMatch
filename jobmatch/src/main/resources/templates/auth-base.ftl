@@ -19,3 +19,9 @@
     </div>
 </div>
 </#macro>
+
+<#macro page_body_footer>
+<script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
+<script type="text/javascript" src="/static/js/auth.js"></script>
+</#macro>
