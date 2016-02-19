@@ -18,7 +18,7 @@
 
 <div class="form-text">
     <p>
-        <button type="button" class="call-to-action" onclick="parent.location='/register'">Register</button>
+        <button type="button" class="call-to-action" onclick="parent.location='/registration'">Register</button>
     </p>
 </div>
 </#macro>

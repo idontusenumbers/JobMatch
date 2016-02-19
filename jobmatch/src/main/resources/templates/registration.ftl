@@ -3,7 +3,7 @@
 <#macro header>REGISTER</#macro>
 
 <#macro auth_page_body>
-<form action="/register" name="user" method="post" class="form form-login">
+<form action="/registration" name="user" method="post" class="form form-login">
     <@spring.bind "user" />
     <@spring.showErrors '*', 'errors' />
 
