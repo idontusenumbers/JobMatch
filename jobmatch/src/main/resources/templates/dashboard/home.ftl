@@ -1,6 +1,5 @@
 <#include "../base.ftl">
 <body>
-<h1>Home</h1>
 
 <#macro page_body>
 <div id="wrapper">
@@ -19,8 +18,8 @@
             <ul id="sidebar-nav">
                 <li><a href="home">Home</a></li>
                 <li><a href="#">Jobs</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="#">Profile Settings</a></li>
+                <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
     </div>
