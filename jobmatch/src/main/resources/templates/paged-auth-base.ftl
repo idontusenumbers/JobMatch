@@ -18,7 +18,6 @@ oops, you forgot to implement an paged_auth_page_body in your template!
 	<@spring.showErrors '*', 'errors' />
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	<@spring.formHiddenInput path="user.id"></@spring.formHiddenInput>
 
 	<progress id="progress"></progress>
 
