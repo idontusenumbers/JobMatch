@@ -51,6 +51,7 @@ public class UserController extends BaseController {
     public String putProfile(@PathVariable int userId, @ModelAttribute User updatedUser, Model model) {
         enforceSameUserUnlessAdmin(userId);
 
+        User user = userRepository.findOne(userId);
         BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn");
         userRepository.save(user);
 
