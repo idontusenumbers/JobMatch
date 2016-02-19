@@ -96,8 +96,8 @@ action="profile" name="user" method="post"
 	</div>
 
 	<div class="form-field">
-		<input type="checkbox" name="email-alerts" value="Bike">Email Notifications
-		<input type="checkbox" name="text-alerts" value="Car">Text Alerts
+		<input type="checkbox" name="email-alerts" value="email">Email Notifications
+		<input type="checkbox" name="text-alerts" value="text">Text Alerts
 	</div>
 </section>
 
