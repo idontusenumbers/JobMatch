@@ -12,8 +12,12 @@
         <@spring.formRadioButtons path="user.role" separator="<br/>" attributes="required" options=roleMap />
     </div>
     <div class="form-field">
-        <@spring.formInput path="user.username" attributes="placeholder='Username' class='form-input' required" />
+        <@spring.formInput path="user.username" attributes="placeholder='username' class='form-input' required" />
         <@spring.showErrors separator="user.username" classOrStyle="error" />
+    </div>
+    <div class="form-field">
+        <@spring.formInput path="user.email" attributes="placeholder='email' class='form-input' required" />
+        <@spring.showErrors separator="user.email" classOrStyle="error" />
     </div>
     <div class="form-field">
         <@spring.formPasswordInput path="user.password" attributes="placeholder='Password' class='form-input' required"/>

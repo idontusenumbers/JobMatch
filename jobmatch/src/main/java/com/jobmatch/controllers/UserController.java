@@ -52,7 +52,7 @@ public class UserController extends BaseController {
         enforceSameUserUnlessAdmin(userId);
 
         User user = userRepository.findOne(userId);
-        BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn");
+        BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn", "contact.email");
         userRepository.save(user);
 
         return "redirect:/home";

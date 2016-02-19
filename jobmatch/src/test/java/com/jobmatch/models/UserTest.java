@@ -27,7 +27,7 @@ public class UserTest {
 
     @Test
     public void can_save_user_in_database() {
-        User user = new User(null, faker.name().firstName(), faker.name().fullName(), true);
+        User user = new User(null, faker.name().firstName(), faker.name().fullName(), true, faker.internet().emailAddress());
         User userDB = userRepository.save(user);
 
         // if the model is not saved, it will have an id of 0
@@ -38,7 +38,7 @@ public class UserTest {
 
     @Test
     public void can_fetch_user_from_database_with_user_id() {
-        User user = new User(null, faker.name().firstName(), faker.name().fullName(), true);
+        User user = new User(null, faker.name().firstName(), faker.name().fullName(), true, faker.internet().emailAddress());
         User userDB = userRepository.save(user);
 
         // if the model is not saved, it will have an id of 0
@@ -55,7 +55,7 @@ public class UserTest {
 
     @Test
     public void can_fetch_user_from_database_with_username() {
-        User user = new User(null, faker.name().firstName(), faker.name().fullName(), true);
+        User user = new User(null, faker.name().firstName(), faker.name().fullName(), true, faker.internet().emailAddress());
         User userDB = userRepository.save(user);
 
         // if the model is not saved, it will have an id of 0

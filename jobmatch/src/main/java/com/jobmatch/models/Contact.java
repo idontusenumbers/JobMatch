@@ -18,7 +18,6 @@ public class Contact implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String email;
     private String phone;
     private String address;
     private String zipcode;
@@ -29,8 +28,7 @@ public class Contact implements Serializable {
     public Contact() {
     }
 
-    public Contact(String email, String phone, String address, String zipcode, String website, String firstName, String lastName) {
-        this.email = email;
+    public Contact(String phone, String address, String zipcode, String website, String firstName, String lastName) {
         this.phone = phone;
         this.address = address;
         this.zipcode = zipcode;
@@ -41,14 +39,6 @@ public class Contact implements Serializable {
 
     public int getId() {
         return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhone() {
@@ -103,7 +93,6 @@ public class Contact implements Serializable {
     public String toString() {
         return "Contact{" +
                 "id=" + id +
-                ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", zipcode='" + zipcode + '\'' +

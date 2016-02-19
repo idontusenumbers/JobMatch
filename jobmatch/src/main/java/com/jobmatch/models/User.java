@@ -32,6 +32,8 @@ public class User implements Serializable {
     @ColumnDefault("false")
     protected Boolean optIn;
 
+    private String email;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     protected Contact contact;
@@ -77,9 +79,10 @@ public class User implements Serializable {
      * @param password
      * @param optIn
      */
-    public User(Role role, String username, String password, Boolean optIn) {
+    public User(Role role, String username, String password, Boolean optIn, String email) {
         this.role = role;
         this.username = username;
+        this.email = email;
         this.setPassword(password);
         this.optIn = optIn;
     }
@@ -113,6 +116,7 @@ public class User implements Serializable {
         return password;
     }
 
+
     /**
      * Hash User Password when setting it using bcrypt
      *
@@ -129,6 +133,14 @@ public class User implements Serializable {
 
     public void setOptIn(Boolean opt_in) {
         this.optIn = opt_in;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Contact getContact() {

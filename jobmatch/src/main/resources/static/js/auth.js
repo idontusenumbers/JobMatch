@@ -40,3 +40,5 @@ $progress.attr({
 });
 changePage(-1000);
 updateButtons();
+
+// TODO handle focus, required field checking, and enter key to advance to next field

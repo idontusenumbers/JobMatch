@@ -22,7 +22,7 @@ import static org.junit.Assert.assertSame;
 public class AlgorithmTest {
     @Test
     public void user_matched_to_jobs() {
-        User user = new User(null, "Jane", "Doe", true);
+        User user = new User(null, "Jane", "Doe", true, "email@domain.com");
 
         List<Skill> skills = new ArrayList<>();
         skills.add(new Skill("Python"));
