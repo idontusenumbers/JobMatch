@@ -25,7 +25,7 @@
         <ul id="sidebar-nav">
           <li><a href="#">Jobs</a></li>
           <li><a href="#">Profile</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="/logout">Logout</a>Logout</a></li>
         </ul>
       </nav>
     </div>
