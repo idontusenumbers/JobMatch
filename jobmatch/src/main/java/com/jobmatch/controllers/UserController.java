@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.Locale;
@@ -49,10 +48,10 @@ public class UserController extends BaseController {
 
 
     @RequestMapping(value = "{userId}/profile", method = RequestMethod.POST)
-    public String putProfile(@ModelAttribute User updatedUser, Model model) {
-        enforceSameUserUnlessAdmin(updatedUser);
+    public String putProfile(@PathVariable int userId, @ModelAttribute User updatedUser, Model model) {
+        User user = userRepository.findOne(userId);
+        enforceSameUserUnlessAdmin(userId);
 
-        User user = userRepository.findOne(updatedUser.getId());
         BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn");
         userRepository.save(user);
 
