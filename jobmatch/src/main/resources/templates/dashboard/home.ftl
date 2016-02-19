@@ -17,7 +17,7 @@
 
         <nav>
             <ul id="sidebar-nav">
-                <li><a href="home"</li>
+                <li><a href="home">Home</a></li>
                 <li><a href="#">Jobs</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Logout</a></li>
