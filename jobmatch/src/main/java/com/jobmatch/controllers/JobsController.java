@@ -4,21 +4,27 @@ import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.JobPost;
 import com.jobmatch.models.Role;
+import com.jobmatch.models.User;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/jobs")
 public class JobsController extends BaseController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String listJobs(@ModelAttribute JobPost jobPost, Model model) {
+    public String listJobs(Model model) {
         Iterable<JobPost> posts = null;
         switch (getCurrentUser().getRole().getId()) {
             case Role.ADMIN:
@@ -33,6 +39,12 @@ public class JobsController extends BaseController {
         }
         model.addAttribute("posts", posts);
         return "/jobs/list"; // TODO once this controller is working, maybe we could make these redirects relative? I don't know if it works like that
+    }
+
+    @RequestMapping(value = "/favorites", method = RequestMethod.GET)
+    public String listFavoriteJobPosts(Model model) {
+        model.addAttribute("posts", getCurrentUser().getFavePosts());
+        return "/jobs/list";
     }
 
 
@@ -75,5 +87,20 @@ public class JobsController extends BaseController {
         model.addAttribute("candidates", matchingCandidates);
 
         return "/jobs/candidates";
+    }
+
+
+    @RequestMapping(value = "/{jobPostId}/favorite", method = RequestMethod.POST)
+    public ResponseEntity setFavorite(@PathVariable int jobPostId, boolean favorited) {
+
+        Set<JobPost> favePosts = getCurrentUser().getFavePosts();
+        JobPost jobPost = jobPostRepository.findOne(jobPostId);
+
+        if (favorited)
+            favePosts.add(jobPost);
+        else
+            favePosts.remove(jobPost);
+
+        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }
