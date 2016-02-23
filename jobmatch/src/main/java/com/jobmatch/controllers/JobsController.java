@@ -48,6 +48,12 @@ public class JobsController extends BaseController {
     }
 
 
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String createJob(Model model) {
+        model.addAttribute("title", "Create job post");
+        return "/jobs/edit";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public View createJob(@ModelAttribute JobPost jobPost, Model model) {
         jobPostRepository.save(jobPost);
@@ -55,24 +61,35 @@ public class JobsController extends BaseController {
     }
 
     @RequestMapping(value = "/{jobPostId}", method = RequestMethod.GET)
-    public String viewJob(@ModelAttribute JobPost jobPost, Model model) {
+    public String viewJob(@PathVariable int jobPostId, Model model) {
+        JobPost jobPost = jobPostRepository.findOne(jobPostId);
+        model.addAttribute("jobPost", jobPost);
         model.addAttribute("title", jobPost.getJobTitle());
         return "/jobs/view";
     }
 
-    @RequestMapping(value = "/{jobPost}/update", method = RequestMethod.POST)
-    public View updateJob(@ModelAttribute JobPost jobPost, Model model) {
-        enforceSameUserUnlessAdmin(jobPost.getCreator());
+    @RequestMapping(value = "/{jobPostId}/update", method = RequestMethod.GET)
+    public String updateJob(@PathVariable int jobPostId, Model model) {
+        JobPost existingPost = jobPostRepository.findOne(jobPostId);
+        enforceSameUserUnlessAdmin(existingPost.getCreator());
+        model.addAttribute("title", "Update " + existingPost.getJobTitle());
+        return "/jobs/edit";
+    }
 
+    @RequestMapping(value = "/{jobPostId}/update", method = RequestMethod.POST)
+    public View updateJob(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, Model model) {
+        JobPost existingPost = jobPostRepository.findOne(jobPostId);
+        enforceSameUserUnlessAdmin(existingPost.getCreator());
         jobPostRepository.save(jobPost);
         return getRedirectView("/jobs/" + jobPost.getId());
     }
 
-    @RequestMapping(value = "/{jobPost}/delete", method = RequestMethod.POST)
-    public View deleteJob(@ModelAttribute JobPost jobPost, Model model) {
-        enforceSameUserUnlessAdmin(jobPost.getCreator());
+    @RequestMapping(value = "/{jobPostId}/delete", method = RequestMethod.POST)
+    public View deleteJob(@PathVariable int jobPostId, Model model) {
+        JobPost existingPost = jobPostRepository.findOne(jobPostId);
+        enforceSameUserUnlessAdmin(existingPost.getCreator());
 
-        jobPostRepository.delete(jobPost);
+        jobPostRepository.delete(existingPost);
         return getRedirectView("/jobs");
     }
 
