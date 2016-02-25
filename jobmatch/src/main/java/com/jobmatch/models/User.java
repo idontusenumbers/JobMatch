@@ -38,6 +38,10 @@ public class User implements Serializable {
     @JoinColumn
     protected Contact contact;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    protected Company company;
+
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected Set<Education> education = new HashSet<>();
@@ -116,7 +120,6 @@ public class User implements Serializable {
         return password;
     }
 
-
     /**
      * Hash User Password when setting it using bcrypt
      *
@@ -145,6 +148,14 @@ public class User implements Serializable {
 
     public Contact getContact() {
         return contact;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public void setContact(Contact contact) {
@@ -189,14 +200,6 @@ public class User implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int result = username.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + (optIn != null ? optIn.hashCode() : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
@@ -204,7 +207,9 @@ public class User implements Serializable {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", optIn=" + optIn +
+                ", email='" + email + '\'' +
                 ", contact=" + contact +
+                ", company=" + company +
                 ", education=" + education +
                 ", skills=" + skills +
                 ", experiences=" + experiences +
