@@ -1,7 +1,7 @@
 --
 -- Seed the Role database with possible user roles
 --
-MERGE INTO ROLE AS t USING (VALUES(1,TRIM('admin')), (2, TRIM('student')), (3, TRIM('employer'))) AS vals(id,name)
+MERGE INTO ROLE AS t USING (VALUES(1,TRIM('Admin')), (2, TRIM('Seeker')), (3, TRIM('Employer'))) AS vals(id,name)
 ON t.ID=vals.id
 WHEN MATCHED THEN UPDATE SET t.NAME=vals.name
 WHEN NOT MATCHED THEN INSERT VALUES vals.id, vals.name;
