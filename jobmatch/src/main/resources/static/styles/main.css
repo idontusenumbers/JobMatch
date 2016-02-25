@@ -124,7 +124,24 @@ h2.company {
 /*job posting*/
 #job-post{
     width: 600px;
-    padding:150px 0 0 150px;
+    margin:150px 0 50px 150px;
+}
+
+/*sortable list*/
+ul.sortable-list{
+    padding:0;
+}
+
+ul.sortable-list li{
+    display:block;
+    width: 150px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+ul.sortable-list li:hover,
+ul.sortable-list li:hover{
+    cursor: move;
 }
 
 .form-field{
@@ -137,6 +154,12 @@ h2.company {
     width:88%;
     border-radius:3px;
     padding:15px;
+}
+
+textarea{
+    width:90%;
+    height:100px;
+    border-radius:3px;
 }
 
 .form-jobpost select{
@@ -183,7 +206,53 @@ h2.company {
 .form-jobpost textarea{
     padding:15px 0 0 15px;
 }
+.form-jobpost input[type="submit"]:hover{
+    background:#E58A2E;
+    text-decoration:none;
+    cursor:pointer;
+}
 
+p.note{
+    font-style: italic;
+    font-size: .8em;
+    margin-top: 0;
+}
+
+/*jobs list, leaderboard*/
+.jobs-list{
+    width: 80%;
+    margin:150px 0 0 150px;
+}
+
+.jobs-list>ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.jobs-list>ul>li{
+    font-family: "Montserrat", sans-serif;
+    color: #6B6B6B;
+    margin-bottom: 5px;
+    padding: 25px;
+    background-color: #F2F2F2;
+    border: 2px solid #AEAEAE;
+    border-radius: 2px;
+}
+
+.jobs-list>ul>li:hover{
+    color: white;
+    background-color: #FF9933;
+    border: 2px solid #FF9933;
+    cursor: pointer;
+}
+
+ul.title-matches-list>li>div.title{
+    float: left
+}
+
+ul.title-matches-list>li>div.matches{
+    float: right
+}
 .call-to-action,
 .button{
     padding:10px 20px 10px 20px;

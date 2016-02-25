@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Job Seeker Dashboard | JobMatch</title>
+  <meta name="description" content="JobMatch">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1 class="headline"><span class="logo">JobMatch</span> | EMPLOYER</h1>
+    </header>
+
+    <div id="sidebar">
+      <div style="text-align:center;">
+        <img src="http://placehold.it/75x75" class="avatar">
+        <h2 class="company">Company A</h2>
+      </div><br>
+      <p><button type="button" class="sidebar-button">+ post a job</button></p><br>
+      
+      <nav>
+        <ul id="sidebar-nav">
+          <li><a href="dashboard-employer.html">Jobs</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section id="content">
+      <div id="job-post">
+        <h2>Profile Settings</h2><br>
+        <form action="" method="post" class="form form-jobpost">
+
+        <div class="form-field">
+          <label for="login-name">Company name</label>
+          <input id="login-name" type="text" class="form-input" placeholder="Company name">
+        </div>
+        <div class="form-field">
+          <label for="login-summary">Company summary</label>
+          <textarea name="login-summary" placeholder="Company summary"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="login-HQ">Company HQ</label>
+          <input id="login-HQ" type="text" class="form-input" placeholder="Company HQ">
+        </div>
+        <div class="form-field">
+          <label for="login-website">Company website</label>
+          <input id="login-website" type="text" class="form-input" placeholder="Company website">
+        </div><br>
+        <p><strong>Key contact person information:</strong></p>
+        <div class="form-field">
+          <label for="login-first">First name</label>
+          <input id="login-first" type="text" class="form-input" placeholder="First name">
+        </div>
+        <div class="form-field">
+          <label for="login-last">Last name</label>
+          <input id="login-last" type="text" class="form-input" placeholder="Last name">
+        </div>
+        <div class="form-field">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="text" class="form-input" placeholder="Email">
+        </div>
+
+
+          <div>
+            <input type="submit" value="save">
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="clear"></div>
+  </div>
+</body>
+</html>
