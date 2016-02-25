@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Job Seeker Dashboard | JobMatch</title>
+  <meta name="description" content="JobMatch">
+  <link rel="stylesheet" href="css/custom.css">
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1 class="headline"><span class="logo">JobMatch</span> | EMPLOYER</h1>
+    </header>
+
+    <div id="sidebar">
+      <div style="text-align:center;">
+        <img src="http://placehold.it/75x75" class="avatar">
+        <h2 class="company">Company A</h2>
+      </div><br>
+      <p><button type="button" class="sidebar-button">+ post a job</button></p><br>
+      
+      <nav>
+        <ul id="sidebar-nav">
+          <li><a href="dashboard-employer.html">Jobs</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section id="content">
+      <div id="job-post">
+        <h2>Profile Settings</h2><br>
+        <form action="" method="post" class="form form-jobpost">
+
+        <div class="form-field">
+          <label for="login-name">Address</label>
+          <input id="login-name" type="text" class="form-input" placeholder="Address">
+          <input id="login-name" type="text" class="form-input" placeholder="Zip Code">
+        </div>
+        <p><strong>Contact Information:</strong></p>
+        <div class="form-field">
+          <label for="login-first">Email</label>
+          <input id="login-first" type="text" class="form-input" placeholder="Email">
+        </div>
+        <div class="form-field">
+          <label for="login-last">Phone Number</label>
+          <input id="login-last" type="text" class="form-input" placeholder="Phone Number">
+        </div>
+        <div class="form-field">
+          <label for="login-last">Cellphone Number</label>
+          <input id="login-last" type="text" class="form-input" placeholder="Cellphone Number">
+        </div>
+          <div class="form-field">
+            <p>Required Skills</p>
+            <p class="note">Choose up to 5 skills which you see as most important in having for this job.</p><br>
+            <div class="radio-button">
+              <input type="radio" name="jobpost-type" id="full-time" value="full-time" checked>
+              <label for="full-time">Java</label>
+            </div>
+          </div>
+        <div id="job-post">
+            <p>Required Skills</p>
+            <p class="note">Sort the skills from most important (top) to least important (bottom).</p>
+            <ul  id="sortable" class="sortable-list">
+              <li class="skill-culture-item">Skill</li>
+              <li class="skill-culture-item">Skill</li>
+              <li class="skill-culture-item">Skill</li>
+              <li class="skill-culture-item">Skill</li>
+              <li class="skill-culture-item">Skill</li>
+            </ul>
+        </div>          
+        <div class="form-field">
+            <p>Required Culture</p>
+            <p class="note">Choose up to 5 culture items which you see as most important in having for this job.</p><br>
+            <div class="radio-button">
+              <input type="radio" name="jobpost-type" id="full-time" value="full-time" checked>
+              <label for="full-time">Culture</li></label>
+            </div>
+          </div>
+        <div id="job-post">
+            <p class="note">Sort the culture items from most important (top) to least important (bottom).</p>
+            <ul  id="sortable" class="sortable-list">
+              <li class="skill-culture-item">Culture</li></li>
+              <li class="skill-culture-item">Culture</li></li>
+              <li class="skill-culture-item">Culture</li></li>
+              <li class="skill-culture-item">Culture</li></li>
+              <li class="skill-culture-item">Culture</li></li>
+            </ul>
+        </div>
+          <div>
+            <input type="submit" value="save">
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <div class="clear"></div>
+  </div>
+</body>
+</html>
