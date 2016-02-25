@@ -34,6 +34,8 @@ public class User implements Serializable {
 
     private String email;
 
+    private String resume;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     protected Contact contact;
@@ -67,6 +69,8 @@ public class User implements Serializable {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected Set<UserCulture> cultures = new HashSet<>();
+
+
 
     /**
      * Default Constructor
@@ -144,6 +148,14 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 
     public Contact getContact() {
