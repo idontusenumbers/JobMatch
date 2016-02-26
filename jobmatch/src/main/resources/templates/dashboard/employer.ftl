@@ -34,8 +34,8 @@
       <section id="content">
           <div class="jobs-list">
               <ul class="title-matches-list">
-                  <li><div class="title">First Last</div><div class="matches">Match: 89%</div></li>
-                  <li><div class="title">First Last</div><div class="matches">Match: 78%</div></li>
+                  <li><div class="title">Job Title</div><div class="matches">Matches: 6</div></li>
+                  <li><div class="title">Job Title</div><div class="matches">Matches: 2</div></li>
               </ul>
           </div>
       </section>
