@@ -68,7 +68,7 @@ public class BaseController extends WebMvcConfigurerAdapter {
         User currentUser = getCurrentUser();
 
         switch (currentUser.getRole().getId()) {
-            case Role.STUDENT:
+            case Role.SEEKER:
             case Role.EMPLOYER:
                 if (currentUser.getId() != user.getId())
                     throw new HttpClientErrorException(HttpStatus.FORBIDDEN);

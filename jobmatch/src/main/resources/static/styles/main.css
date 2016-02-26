@@ -297,3 +297,39 @@ ul.title-matches-list>li>div.matches{
 section[data-page]:not(:first-of-type){
     display:none;
 }
+
+.view-job h2 {
+    margin: 1em 0 0.5em 0;
+    font-weight: normal;
+    position: relative;
+    text-shadow: 0 -1px rgba(0,0,0,0.6);
+    font-size: 28px;
+    line-height: 40px;
+    background: #FF9933;
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 0 10px 0 10px;
+    font-family: 'Muli', sans-serif;
+}
+
+.view-job h3 {
+    margin: 1em 0 0.5em 0;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    color: #FF9933;
+    text-transform: uppercase;
+    border-bottom: 1px solid #aaa;
+}
+
+.view-job p {
+    margin: 1em 0 0.5em 0;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    font-size: 18px;
+    line-height: 20px;
+    color: #999999;
+}

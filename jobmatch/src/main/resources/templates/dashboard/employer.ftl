@@ -5,8 +5,9 @@
   <meta charset="utf-8">
   <title>Employer Dashboard | JobMatch</title>
   <meta name="description" content="JobMatch">
-  <link rel="stylesheet" href="main.css">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/styles/main.css">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic'
+          rel='stylesheet' type='text/css'>
 </head>
 <body>
   <div id="wrapper">
@@ -24,13 +25,20 @@
       <nav>
         <ul id="sidebar-nav">
           <li><a href="#">Jobs</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Logout</a></li>
+            <li><a href="/users/${user.getId()}/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
         </ul>
       </nav>
     </div>
 
-    <section id="content"></section>
+      <section id="content">
+          <div class="jobs-list">
+              <ul class="title-matches-list">
+                  <li><div class="title">First Last</div><div class="matches">Match: 89%</div></li>
+                  <li><div class="title">First Last</div><div class="matches">Match: 78%</div></li>
+              </ul>
+          </div>
+      </section>
 
     <div class="clear"></div> 
   </div>
