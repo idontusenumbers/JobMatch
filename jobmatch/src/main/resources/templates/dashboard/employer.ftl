@@ -31,7 +31,14 @@
       </nav>
     </div>
 
-    <section id="content"></section>
+      <section id="content">
+          <div class="jobs-list">
+              <ul class="title-matches-list">
+                  <li><div class="title">First Last</div><div class="matches">Match: 89%</div></li>
+                  <li><div class="title">First Last</div><div class="matches">Match: 78%</div></li>
+              </ul>
+          </div>
+      </section>
 
     <div class="clear"></div> 
   </div>
