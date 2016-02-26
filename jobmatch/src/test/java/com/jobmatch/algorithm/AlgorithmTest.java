@@ -12,6 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,6 +36,7 @@ public class AlgorithmTest {
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
             user.getSkills().add(new UserSkill(skill, i));
+            i++;
         }
 
         JobPost jobPostA = new JobPost("Engineer", "USA", "Bank", "Full time", 1);
@@ -42,22 +44,32 @@ public class AlgorithmTest {
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
             jobPostA.getSkills().add(new JobSkill(skill, i));
+            i++;
         }
 
         JobPost jobPostB = new JobPost("Programmer", "USA", "Cell Phone", "Full time", 1);
-        i = 1;
+        i = 0;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
             jobPostB.getSkills().add(new JobSkill(skill, i));
+            i++;
         }
 
         List<JobPost> jp = new ArrayList<>();
         jp.add(jobPostA);
         jp.add(jobPostB);
 
-        List<CandidateScore> expected = JobCandidateEvaluator.findMatchingJobs(user,jp);
-        List<CandidateScore> actual = new ArrayList<>();
-        //actual.add()
-        assertSame(expected, actual);
+        List<CandidateScore> generatedList = JobCandidateEvaluator.findMatchingJobs(user,jp);
+
+        List<JobPost> expected = new ArrayList<>();
+        List<JobPost> actual = new ArrayList<>();
+        for (CandidateScore candidateScore : generatedList) {
+            JobPost gjp = candidateScore.getJobPost();
+            expected.add(gjp);
+        }
+
+        actual.add(jobPostA);
+        actual.add(jobPostB);
+        assertEquals(expected,actual);
     }
 }
