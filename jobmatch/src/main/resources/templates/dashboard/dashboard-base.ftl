@@ -1,13 +1,15 @@
 <#include "../base.ftl">
 
-<#macro auth_page_body >
-oops, you forgot to implement an auth_page_body in your template!
-</#macro>
 
 <#macro page_head>
 <link rel="stylesheet" href="/static/styles/main.css">
 </#macro>
-
+<#macro dashoard_nav>
+    You forgot to include the dashboard nav
+</#macro>
+<#macro dashoard_body>
+    You forgot to include the dashboard body
+</#macro>
 <#macro page_body>
 <div id="wrapper">
     <header>
@@ -16,8 +18,7 @@ oops, you forgot to implement an auth_page_body in your template!
 
     <div id="sidebar">
         <div style="text-align:center;">
-            <img src="http://placehold.it/75x75" class="avatar">
-            <h2 class="company">Company A</h2>
+            <h2 class="company">${auth.principal.username}</h2>
         </div>
         <br>
         <p>
@@ -29,12 +30,14 @@ oops, you forgot to implement an auth_page_body in your template!
             <ul id="sidebar-nav">
                 <li><a href="#">Jobs</a></li>
                 <li><a href="/users/${user.getId()}/profile">Profile</a></li>
+
+                <@dashboard_nav />
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </nav>
     </div>
 
-    <section id="content"></section>
+    <section id="content"><@dashboard_body /></section>
 
     <div class="clear"></div>
 </div>
