@@ -11,17 +11,17 @@ oops, you forgot to implement an auth_page_body in your template!
 <#macro page_body>
 <div id="wrapper">
     <header>
-        <h1 class="headline"><span class="logo">JobMatch</span> | EMPLOYER</h1>
+        <h1 class="headline"><span class="logo">JobMatch</span> | SEEKER</h1>
     </header>
 
     <div id="sidebar">
         <div style="text-align:center;">
             <img src="http://placehold.it/75x75" class="avatar">
-            <h2 class="company">Company A</h2>
+            <h2 class="company">First Last</h2>
         </div>
         <br>
         <p>
-            <button type="button" class="sidebar-button">+ post a job</button>
+            <button type="button" class="sidebar-button">view job matches</button>
         </p>
         <br>
 
