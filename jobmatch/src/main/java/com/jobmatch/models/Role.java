@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Role implements Serializable {
 
     public static final int ADMIN = 1;
-    public static final int STUDENT = 2;
+    public static final int SEEKER = 2;
     public static final int EMPLOYER = 3;
 
 

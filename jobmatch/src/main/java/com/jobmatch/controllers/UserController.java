@@ -38,7 +38,7 @@ public class UserController extends BaseController {
         model.addAttribute("user", user);
         switch (user.getRole().getId()) {
             case Role.ADMIN:
-            case Role.STUDENT:
+            case Role.SEEKER:
                 return "users/profile-student";
             case Role.EMPLOYER:
                 return "users/profile-employer";

@@ -4,8 +4,6 @@ import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.JobPost;
 import com.jobmatch.models.Role;
-import com.jobmatch.models.User;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -30,7 +28,7 @@ public class JobsController extends BaseController {
             case Role.ADMIN:
                 posts = jobPostRepository.findAll();
                 break;
-            case Role.STUDENT:
+            case Role.SEEKER:
                 JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
                 break;
             case Role.EMPLOYER:
@@ -99,7 +97,7 @@ public class JobsController extends BaseController {
         enforceSameUserUnlessAdmin(jobPost.getCreator());
 
         List<CandidateScore> matchingCandidates =
-                JobCandidateEvaluator.findMatchingCandidates(jobPost, userRepository.findByRole(Role.STUDENT));
+                JobCandidateEvaluator.findMatchingCandidates(jobPost, userRepository.findByRole(Role.SEEKER));
 
         model.addAttribute("candidates", matchingCandidates);
 
