@@ -31,14 +31,7 @@
       </nav>
     </div>
 
-      <section id="content">
-          <div class="jobs-list">
-              <ul class="title-matches-list">
-                  <li><div class="title">Job Title</div><div class="matches">Match: 89%</div></li>
-                  <li><div class="title">Job Title</div><div class="matches">Match: 80%</div></li>
-              </ul>
-          </div>
-      </section>
+    <section id="content"></section>
 
     <div class="clear"></div> 
   </div>
