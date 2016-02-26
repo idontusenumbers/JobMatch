@@ -6,7 +6,8 @@
   <title>Job Seeker Dashboard | JobMatch</title>
   <meta name="description" content="JobMatch">
     <link rel="stylesheet" href="/static/styles/main.css">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic'
+          rel='stylesheet' type='text/css'>
 </head>
 <body>
   <div id="wrapper">
@@ -24,7 +25,7 @@
       <nav>
         <ul id="sidebar-nav">
           <li><a href="#">Jobs</a></li>
-            <li><a href="/users/">Profile</a></li>
+            <li><a href="/users/${user.getId()}/profile">Profile</a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
       </nav>

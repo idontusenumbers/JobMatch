@@ -25,7 +25,7 @@
       <nav>
         <ul id="sidebar-nav">
           <li><a href="#">Jobs</a></li>
-          <li><a href="#">Profile</a></li>
+            <li><a href="/users/${user.getId()}/profile">Profile</a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
       </nav>

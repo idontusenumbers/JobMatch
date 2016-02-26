@@ -11,8 +11,10 @@ public class DashboardController extends BaseController {
 
     @RequestMapping("/home")
     public String home(Model model) {
-        model.addAttribute("title", "Dashboard");
         User user = getCurrentUser();
+        model.addAttribute("title", "Dashboard");
+        model.addAttribute("user", user);
+
         if (user.getRole().getId() == Role.EMPLOYER) {
             return "dashboard/employer";
         } else if (user.getRole().getId() == Role.SEEKER) {
