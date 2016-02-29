@@ -9,7 +9,7 @@ action="profile" name="user" method="post"
 
 <section data-page="0">
     <div class="form-field">
-        <input id="login-name" type="text" class="form-input" placeholder="Company name" required>
+        <br><input id="login-name" type="text" class="form-input" placeholder="Company name" required>
     </div>
     <div class="form-field">
         <textarea name="login-summary" placeholder="Company Description"></textarea>
@@ -18,12 +18,12 @@ action="profile" name="user" method="post"
 
 <section data-page="1">
     <div class="form-field">
-        <input id="login-HQ" type="text" class="form-input" placeholder="Company HQ">
+        <br><input id="login-HQ" type="text" class="form-input" placeholder="Company HQ">
     </div>
 </section>
 <section data-page="2">
     <div class="form-field">
-        <input id="login-website" type="text" class="form-input" placeholder="Company website">
+        <br><input id="login-website" type="text" class="form-input" placeholder="Company website">
     </div>
 </section>
 <section data-page="3">

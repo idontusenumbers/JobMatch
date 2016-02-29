@@ -13,7 +13,7 @@ oops, you forgot to implement an paged_auth_page_body in your template!
 
 <#macro auth_page_body>
 <form <@form_attributes/> class="form form-login">
-		<p><a href="${s.mvcUrl("UC#delete").arg(0,user.id).build()}">delete my account</a></p>
+
 	<@spring.bind "user" />
 	<@spring.showErrors '*', 'errors' />
 
@@ -26,6 +26,7 @@ oops, you forgot to implement an paged_auth_page_body in your template!
 
 	<input id="back" type="button" value="&lt; back" class="button">
 	<input id="next" type="button" value="" class="call-to-action">
+    <p><a href="${s.mvcUrl("UC#delete").arg(0,user.id).build()}">Delete My Account</a></p>
 
 </form>
 </#macro>
