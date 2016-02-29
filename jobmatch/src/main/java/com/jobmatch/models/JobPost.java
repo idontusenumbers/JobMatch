@@ -26,7 +26,7 @@ public class JobPost implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     protected Set<User> users = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "JOB_POST_SKILLS",
             joinColumns = @JoinColumn(name = "job_post_id"),
             inverseJoinColumns = @JoinColumn(name = "job_skill_id"))

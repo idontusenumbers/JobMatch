@@ -22,7 +22,6 @@ import java.util.stream.StreamSupport;
 @Controller
 public class IndexController extends BaseController {
 
-
     @RequestMapping("/")
     public String index(Model model) {
         if (getCurrentUser() != null)
