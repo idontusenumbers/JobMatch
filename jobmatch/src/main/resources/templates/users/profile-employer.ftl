@@ -8,25 +8,29 @@ action="profile" name="user" method="post"
 <#macro paged_auth_page_body>
 
 <section data-page="0">
-	<div class="form-field">
-		<@spring.formInput path="user.contact.firstName" attributes='class="form-input" placeholder="first Name"' />
-	</div>
-	<div class="form-field">
-		<@spring.formInput path="user.contact.lastName" attributes='class="form-input" placeholder="last Name"' />
-	</div>
+    <div class="form-field">
+        <input id="login-name" type="text" class="form-input" placeholder="Company name" required>
+    </div>
+    <div class="form-field">
+        <textarea name="login-summary" placeholder="Company Description"></textarea>
+    </div>
 </section>
 
 <section data-page="1">
-	<div class="form-field">
-		<@spring.formInput path="user.contact.address" attributes='class="form-input" placeholder="address"' />
-	</div>
-	<div class="form-field">
-		<@spring.formInput path="user.contact.zipcode" attributes='class="form-input" placeholder="zipcode"' />
-	</div>
+    <div class="form-field">
+        <input id="login-HQ" type="text" class="form-input" placeholder="Company HQ">
+    </div>
 </section>
 <section data-page="2">
     <div class="form-field">
-		<@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' />
+        <input id="login-website" type="text" class="form-input" placeholder="Company website">
+    </div>
+</section>
+<section data-page="3">
+    <p>Key contact person information:</p>
+    <div class="form-field">
+        <input id="login-first" type="text" class="form-input" placeholder="First name">
+        <input id="login-last" type="text" class="form-input" placeholder="Last name">
     </div>
 </section>
 
