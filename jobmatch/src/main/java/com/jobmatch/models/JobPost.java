@@ -4,7 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Entity
 public class JobPost implements Serializable {
@@ -26,7 +30,7 @@ public class JobPost implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     protected Set<User> users = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "JOB_POST_SKILLS",
             joinColumns = @JoinColumn(name = "job_post_id"),
             inverseJoinColumns = @JoinColumn(name = "job_skill_id"))
@@ -101,6 +105,12 @@ public class JobPost implements Serializable {
     public Set<JobSkill> getSkills() {
         return skills;
     }
+
+   public List<String> getSkillList(){
+        return StreamSupport.stream(getSkills().spliterator(), false)
+                .map((jobSkill) -> String.valueOf(jobSkill.getSkill().getId())).collect(Collectors.toList());
+    }
+
 
     public User getCreator() {
         return creator;

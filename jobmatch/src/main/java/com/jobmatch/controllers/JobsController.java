@@ -3,18 +3,22 @@ package com.jobmatch.controllers;
 import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.JobPost;
+import com.jobmatch.models.JobSkill;
 import com.jobmatch.models.Role;
+import com.jobmatch.models.Skill;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -76,15 +80,32 @@ public class JobsController extends BaseController {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
         model.addAttribute("job", existingPost);
+//        model.addAttribute("skills", existingPost.getSkillList());
+        model.addAttribute("skillOptions", skillRepository.getMap());
         model.addAttribute("title", "Update " + existingPost.getJobTitle());
         return "/jobs/edit";
     }
 
     @RequestMapping(value = "/{jobPostId}/update", method = RequestMethod.POST)
-    public View updateJobPost(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, Model model) {
+    public View updateJobPost(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, String[] skills, String[] ranks, BindingResult result, Model model) {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
-        BeanUtils.copyProperties(jobPost, existingPost, "id", "creator", "users", "skills");
+        BeanUtils.copyProperties(jobPost, existingPost, "id", "creator", "users");
+        for (JobSkill jobSkill : existingPost.getSkills()) {
+
+        }
+        existingPost.getSkills().clear();
+        for (int i = 0; i < skills.length; i++) {
+
+            String s = skills[i];
+            if (!s.isEmpty()) {
+                Skill skill = skillRepository.findOne(Integer.valueOf(s));
+                JobSkill jobSkill = new JobSkill(skill, Integer.valueOf(ranks[i]));
+                jobSkillRepository.save(jobSkill);
+                existingPost.getSkills().add(jobSkill);
+            }
+        }
+
         jobPostRepository.save(existingPost);
         return getRedirectView("/jobs/" + jobPostId);
     }

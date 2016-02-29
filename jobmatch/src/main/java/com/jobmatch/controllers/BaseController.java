@@ -34,6 +34,9 @@ public class BaseController extends WebMvcConfigurerAdapter {
     protected EducationRepository educationRepository;
     @Autowired
     protected JobPostRepository jobPostRepository;
+
+    @Autowired
+    protected JobSkillRepository jobSkillRepository;
     @Autowired
     protected HttpServletRequest context;
     @Autowired
