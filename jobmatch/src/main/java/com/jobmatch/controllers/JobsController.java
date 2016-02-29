@@ -54,6 +54,7 @@ public class JobsController extends BaseController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createJob(Model model) {
         model.addAttribute("title", "Create job post");
+        model.addAttribute("skillOptions", skillRepository.getMap());
         model.addAttribute("job", new JobPost());
         return "/jobs/edit";
     }
