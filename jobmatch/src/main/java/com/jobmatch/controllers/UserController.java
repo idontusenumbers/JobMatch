@@ -39,7 +39,7 @@ public class UserController extends BaseController {
         switch (user.getRole().getId()) {
             case Role.ADMIN:
             case Role.SEEKER:
-                return "users/profile-student";
+                return "users/profile-seeker";
             case Role.EMPLOYER:
                 return "users/profile-employer";
             default:

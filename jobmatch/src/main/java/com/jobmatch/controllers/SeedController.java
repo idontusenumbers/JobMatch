@@ -30,7 +30,7 @@ public class SeedController extends BaseController {
                 faker.name().lastName()
         );
 
-        User user = new User(roleRepository.findByName("student"), faker.name().name().replace(" ", ""), "myPassword", true, faker.internet().emailAddress());
+        User user = new User(roleRepository.findByName("seeker"), faker.name().name().replace(" ", ""), "myPassword", true, faker.internet().emailAddress());
         user.setContact(contact);
         userRepository.save(user);
 

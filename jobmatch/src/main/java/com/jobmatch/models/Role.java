@@ -15,7 +15,7 @@ public class Role implements Serializable {
 
     /**
      * Defines user account type.
-     * Can be admin, student, or employer.
+     * Can be admin, seeker, or employer.
      */
 
     @Id
