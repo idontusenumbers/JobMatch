@@ -50,7 +50,9 @@ public class JobPost implements Serializable {
     public int getId() {
         return id;
     }
-
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getJobTitle() {
         return jobTitle;
     }
@@ -102,6 +104,10 @@ public class JobPost implements Serializable {
     public User getCreator() {
         return creator;
     }
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -115,7 +121,6 @@ public class JobPost implements Serializable {
         if (!jobCountry.equals(jobPost.jobCountry)) return false;
         if (!industry.equals(jobPost.industry)) return false;
         return jobType.equals(jobPost.jobType);
-
     }
 
     @Override
@@ -131,14 +136,14 @@ public class JobPost implements Serializable {
     @Override
     public String toString() {
         return "JobPost{" +
-                "id=" + id +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", jobCountry='" + jobCountry + '\'' +
-                ", industry='" + industry + '\'' +
-                ", jobType='" + jobType + '\'' +
-                ", yearsExperience=" + yearsExperience +
-                ", users=" + users +
-                ", skills=" + skills +
-                '}';
+               "id=" + id +
+               ", jobTitle='" + jobTitle + '\'' +
+               ", jobCountry='" + jobCountry + '\'' +
+               ", industry='" + industry + '\'' +
+               ", jobType='" + jobType + '\'' +
+               ", yearsExperience=" + yearsExperience +
+               ", users=" + users +
+               ", skills=" + skills +
+               '}';
     }
 }

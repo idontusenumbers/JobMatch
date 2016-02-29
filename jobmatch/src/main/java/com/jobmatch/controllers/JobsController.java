@@ -23,19 +23,19 @@ public class JobsController extends BaseController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listJobs(Model model) {
-        Iterable<JobPost> posts = null;
+        Iterable<JobPost> jobs = null;
         switch (getCurrentUser().getRole().getId()) {
             case Role.ADMIN:
-                posts = jobPostRepository.findAll();
+                jobs = jobPostRepository.findAll();
                 break;
             case Role.SEEKER:
                 JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
                 break;
             case Role.EMPLOYER:
-                posts = jobPostRepository.findByCreator(getCurrentUser());
+                jobs = jobPostRepository.findByCreator(getCurrentUser());
                 break;
         }
-        model.addAttribute("posts", posts);
+        model.addAttribute("jobs", jobs);
         return "/jobs/list"; // TODO once this controller is working, maybe we could make these redirects relative? I don't know if it works like that
     }
 
@@ -49,11 +49,15 @@ public class JobsController extends BaseController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createJob(Model model) {
         model.addAttribute("title", "Create job post");
+        model.addAttribute("job", new JobPost());
         return "/jobs/edit";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public View createJobPost(@ModelAttribute JobPost jobPost, Model model) {
+        jobPost.setId(0);
+        jobPost.setCreator(getCurrentUser());
+
         jobPostRepository.save(jobPost);
         return getRedirectView("/jobs/" + jobPost.getId());
     }
@@ -61,7 +65,7 @@ public class JobsController extends BaseController {
     @RequestMapping(value = "/{jobPostId}", method = RequestMethod.GET)
     public String viewJob(@PathVariable int jobPostId, Model model) {
         JobPost jobPost = jobPostRepository.findOne(jobPostId);
-        model.addAttribute("jobPost", jobPost);
+        model.addAttribute("job", jobPost);
         model.addAttribute("title", jobPost.getJobTitle());
         return "/jobs/view";
     }
@@ -70,12 +74,13 @@ public class JobsController extends BaseController {
     public String updateJob(@PathVariable int jobPostId, Model model) {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
+        model.addAttribute("job", existingPost);
         model.addAttribute("title", "Update " + existingPost.getJobTitle());
         return "/jobs/edit";
     }
 
     @RequestMapping(value = "/{jobPostId}/update", method = RequestMethod.POST)
-    public View updateJob(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, Model model) {
+    public View updateJobPost(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, Model model) {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
         jobPostRepository.save(jobPost);
