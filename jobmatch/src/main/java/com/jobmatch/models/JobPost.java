@@ -17,6 +17,9 @@ public class JobPost implements Serializable {
     private String industry;
     private String jobType;
 
+    @Min(0)
+    private int yearsExperience;
+
     @ManyToMany
     @JoinTable(name = "USER_FAVE_POSTS",
             joinColumns = @JoinColumn(name = "job_post_id"),
@@ -28,8 +31,6 @@ public class JobPost implements Serializable {
             joinColumns = @JoinColumn(name = "job_post_id"),
             inverseJoinColumns = @JoinColumn(name = "job_skill_id"))
     protected Set<JobSkill> skills = new HashSet<>();
-    @Min(0)
-    private int yearsExperience;
 
 
     @OneToOne

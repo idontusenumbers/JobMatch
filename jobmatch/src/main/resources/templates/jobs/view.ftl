@@ -12,6 +12,7 @@ ${job.industry}
 ${job.jobType}
 ${job.yearsExperience}
 
+<a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,job.id).build()}">Delete</a>
 <a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,job.id).build()}">Edit</a>
 
 </#macro>

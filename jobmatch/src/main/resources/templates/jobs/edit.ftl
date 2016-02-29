@@ -5,11 +5,13 @@
 </#macro>
 <#macro dashboard_body>
 
+	<#assign action =(job.id!=0)?then(
+	(s.mvcUrl("JC#updateJobPost").arg(0, job.id).build()),
+	(s.mvcUrl("JC#createJobPost").build())
+		)
+	/>
 
-
-
-
-<form action="${s.mvcUrl("JC#createJobPost").build()}" name="job" method="post">
+<form action="${action}" name="job" method="post">
 	<@spring.bind "job" />
 	<@spring.showErrors '*', 'errors' />
 

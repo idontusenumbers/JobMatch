@@ -4,6 +4,7 @@ import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.JobPost;
 import com.jobmatch.models.Role;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -83,17 +84,18 @@ public class JobsController extends BaseController {
     public View updateJobPost(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, Model model) {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
-        jobPostRepository.save(jobPost);
-        return getRedirectView("/jobs/" + jobPost.getId());
+        BeanUtils.copyProperties(jobPost, existingPost, "id", "creator", "users", "skills");
+        jobPostRepository.save(existingPost);
+        return getRedirectView("/jobs/" + jobPostId);
     }
 
-    @RequestMapping(value = "/{jobPostId}/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/{jobPostId}/delete", method = RequestMethod.GET)
     public View deleteJob(@PathVariable int jobPostId, Model model) {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
 
         jobPostRepository.delete(existingPost);
-        return getRedirectView("/jobs");
+        return getRedirectView("/jobs/");
     }
 
 
