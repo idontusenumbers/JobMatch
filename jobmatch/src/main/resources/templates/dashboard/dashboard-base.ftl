@@ -13,12 +13,12 @@
 <#macro page_body>
 <div id="wrapper">
     <header>
-        <h1 class="headline"><span class="logo">JobMatch</span> | EMPLOYER</h1>
+        <h1 class="headline"><span class="logo">JobMatch</span> | <span class="role-name">${auth.principal.user.role.name}</span></h1>
     </header>
 
     <div id="sidebar">
         <div style="text-align:center;">
-            <h2 class="company">${auth.principal.username}</h2>
+            <h2 class="company">${auth.principal.user.contact.firstName} ${auth.principal.user.contact.lastName}</h2>
         </div>
         <br>
         <p>
