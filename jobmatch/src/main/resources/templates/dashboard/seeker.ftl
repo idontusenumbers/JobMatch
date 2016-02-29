@@ -1,7 +1,7 @@
 <#include "dashboard-base.ftl">
 
 <#macro dashboard_nav>
-employer nav
+	<li><a href="#">Jobs</a></li>
 </#macro>
 <#macro dashboard_body>
 

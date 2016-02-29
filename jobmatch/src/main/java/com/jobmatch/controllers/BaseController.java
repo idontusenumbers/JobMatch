@@ -47,9 +47,13 @@ public class BaseController extends WebMvcConfigurerAdapter {
 
 
     @ModelAttribute
-    public void addAuthToModel(Model model) {
+    public void addToModel(Model model) {
+
         model.addAttribute("auth", getAuth());
+        model.addAttribute("user", getCurrentUser());
     }
+
+
 
     public Authentication getAuth() {
         return SecurityContextHolder.getContext().getAuthentication();

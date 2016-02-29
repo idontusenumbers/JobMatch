@@ -26,7 +26,7 @@ public class IndexController extends BaseController {
     @RequestMapping("/")
     public String index(Model model) {
         if (getCurrentUser() != null)
-            return "forward:/home";
+            return "forward:/jobs/";
         return "index";
     }
 
