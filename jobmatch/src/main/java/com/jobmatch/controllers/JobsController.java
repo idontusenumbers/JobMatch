@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -71,6 +70,7 @@ public class JobsController extends BaseController {
     @RequestMapping(value = "/{jobPostId}", method = RequestMethod.GET)
     public String viewJob(@PathVariable int jobPostId, Model model) {
         JobPost jobPost = jobPostRepository.findOne(jobPostId);
+
         model.addAttribute("job", jobPost);
         model.addAttribute("title", jobPost.getJobTitle());
         return "/jobs/view";

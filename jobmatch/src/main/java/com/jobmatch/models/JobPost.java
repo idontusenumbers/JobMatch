@@ -3,12 +3,10 @@ package com.jobmatch.models;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Entity
 public class JobPost implements Serializable {
@@ -30,7 +28,7 @@ public class JobPost implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     protected Set<User> users = new HashSet<>();
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "JOB_POST_SKILLS",
             joinColumns = @JoinColumn(name = "job_post_id"),
             inverseJoinColumns = @JoinColumn(name = "job_skill_id"))
@@ -55,9 +53,11 @@ public class JobPost implements Serializable {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getJobTitle() {
         return jobTitle;
     }
@@ -106,15 +106,15 @@ public class JobPost implements Serializable {
         return skills;
     }
 
-   public List<String> getSkillList(){
-        return StreamSupport.stream(getSkills().spliterator(), false)
-                .map((jobSkill) -> String.valueOf(jobSkill.getSkill().getId())).collect(Collectors.toList());
+    public List<JobSkill> getSkillList() {
+        return new ArrayList<>(getSkills());
     }
 
 
     public User getCreator() {
         return creator;
     }
+
     public void setCreator(User creator) {
         this.creator = creator;
     }
@@ -147,14 +147,14 @@ public class JobPost implements Serializable {
     @Override
     public String toString() {
         return "JobPost{" +
-               "id=" + id +
-               ", jobTitle='" + jobTitle + '\'' +
-               ", jobCountry='" + jobCountry + '\'' +
-               ", industry='" + industry + '\'' +
-               ", jobType='" + jobType + '\'' +
-               ", yearsExperience=" + yearsExperience +
-               ", users=" + users +
-               ", skills=" + skills +
-               '}';
+                "id=" + id +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", jobCountry='" + jobCountry + '\'' +
+                ", industry='" + industry + '\'' +
+                ", jobType='" + jobType + '\'' +
+                ", yearsExperience=" + yearsExperience +
+                ", users=" + users +
+                ", skills=" + skills +
+                '}';
     }
 }

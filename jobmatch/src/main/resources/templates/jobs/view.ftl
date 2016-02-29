@@ -14,10 +14,10 @@ ${job.yearsExperience}
 
 <p>Skills:</p>
 <ul>
-	<#list job.skills as skill>
-		<li>${skill.name}</li>
+	<#list job.getSkillList() as skillRank>
+        <li>${skillRank.getSkill().getName()}</li>
 	<#else>
-		No skills
+        No skills
 	</#list>
 </ul>
 <a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,job.id).build()}">Delete</a>
