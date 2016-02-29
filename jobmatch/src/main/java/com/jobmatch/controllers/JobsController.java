@@ -53,7 +53,7 @@ public class JobsController extends BaseController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public View createJob(@ModelAttribute JobPost jobPost, Model model) {
+    public View createJobPost(@ModelAttribute JobPost jobPost, Model model) {
         jobPostRepository.save(jobPost);
         return getRedirectView("/jobs/" + jobPost.getId());
     }

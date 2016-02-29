@@ -50,7 +50,7 @@ public class BaseController extends WebMvcConfigurerAdapter {
     public void addToModel(Model model) {
 
         model.addAttribute("auth", getAuth());
-        model.addAttribute("user", getCurrentUser());
+        model.addAttribute("currentUser", getCurrentUser());
     }
 
 
