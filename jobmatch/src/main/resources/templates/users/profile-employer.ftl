@@ -1,4 +1,4 @@
-<#include "../../paged-auth-base.ftl">
+<#include "../paged-auth-base.ftl">
 
 <#macro header>PROFILE</#macro>
 
