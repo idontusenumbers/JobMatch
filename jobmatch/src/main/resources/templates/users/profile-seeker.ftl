@@ -9,7 +9,7 @@ action="profile" name="user" method="post"
 
 <section data-page="0">
 	<div class="form-field">
-		<@spring.formInput path="user.contact.firstName" attributes='class="form-input" placeholder="first Name"' />
+		<br><@spring.formInput path="user.contact.firstName" attributes='class="form-input" placeholder="first Name"' />
 	</div>
 	<div class="form-field">
 		<@spring.formInput path="user.contact.lastName" attributes='class="form-input" placeholder="last Name"' />
@@ -18,7 +18,7 @@ action="profile" name="user" method="post"
 
 <section data-page="1">
 	<div class="form-field">
-		<@spring.formInput path="user.contact.address" attributes='class="form-input" placeholder="address"' />
+		<br><@spring.formInput path="user.contact.address" attributes='class="form-input" placeholder="address"' />
 	</div>
 	<div class="form-field">
 		<@spring.formInput path="user.contact.zipcode" attributes='class="form-input" placeholder="zipcode"' />
@@ -26,7 +26,7 @@ action="profile" name="user" method="post"
 </section>
 <section data-page="2">
     <div class="form-field">
-		<@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' />
+		<br><@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' />
     </div>
 </section>
 
