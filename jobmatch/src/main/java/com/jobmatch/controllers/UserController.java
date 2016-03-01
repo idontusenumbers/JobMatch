@@ -64,7 +64,7 @@ public class UserController extends BaseController {
         BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn", "contact.email");
         userRepository.save(user);
 
-        return getRedirectView("/home");
+        return getRedirectView("/");
     }
 
 

@@ -2,6 +2,7 @@ package com.jobmatch.controllers;
 
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
+import com.jobmatch.repositories.ContactRepository;
 import com.jobmatch.repositories.EducationRepository;
 import com.jobmatch.repositories.JobPostRepository;
 import com.jobmatch.repositories.JobSkillRepository;
@@ -34,6 +35,8 @@ public class BaseController extends WebMvcConfigurerAdapter {
     protected static final Logger log = LoggerFactory.getLogger(BaseController.class);
     @Autowired
     protected UserRepository userRepository;
+    @Autowired
+    protected ContactRepository contactRepository;
     @Autowired
     protected RoleRepository roleRepository;
     @Autowired
@@ -84,7 +87,7 @@ public class BaseController extends WebMvcConfigurerAdapter {
     public User getCurrentUser() {
         Object principal = getAuth().getPrincipal();
         if (principal instanceof UserRepositoryUserDetails)
-            return ((UserRepositoryUserDetails) principal).getUser();
+            return userRepository.findOne(((UserRepositoryUserDetails) principal).getUser().getId());
         else
             return null;
     }

@@ -18,6 +18,9 @@ public class Company {
     private String zipcode;
     private String website;
 
+    public Company() {
+    }
+
     public Company(String name, String phone, String address, String zipcode, String website) {
         this.name = name;
         this.phone = phone;
