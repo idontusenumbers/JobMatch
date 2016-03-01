@@ -28,20 +28,21 @@ public class JobsController extends BaseController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listJobs(Model model) {
-        Iterable<JobPost> jobs = null;
         switch (getCurrentUser().getRole().getId()) {
             case Role.ADMIN:
-                jobs = jobPostRepository.findAll();
-                break;
-            case Role.SEEKER:
-                JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
-                break;
+                Iterable<JobPost> allJobs = jobPostRepository.findAll();
+                model.addAttribute("jobs", allJobs);
+                return "/jobs/list"; // TODO once this controller is working, maybe we could make these redirects relative? I don't know if it works like that
             case Role.EMPLOYER:
-                jobs = jobPostRepository.findByCreator(getCurrentUser());
-                break;
+                Iterable<JobPost> myJobs = jobPostRepository.findByCreator(getCurrentUser());
+                model.addAttribute("jobs", myJobs);
+                return "/jobs/list";
+            case Role.SEEKER:
+                List<CandidateScore> matchingJobs = JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
+                model.addAttribute("jobs", matchingJobs);
+                return "/jobs/scored-list";
         }
-        model.addAttribute("jobs", jobs);
-        return "/jobs/list"; // TODO once this controller is working, maybe we could make these redirects relative? I don't know if it works like that
+        throw new RuntimeException("Unknown Role");
     }
 
     @RequestMapping(value = "/favorites", method = RequestMethod.GET)

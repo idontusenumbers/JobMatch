@@ -1,11 +1,11 @@
-<#include "../paged-auth-base.ftl">
+<#include "../paged-dashboard-base.ftl">
 
 <#macro header>PROFILE</#macro>
 
 <#macro form_attributes>
 action="profile" name="user" method="post"
 </#macro>
-<#macro paged_auth_page_body>
+<#macro paged_dashboard_page_body>
 
 
 <section data-page="0">
