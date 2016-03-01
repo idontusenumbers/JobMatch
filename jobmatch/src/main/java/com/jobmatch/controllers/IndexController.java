@@ -70,7 +70,7 @@ public class IndexController extends BaseController {
 
 
         if (result.hasErrors()) {
-            return getRedirectView(getRegisterForm(user, model));
+            return  getView(getRegisterForm(user, model));
         } else {
             userRepository.save(user);
             SecurityConfiguration.loginUser(user);
