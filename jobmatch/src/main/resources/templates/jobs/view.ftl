@@ -22,8 +22,8 @@ ${job.yearsExperience}
 </ul>
 <a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,job.id).build()}">Delete</a>
 <a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,job.id).build()}">Edit</a>
-//Charlie this view candidate button is supposed to go to the view-candidate page
-<a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,job.id).build()}">View Candidates</a>
+
+<a  href="${s.mvcUrl("JC#findCandidates").arg(0,job.id).build()}">View candidates</a>
 
 </#macro>
 

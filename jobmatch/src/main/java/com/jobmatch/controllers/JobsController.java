@@ -6,6 +6,7 @@ import com.jobmatch.models.JobPost;
 import com.jobmatch.models.JobSkill;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.Skill;
+import com.jobmatch.models.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -121,13 +122,15 @@ public class JobsController extends BaseController {
     }
 
 
-    @RequestMapping(value = "/{jobPost}/candidates", method = RequestMethod.GET)
-    public String findCandidates(@ModelAttribute JobPost jobPost, Model model) {
-        enforceSameUserUnlessAdmin(jobPost.getCreator());
+    @RequestMapping(value = "/{jobPostId}/candidates", method = RequestMethod.GET)
+    public String findCandidates(@PathVariable int jobPostId, Model model) {
+        JobPost job = jobPostRepository.findOne(jobPostId);
+        enforceSameUserUnlessAdmin(job.getCreator());
 
-        List<CandidateScore> matchingCandidates =
-                JobCandidateEvaluator.findMatchingCandidates(jobPost, userRepository.findByRole(Role.SEEKER));
+        Iterable<User> seekers = userRepository.findByRoleId(Role.SEEKER);
+        List<CandidateScore> matchingCandidates = JobCandidateEvaluator.findMatchingCandidates(job, seekers);
 
+        model.addAttribute("job", job);
         model.addAttribute("candidates", matchingCandidates);
 
         return "/jobs/candidates";

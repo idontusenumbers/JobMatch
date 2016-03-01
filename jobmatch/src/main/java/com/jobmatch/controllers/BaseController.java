@@ -59,7 +59,7 @@ public class BaseController extends WebMvcConfigurerAdapter {
         return redirect;
     }
 
-    protected View getView(String viewName){
+    protected View getView(String viewName) {
         try {
             return viewResolver.resolveViewName(viewName, Locale.getDefault());
         } catch (Exception e) {
@@ -77,14 +77,13 @@ public class BaseController extends WebMvcConfigurerAdapter {
     }
 
 
-
     public Authentication getAuth() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
 
     public User getCurrentUser() {
         Object principal = getAuth().getPrincipal();
-        if (principal instanceof  UserRepositoryUserDetails)
+        if (principal instanceof UserRepositoryUserDetails)
             return ((UserRepositoryUserDetails) principal).getUser();
         else
             return null;
@@ -103,5 +102,18 @@ public class BaseController extends WebMvcConfigurerAdapter {
     }
     protected void enforceSameUserUnlessAdmin(int userId) {
         enforceSameUserUnlessAdmin(userRepository.findOne(userId));
+    }
+
+    protected void enforceSameUserOrEmployer(@ModelAttribute User user) {
+        User currentUser = getCurrentUser();
+
+        switch (currentUser.getRole().getId()) {
+            case Role.SEEKER:
+                if (currentUser.getId() != user.getId())
+                    throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
+        }
+    }
+        protected void enforceSameUserOrEmployer(int userId) {
+        enforceSameUserOrEmployer(userRepository.findOne(userId));
     }
 }

@@ -30,6 +30,14 @@ public class UserController extends BaseController {
         return "users/index";
     }
 
+    @RequestMapping(value = "{userId}", method = RequestMethod.GET)
+    public String viewUser(@PathVariable int userId, Model model) {
+        User user = userRepository.findOne(userId);
+        enforceSameUserOrEmployer(user);
+        model.addAttribute("user", user);
+        return "users/view-candidate";
+    }
+
 
     @RequestMapping(value = "{userId}/profile", method = RequestMethod.GET)
     public String getProfile(@PathVariable int userId, Model model) {
@@ -102,4 +110,5 @@ public class UserController extends BaseController {
 
         return "users/education";
     }
+
 }
