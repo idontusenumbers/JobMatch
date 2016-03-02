@@ -2,13 +2,7 @@ package com.jobmatch.controllers;
 
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
-import com.jobmatch.repositories.ContactRepository;
-import com.jobmatch.repositories.EducationRepository;
-import com.jobmatch.repositories.JobPostRepository;
-import com.jobmatch.repositories.JobSkillRepository;
-import com.jobmatch.repositories.RoleRepository;
-import com.jobmatch.repositories.SkillRepository;
-import com.jobmatch.repositories.UserRepository;
+import com.jobmatch.repositories.*;
 import com.jobmatch.services.UserRepositoryUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,9 +39,6 @@ public class BaseController extends WebMvcConfigurerAdapter {
     protected EducationRepository educationRepository;
     @Autowired
     protected JobPostRepository jobPostRepository;
-
-    @Autowired
-    protected JobSkillRepository jobSkillRepository;
 
     @Autowired
     protected FreeMarkerViewResolver viewResolver;

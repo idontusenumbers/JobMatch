@@ -1,9 +1,8 @@
 package com.jobmatch.algorithm;
 
 import com.jobmatch.models.JobPost;
-import com.jobmatch.models.JobSkill;
+import com.jobmatch.models.SkillRank;
 import com.jobmatch.models.User;
-import com.jobmatch.models.UserSkill;
 
 import java.util.*;
 
@@ -43,13 +42,13 @@ public class JobCandidateEvaluator {
 
     static public int findDistance(User user, JobPost jobPost) {
         int result = 0;
-        Set<UserSkill> us = user.getSkills();
-        Set<JobSkill> jps = jobPost.getSkills();
+        Set<SkillRank> us = user.getSkills();
+        Set<SkillRank> jps = jobPost.getSkills();
 
         // TODO using hashmaps might make this more efficient
 
-        for (JobSkill jp : jps) {
-            for (UserSkill u : us) {
+        for (SkillRank jp : jps) {
+            for (SkillRank u : us) {
                 if (jp.equals(u)) {
                     result += Math.abs(jp.getRank() - u.getRank());
                 }

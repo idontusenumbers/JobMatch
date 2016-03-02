@@ -3,13 +3,14 @@ package com.jobmatch.models;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Entity
-public class JobSkill {
+public class SkillRank implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +24,10 @@ public class JobSkill {
     @Max(10)
     protected int rank;
 
-    public JobSkill() {
+    public SkillRank() {
     }
 
-    public JobSkill(Skill skill, int rank) {
+    public SkillRank(Skill skill, int rank) {
         this.skill = skill;
         this.rank = rank;
     }
@@ -51,36 +52,37 @@ public class JobSkill {
         this.rank = rank;
     }
 
+    public static Map<String, String> getSkillsAndRanks(Set<SkillRank> skills) {
+        return StreamSupport.stream(skills.spliterator(), false)
+                .collect(Collectors.toMap(jobSkill -> String.valueOf(jobSkill.getSkill().getId()),
+                        jobSkill -> String.valueOf(jobSkill.getRank())));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        JobSkill that = (JobSkill) o;
+        SkillRank skillRank = (SkillRank) o;
 
-        if (rank != that.rank) return false;
-        return skill.equals(that.skill);
+        if (rank != skillRank.rank) return false;
+        return skill != null ? skill.equals(skillRank.skill) : skillRank.skill == null;
+
     }
 
     @Override
     public int hashCode() {
-        int result = skill.hashCode();
+        int result = skill != null ? skill.hashCode() : 0;
         result = 31 * result + rank;
         return result;
     }
 
     @Override
     public String toString() {
-        return "JobSkill{" +
-               "id=" + id +
-               ", skill=" + skill +
-               ", rank=" + rank +
-               '}';
-    }
-
-    public static Map<String, String> getSkillsAndRanks(Set<JobSkill> skills) {
-                return StreamSupport.stream(skills.spliterator(), false)
-                .collect(Collectors.toMap(jobSkill -> String.valueOf(jobSkill.getSkill().getId()),
-                                          jobSkill -> String.valueOf(jobSkill.getRank())));
+        return "SkillRank{" +
+                "id=" + id +
+                ", skill=" + skill +
+                ", rank=" + rank +
+                '}';
     }
 }

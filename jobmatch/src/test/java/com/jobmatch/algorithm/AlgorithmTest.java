@@ -1,7 +1,10 @@
 package com.jobmatch.algorithm;
 
 import com.jobmatch.Application;
-import com.jobmatch.models.*;
+import com.jobmatch.models.JobPost;
+import com.jobmatch.models.Skill;
+import com.jobmatch.models.SkillRank;
+import com.jobmatch.models.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.IntegrationTest;
@@ -13,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -35,7 +37,7 @@ public class AlgorithmTest {
         int i = 1;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            user.getSkills().add(new UserSkill(skill, i));
+            user.getSkills().add(new SkillRank(skill, i));
             i++;
         }
 
@@ -43,7 +45,7 @@ public class AlgorithmTest {
         i = 1;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            jobPostA.getSkills().add(new JobSkill(skill, i));
+            jobPostA.getSkills().add(new SkillRank(skill, i));
             i++;
         }
 
@@ -51,7 +53,7 @@ public class AlgorithmTest {
         i = 0;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            jobPostB.getSkills().add(new JobSkill(skill, i));
+            jobPostB.getSkills().add(new SkillRank(skill, i));
             i++;
         }
 

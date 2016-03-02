@@ -50,9 +50,11 @@ public class User implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected Set<Education> education = new HashSet<>();
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    protected Set<UserSkill> skills = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_SKILLS",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_rank_id"))
+    protected Set<SkillRank> skills = new HashSet<>();
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -180,7 +182,7 @@ public class User implements Serializable {
         return education;
     }
 
-    public Set<UserSkill> getSkills() {
+    public Set<SkillRank> getSkills() {
         return skills;
     }
 

@@ -24,6 +24,9 @@ public class IndexController extends BaseController {
 
     @RequestMapping("/")
     public String index(Model model) {
+
+        log.info(userRepository.findOne(1).getSkills().toString());
+
         if (getCurrentUser() != null)
             return "forward:/jobs/";
         return "index";
