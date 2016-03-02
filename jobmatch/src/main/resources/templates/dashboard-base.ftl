@@ -47,6 +47,23 @@ You forgot to include the dashboard body
 			<ul id="sidebar-nav">
 				<li><a href="${s.mvcUrl("JC#listJobs").build()}">Jobs</a></li>
 				<li><a href="${s.mvcUrl("UC#getProfile").arg(0,currentUser.id).build()}">Profile</a></li>
+
+				<#switch currentUser.role.name>
+					<#case "Admin">
+
+						<#break>
+					<#case "Seeker">
+						<li><a href="${s.mvcUrl("UC#getQualifications").arg(0,currentUser.id).build()}">Qualifications</a></li>
+						<#break>
+					<#case "Employer">
+
+						<#break>
+					<#default>
+
+						Unknown role ${currentUser.role.name}
+						<#break>
+				</#switch>
+
 				<li><a href="/logout">Logout</a></li>
 			</ul>
 		</nav>

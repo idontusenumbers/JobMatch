@@ -5,7 +5,7 @@ import com.jobmatch.models.User;
 import com.jobmatch.repositories.ContactRepository;
 import com.jobmatch.repositories.EducationRepository;
 import com.jobmatch.repositories.JobPostRepository;
-import com.jobmatch.repositories.JobSkillRepository;
+import com.jobmatch.repositories.RankedSkillRepository;
 import com.jobmatch.repositories.RoleRepository;
 import com.jobmatch.repositories.SkillRepository;
 import com.jobmatch.repositories.UserRepository;
@@ -47,7 +47,7 @@ public class BaseController extends WebMvcConfigurerAdapter {
     protected JobPostRepository jobPostRepository;
 
     @Autowired
-    protected JobSkillRepository jobSkillRepository;
+    protected RankedSkillRepository rankedSkillRepository;
 
     @Autowired
     protected FreeMarkerViewResolver viewResolver;

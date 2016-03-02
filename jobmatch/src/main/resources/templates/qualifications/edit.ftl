@@ -1,34 +1,32 @@
-<#include "../paged-dashboard-base.ftl">
+<#include "../dashboard-base.ftl">
 
-<#macro header>PROFILE</#macro>
+<#macro header>QUALIFICATIONS</#macro>
 
-<#macro form_attributes>
-action="profile" name="user" method="post"
-</#macro>
-<#macro paged_dashboard_page_body>
+<#macro dashboard_body>
 
-<section data-page="0">
-	<div class="form-field">
-		<br><@spring.formInput path="user.contact.firstName" attributes='class="form-input" placeholder="first Name"' />
-	</div>
-	<div class="form-field">
-		<@spring.formInput path="user.contact.lastName" attributes='class="form-input" placeholder="last Name"' />
-	</div>
-</section>
 
-<section data-page="1">
-	<div class="form-field">
-		<br><@spring.formInput path="user.contact.address" attributes='class="form-input" placeholder="address"' />
-	</div>
-	<div class="form-field">
-		<@spring.formInput path="user.contact.zipcode" attributes='class="form-input" placeholder="zipcode"' />
-	</div>
-</section>
-<section data-page="2">
-    <div class="form-field">
-		<br><@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' />
-    </div>
-</section>
+
+<form action="${s.mvcUrl("UC#updateQualifications").arg(0, user.id).build()}" name="user" method="post"
+	  onsubmit="disableUnchecked({'skills':'ranks'})">
+
+
+	<@spring.bind "user" />
+	<@spring.showErrors '*', 'errors' />
+
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+	<@spring.formTextarea path="user.resume" attributes='class="" placeholder="Resume"' />
+
+	<p>Skills:</p>
+	<@rankedSkillList availableSkills=skillOptions chosenSkills=skills />
+
+	<p>Culture attributes:</p>
+
+	<p>References:</p>
+
+	<input type="submit" value="Submit">
+</form>
+
 
 </#macro>
 <@display_page/>

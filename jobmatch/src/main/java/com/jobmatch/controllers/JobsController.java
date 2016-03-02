@@ -3,7 +3,7 @@ package com.jobmatch.controllers;
 import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.JobPost;
-import com.jobmatch.models.JobSkill;
+import com.jobmatch.models.RankedSkill;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.Skill;
 import com.jobmatch.models.User;
@@ -13,14 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -66,7 +64,7 @@ public class JobsController extends BaseController {
     public View createJobPost(@ModelAttribute JobPost jobPost, String[] skills, String[] ranks, Model model) {
         jobPost.setId(0);
         jobPost.setCreator(getCurrentUser());
-        updateSkillSet(skills, ranks, jobPost.getSkills(), skillRepository);
+        RankedSkill.updateSkillSet(skills, ranks, jobPost.getSkills(), skillRepository);
         jobPostRepository.save(jobPost);
         return getRedirectView("/jobs/" + jobPost.getId());
     }
@@ -85,7 +83,7 @@ public class JobsController extends BaseController {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
         model.addAttribute("job", existingPost);
-        model.addAttribute("skills", JobSkill.getSkillsAndRanks(existingPost.getSkills()));
+        model.addAttribute("skills", RankedSkill.getSkillsAndRanks(existingPost.getSkills()));
         model.addAttribute("skillOptions", skillRepository.getMap());
         model.addAttribute("title", "Update " + existingPost.getJobTitle());
         return "/jobs/edit";
@@ -97,22 +95,12 @@ public class JobsController extends BaseController {
         enforceSameUserUnlessAdmin(existingPost.getCreator());
         BeanUtils.copyProperties(jobPost, existingPost, "id", "creator", "users");
 
-        updateSkillSet(skills, ranks, existingPost.getSkills(), skillRepository);
+        RankedSkill.updateSkillSet(skills, ranks, existingPost.getSkills(), skillRepository);
 
         jobPostRepository.save(existingPost);
         return getRedirectView("/jobs/" + jobPostId);
     }
-    private static void updateSkillSet(String[] skills, String[] ranks, Set<JobSkill> skillSet, SkillRepository skillRepository) {
-        skillSet.clear();
-        for (int i = 0; i < skills.length; i++) {
-            String s = skills[i];
-            if (!s.isEmpty()) {
-                Skill skill = skillRepository.findOne(Integer.valueOf(s));
-                JobSkill jobSkill = new JobSkill(skill, Integer.valueOf(ranks[i]));
-                skillSet.add(jobSkill);
-            }
-        }
-    }
+
 
     @RequestMapping(value = "/{jobPostId}/delete", method = RequestMethod.GET)
     public View deleteJob(@PathVariable int jobPostId, Model model) {

@@ -5,6 +5,7 @@
 <#--&lt;#&ndash;<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>&ndash;&gt;-->
 <#--<#assign sec=JspTaglibs["/META-INF/security.tld"] />-->
 
+<#include "macros.ftl" />
 
 <#macro page_head>
 

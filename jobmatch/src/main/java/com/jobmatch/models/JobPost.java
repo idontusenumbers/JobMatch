@@ -3,9 +3,7 @@ package com.jobmatch.models;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,7 +30,7 @@ public class JobPost implements Serializable {
     @JoinTable(name = "JOB_POST_SKILLS",
             joinColumns = @JoinColumn(name = "job_post_id"),
             inverseJoinColumns = @JoinColumn(name = "job_skill_id"))
-    protected Set<JobSkill> skills = new HashSet<>();
+    protected Set<RankedSkill> skills = new HashSet<>();
 
 
     @OneToOne
@@ -102,7 +100,7 @@ public class JobPost implements Serializable {
         return users;
     }
 
-    public Set<JobSkill> getSkills() {
+    public Set<RankedSkill> getSkills() {
         return skills;
     }
 

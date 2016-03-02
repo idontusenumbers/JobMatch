@@ -2,6 +2,8 @@ package com.jobmatch.controllers;
 
 import com.github.javafaker.Faker;
 import com.jobmatch.models.Education;
+import com.jobmatch.models.JobPost;
+import com.jobmatch.models.RankedSkill;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
 import org.springframework.beans.BeanUtils;
@@ -61,7 +63,7 @@ public class UserController extends BaseController {
         enforceSameUserUnlessAdmin(userId);
 
         User user = userRepository.findOne(userId);
-        BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn", "contact.email");
+        BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn", "contact.email", "resume", "references");
         userRepository.save(user);
 
         return getRedirectView("/");
@@ -72,11 +74,27 @@ public class UserController extends BaseController {
         User user = userRepository.findOne(userId);
         enforceSameUserUnlessAdmin(user);
         model.addAttribute("user", user);
-        model.addAttribute("skills", user.getSkills());
-        model.addAttribute("culture", user.getCultures());
+        model.addAttribute("skills", RankedSkill.getSkillsAndRanks(user.getSkills()));
+        model.addAttribute("cultures", user.getCultures());
         model.addAttribute("resume", user.getResume());
         model.addAttribute("references", user.getReferences());
+
+
+        model.addAttribute("skillOptions", skillRepository.getMap());
+
         return "qualifications/edit";
+    }
+
+    @RequestMapping(value = "{userId}/qualifications", method = RequestMethod.POST)
+    public View updateQualifications(@PathVariable int userId , @ModelAttribute User user, String[] skills, String[] ranks, Model model) {
+        User existingUser = userRepository.findOne(userId);
+        enforceSameUserUnlessAdmin(existingUser);
+
+        BeanUtils.copyProperties(user, existingUser, "id", "username", "password", "role", "optIn", "contact");
+        RankedSkill.updateSkillSet(skills, ranks, existingUser.getSkills(), skillRepository);
+
+        userRepository.save(existingUser);
+        return getRedirectView("/");
     }
 
     @RequestMapping(value = "{userId}/delete")

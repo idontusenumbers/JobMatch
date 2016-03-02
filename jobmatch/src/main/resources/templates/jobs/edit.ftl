@@ -3,6 +3,9 @@
 <#macro dashboard_nav>
 <li><a href="#">Jobs</a></li>
 </#macro>
+
+
+
 <#macro dashboard_body>
 
 	<#assign action =(job.id!=0)?then(
@@ -27,16 +30,7 @@
 
 
 	<p>Skills:</p>
-	<#assign i = 0 />
-	<#list skillOptions?keys as skill>
-		<input id="skills${i}" type="checkbox" name="skills" value="${skill}"
-			   <#if skills?? && skills?keys?seq_contains(skill)>checked</#if>/>
-
-		<label for="skills${i}">${skillOptions[skill]}</label>
-		<input type="text" name="ranks" value="<#if skills?? && skills?keys?seq_contains(skill)>${skills[skill]}<#else>0</#if>" />
-		<br/>
-		<#assign i = i + 1 />
-	</#list>
+	<@rankedSkillList availableSkills=skillOptions chosenSkills=skills />
 
 	<input type="submit" value="Submit">
 </form>

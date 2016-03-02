@@ -1,5 +1,7 @@
 package com.jobmatch.models;
 
+import com.jobmatch.repositories.SkillRepository;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -9,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Entity
-public class JobSkill {
+public class RankedSkill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +25,10 @@ public class JobSkill {
     @Max(10)
     protected int rank;
 
-    public JobSkill() {
+    public RankedSkill() {
     }
 
-    public JobSkill(Skill skill, int rank) {
+    public RankedSkill(Skill skill, int rank) {
         this.skill = skill;
         this.rank = rank;
     }
@@ -56,7 +58,7 @@ public class JobSkill {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        JobSkill that = (JobSkill) o;
+        RankedSkill that = (RankedSkill) o;
 
         if (rank != that.rank) return false;
         return skill.equals(that.skill);
@@ -78,9 +80,20 @@ public class JobSkill {
                '}';
     }
 
-    public static Map<String, String> getSkillsAndRanks(Set<JobSkill> skills) {
+    public static Map<String, String> getSkillsAndRanks(Set<RankedSkill> skills) {
                 return StreamSupport.stream(skills.spliterator(), false)
                 .collect(Collectors.toMap(jobSkill -> String.valueOf(jobSkill.getSkill().getId()),
                                           jobSkill -> String.valueOf(jobSkill.getRank())));
+    }
+    public static void updateSkillSet(String[] skills, String[] ranks, Set<RankedSkill> skillSet, SkillRepository skillRepository) {
+        skillSet.clear();
+        for (int i = 0; i < skills.length; i++) {
+            String s = skills[i];
+            if (!s.isEmpty()) {
+                Skill skill = skillRepository.findOne(Integer.valueOf(s));
+                RankedSkill rankedSkill = new RankedSkill(skill, Integer.valueOf(ranks[i]));
+                skillSet.add(rankedSkill);
+            }
+        }
     }
 }

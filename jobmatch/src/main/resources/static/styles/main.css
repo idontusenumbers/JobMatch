@@ -119,6 +119,7 @@ h2.company {
 #content{
     float:left;
     width:75%;
+    margin-top: 60px;
 }
 
 /*job posting*/

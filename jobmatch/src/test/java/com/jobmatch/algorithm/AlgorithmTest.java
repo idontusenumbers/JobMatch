@@ -35,7 +35,7 @@ public class AlgorithmTest {
         int i = 1;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            user.getSkills().add(new UserSkill(skill, i));
+            user.getSkills().add(new RankedSkill(skill, i));
             i++;
         }
 
@@ -43,7 +43,7 @@ public class AlgorithmTest {
         i = 1;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            jobPostA.getSkills().add(new JobSkill(skill, i));
+            jobPostA.getSkills().add(new RankedSkill(skill, i));
             i++;
         }
 
@@ -51,7 +51,7 @@ public class AlgorithmTest {
         i = 0;
         for (Skill skill : skills) {
             // This will rank the skills as 1 .. 5 (according to the size of the list)
-            jobPostB.getSkills().add(new JobSkill(skill, i));
+            jobPostB.getSkills().add(new RankedSkill(skill, i));
             i++;
         }
 
