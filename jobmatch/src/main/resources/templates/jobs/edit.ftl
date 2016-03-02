@@ -14,7 +14,7 @@
 	)
 	/>
 
-<form action="${action}" name="job" method="post" onsubmit="disableUnchecked({'skills':'ranks'})">
+<form action="${action}" name="job" method="post" onsubmit="disableUnchecked({'skills':'skillsRanks'})">
 
 
 	<@spring.bind "job" />
@@ -30,7 +30,7 @@
 
 
 	<p>Skills:</p>
-	<@rankedChoiceList availableChoices=skillOptions chosenChoices=skills />
+	<@rankedChoiceList fieldName="skills" availableChoices=skillOptions chosenChoices=skills />
 
 	<input type="submit" value="Submit">
 </form>

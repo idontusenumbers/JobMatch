@@ -61,10 +61,10 @@ public class JobsController extends BaseController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public View createJobPost(@ModelAttribute JobPost jobPost, String[] skills, String[] ranks, Model model) {
+    public View createJobPost(@ModelAttribute JobPost jobPost, String[] skills, String[] skillsRanks, Model model) {
         jobPost.setId(0);
         jobPost.setCreator(getCurrentUser());
-        RankedSkill.updateSkillSet(skills, ranks, jobPost.getSkills(), skillRepository);
+        RankedSkill.updateSkillSet(skills, skillsRanks, jobPost.getSkills(), skillRepository);
         jobPostRepository.save(jobPost);
         return getRedirectView("/jobs/" + jobPost.getId());
     }
@@ -90,12 +90,12 @@ public class JobsController extends BaseController {
     }
 
     @RequestMapping(value = "/{jobPostId}/update", method = RequestMethod.POST)
-    public View updateJobPost(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, String[] skills, String[] ranks, Model model) {
+    public View updateJobPost(@PathVariable int jobPostId, @ModelAttribute JobPost jobPost, String[] skills, String[] skillsRanks, Model model) {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
         BeanUtils.copyProperties(jobPost, existingPost, "id", "creator", "users");
 
-        RankedSkill.updateSkillSet(skills, ranks, existingPost.getSkills(), skillRepository);
+        RankedSkill.updateSkillSet(skills, skillsRanks, existingPost.getSkills(), skillRepository);
 
         jobPostRepository.save(existingPost);
         return getRedirectView("/jobs/" + jobPostId);
