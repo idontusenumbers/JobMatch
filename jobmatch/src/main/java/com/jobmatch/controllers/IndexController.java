@@ -23,10 +23,7 @@ import java.util.stream.StreamSupport;
 public class IndexController extends BaseController {
 
     @RequestMapping("/")
-    public String index(Model model) {
-
-        log.info(userRepository.findOne(1).getSkills().toString());
-
+    public String index() {
         if (getCurrentUser() != null)
             return "forward:/jobs/";
         return "index";
