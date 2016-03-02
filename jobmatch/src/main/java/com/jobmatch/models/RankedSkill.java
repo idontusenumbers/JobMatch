@@ -5,13 +5,14 @@ import com.jobmatch.repositories.SkillRepository;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Entity
-public class RankedSkill {
+public class RankedSkill implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,38 +54,12 @@ public class RankedSkill {
         this.rank = rank;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RankedSkill that = (RankedSkill) o;
-
-        if (rank != that.rank) return false;
-        return skill.equals(that.skill);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = skill.hashCode();
-        result = 31 * result + rank;
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "JobSkill{" +
-               "id=" + id +
-               ", skill=" + skill +
-               ", rank=" + rank +
-               '}';
-    }
-
     public static Map<String, String> getSkillsAndRanks(Set<RankedSkill> skills) {
-                return StreamSupport.stream(skills.spliterator(), false)
+        return StreamSupport.stream(skills.spliterator(), false)
                 .collect(Collectors.toMap(rankedSkill -> String.valueOf(rankedSkill.getSkill().getId()),
-                                          rankedSkill -> String.valueOf(rankedSkill.getRank())));
+                        rankedSkill -> String.valueOf(rankedSkill.getRank())));
     }
+
     public static void updateSkillSet(String[] skills, String[] ranks, Set<RankedSkill> skillSet, SkillRepository skillRepository) {
         skillSet.clear();
         for (int i = 0; i < skills.length; i++) {
@@ -95,5 +70,33 @@ public class RankedSkill {
                 skillSet.add(rankedSkill);
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RankedSkill that = (RankedSkill) o;
+
+        if (rank != that.rank) return false;
+        return skill != null ? skill.equals(that.skill) : that.skill == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = skill != null ? skill.hashCode() : 0;
+        result = 31 * result + rank;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "RankedSkill{" +
+                "id=" + id +
+                ", skill=" + skill +
+                ", rank=" + rank +
+                '}';
     }
 }

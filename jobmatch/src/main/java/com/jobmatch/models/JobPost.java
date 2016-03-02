@@ -29,7 +29,7 @@ public class JobPost implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "JOB_POST_SKILLS",
             joinColumns = @JoinColumn(name = "job_post_id"),
-            inverseJoinColumns = @JoinColumn(name = "job_skill_id"))
+            inverseJoinColumns = @JoinColumn(name = "ranked_skill_id"))
     protected Set<RankedSkill> skills = new HashSet<>();
 
 
