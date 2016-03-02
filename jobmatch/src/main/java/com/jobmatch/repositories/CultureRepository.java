@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CultureRepository extends CrudRepository<Culture, Integer> {
+public interface CultureRepository extends CrudRepository<Culture, Integer>, CultureRepositoryCustom {
 }

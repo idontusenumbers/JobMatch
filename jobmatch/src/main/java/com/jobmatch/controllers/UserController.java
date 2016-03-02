@@ -1,8 +1,10 @@
 package com.jobmatch.controllers;
 
 import com.github.javafaker.Faker;
+import com.jobmatch.models.Culture;
 import com.jobmatch.models.Education;
 import com.jobmatch.models.JobPost;
+import com.jobmatch.models.RankedCulture;
 import com.jobmatch.models.RankedSkill;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
@@ -75,23 +77,27 @@ public class UserController extends BaseController {
         enforceSameUserUnlessAdmin(user);
         model.addAttribute("user", user);
         model.addAttribute("skills", RankedSkill.getSkillsAndRanks(user.getSkills()));
-        model.addAttribute("cultures", user.getCultures());
+        model.addAttribute("cultures", RankedCulture.getCulturesAndRanks( user.getCultures()));
         model.addAttribute("resume", user.getResume());
         model.addAttribute("references", user.getReferences());
 
-
+        model.addAttribute("cultureOptions", cultureRepository.getMap());
         model.addAttribute("skillOptions", skillRepository.getMap());
 
         return "qualifications/edit";
     }
 
     @RequestMapping(value = "{userId}/qualifications", method = RequestMethod.POST)
-    public View updateQualifications(@PathVariable int userId , @ModelAttribute User user, String[] skills, String[] ranks, Model model) {
+    public View updateQualifications(@PathVariable int userId, @ModelAttribute User user,
+                                     String[] skills, String[] skillsRanks,
+                                     String[] cultures, String[] culturesRanks, Model model) {
         User existingUser = userRepository.findOne(userId);
         enforceSameUserUnlessAdmin(existingUser);
 
         BeanUtils.copyProperties(user, existingUser, "id", "username", "password", "role", "optIn", "contact");
-        RankedSkill.updateSkillSet(skills, ranks, existingUser.getSkills(), skillRepository);
+
+        RankedSkill.updateSkillSet(skills, skillsRanks, existingUser.getSkills(), skillRepository);
+        RankedCulture.updateCultureSet(cultures, culturesRanks, existingUser.getCultures(), cultureRepository);
 
         userRepository.save(existingUser);
         return getRedirectView("/");

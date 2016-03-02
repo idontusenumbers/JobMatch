@@ -7,7 +7,7 @@
 
 
 <form action="${s.mvcUrl("UC#updateQualifications").arg(0, user.id).build()}" name="user" method="post"
-	  onsubmit="disableUnchecked({'skills':'ranks'})">
+	  onsubmit="disableUnchecked({'skills':'skillsRanks'}); disableUnchecked({'cultures':'culturesRanks'});">
 
 
 	<@spring.bind "user" />
@@ -18,9 +18,10 @@
 	<@spring.formTextarea path="user.resume" attributes='class="" placeholder="Resume"' />
 
 	<p>Skills:</p>
-	<@rankedSkillList availableSkills=skillOptions chosenSkills=skills />
+	<@rankedChoiceList fieldName="skills" availableChoices=skillOptions chosenChoices=skills />
 
 	<p>Culture attributes:</p>
+	<@rankedChoiceList fieldName="cultures" availableChoices=cultureOptions chosenChoices=cultures />
 
 	<p>References:</p>
 

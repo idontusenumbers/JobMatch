@@ -14,6 +14,14 @@ ON t.ID=vals.a
 WHEN MATCHED THEN UPDATE SET t.NAME=vals.b
 WHEN NOT MATCHED THEN INSERT VALUES vals.a, vals.b;
 
+--
+-- Seed the culture table with possible user skills
+--
+MERGE INTO CULTURE AS t USING (VALUES(1,TRIM('Work from home')), (2, TRIM('Casual dress'))) AS vals(a,b)
+ON t.ID=vals.a
+WHEN MATCHED THEN UPDATE SET t.NAME=vals.b
+WHEN NOT MATCHED THEN INSERT VALUES vals.a, vals.b;
+
 
 -- add username:password admin:admin
 MERGE INTO USER USING (VALUES(1,1,'admin','$2a$10$YqRRWHt2cBc8iW/4MCl9bO2u6Bj.W2eZR5yiPUoggnWK1Wc6h9wpW')) AS vals(id,role_id, username, password)

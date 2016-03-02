@@ -3,6 +3,7 @@ package com.jobmatch.controllers;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
 import com.jobmatch.repositories.ContactRepository;
+import com.jobmatch.repositories.CultureRepository;
 import com.jobmatch.repositories.EducationRepository;
 import com.jobmatch.repositories.JobPostRepository;
 import com.jobmatch.repositories.RankedSkillRepository;
@@ -41,6 +42,9 @@ public class BaseController extends WebMvcConfigurerAdapter {
     protected RoleRepository roleRepository;
     @Autowired
     protected SkillRepository skillRepository;
+
+    @Autowired
+    protected CultureRepository cultureRepository;
     @Autowired
     protected EducationRepository educationRepository;
     @Autowired

@@ -30,7 +30,7 @@
 
 
 	<p>Skills:</p>
-	<@rankedSkillList availableSkills=skillOptions chosenSkills=skills />
+	<@rankedChoiceList availableChoices=skillOptions chosenChoices=skills />
 
 	<input type="submit" value="Submit">
 </form>

@@ -82,8 +82,8 @@ public class RankedSkill {
 
     public static Map<String, String> getSkillsAndRanks(Set<RankedSkill> skills) {
                 return StreamSupport.stream(skills.spliterator(), false)
-                .collect(Collectors.toMap(jobSkill -> String.valueOf(jobSkill.getSkill().getId()),
-                                          jobSkill -> String.valueOf(jobSkill.getRank())));
+                .collect(Collectors.toMap(rankedSkill -> String.valueOf(rankedSkill.getSkill().getId()),
+                                          rankedSkill -> String.valueOf(rankedSkill.getRank())));
     }
     public static void updateSkillSet(String[] skills, String[] ranks, Set<RankedSkill> skillSet, SkillRepository skillRepository) {
         skillSet.clear();

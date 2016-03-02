@@ -70,7 +70,7 @@ public class User implements Serializable {
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    protected Set<UserCulture> cultures = new HashSet<>();
+    protected Set<RankedCulture> cultures = new HashSet<>();
 
 
 
@@ -196,7 +196,7 @@ public class User implements Serializable {
         return references;
     }
 
-    public Set<UserCulture> getCultures() {
+    public Set<RankedCulture> getCultures() {
         return cultures;
     }
 
