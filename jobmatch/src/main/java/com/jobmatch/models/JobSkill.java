@@ -3,6 +3,10 @@ package com.jobmatch.models;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Entity
 public class JobSkill {
@@ -68,9 +72,15 @@ public class JobSkill {
     @Override
     public String toString() {
         return "JobSkill{" +
-                "id=" + id +
-                ", skill=" + skill +
-                ", rank=" + rank +
-                '}';
+               "id=" + id +
+               ", skill=" + skill +
+               ", rank=" + rank +
+               '}';
+    }
+
+    public static Map<String, String> getSkillsAndRanks(Set<JobSkill> skills) {
+                return StreamSupport.stream(skills.spliterator(), false)
+                .collect(Collectors.toMap(jobSkill -> String.valueOf(jobSkill.getSkill().getId()),
+                                          jobSkill -> String.valueOf(jobSkill.getRank())));
     }
 }

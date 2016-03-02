@@ -11,7 +11,7 @@
 	)
 	/>
 
-<form action="${action}" name="job" method="post">
+<form action="${action}" name="job" method="post" onsubmit="disableUnchecked({'skills':'ranks'})">
 
 
 	<@spring.bind "job" />
@@ -30,10 +30,10 @@
 	<#assign i = 0 />
 	<#list skillOptions?keys as skill>
 		<input id="skills${i}" type="checkbox" name="skills" value="${skill}"
-			   <#if job.skills?seq_contains(skill)>checked</#if>/>
+			   <#if skills?? && skills?keys?seq_contains(skill)>checked</#if>/>
 
 		<label for="skills${i}">${skillOptions[skill]}</label>
-		<input type="text" name="ranks" value="${i}">
+		<input type="text" name="ranks" value="<#if skills?? && skills?keys?seq_contains(skill)>${skills[skill]}<#else>0</#if>" />
 		<br/>
 		<#assign i = i + 1 />
 	</#list>

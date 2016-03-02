@@ -106,11 +106,6 @@ public class JobPost implements Serializable {
         return skills;
     }
 
-    public List<JobSkill> getSkillList() {
-        return new ArrayList<>(getSkills());
-    }
-
-
     public User getCreator() {
         return creator;
     }

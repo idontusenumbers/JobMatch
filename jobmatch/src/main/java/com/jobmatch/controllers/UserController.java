@@ -67,6 +67,17 @@ public class UserController extends BaseController {
         return getRedirectView("/");
     }
 
+    @RequestMapping(value = "{userId}/qualifications", method = RequestMethod.GET)
+    public String getQualifications(@PathVariable int userId, Model model) {
+        User user = userRepository.findOne(userId);
+        enforceSameUserUnlessAdmin(user);
+        model.addAttribute("user", user);
+        model.addAttribute("skills", user.getSkills());
+        model.addAttribute("culture", user.getCultures());
+        model.addAttribute("resume", user.getResume());
+        model.addAttribute("references", user.getReferences());
+        return "qualifications/edit";
+    }
 
     @RequestMapping(value = "{userId}/delete")
     public View delete(@PathVariable int userId, Model model) {
@@ -110,5 +121,4 @@ public class UserController extends BaseController {
 
         return "users/education";
     }
-
 }

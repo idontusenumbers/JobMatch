@@ -1,7 +1,11 @@
 package com.jobmatch.models;
 
+import org.springframework.data.util.StreamUtils;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
+import java.util.stream.StreamSupport;
 
 @Entity
 public class Skill implements Serializable {
@@ -61,4 +65,5 @@ public class Skill implements Serializable {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

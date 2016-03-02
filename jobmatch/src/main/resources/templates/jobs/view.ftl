@@ -14,8 +14,8 @@ ${job.yearsExperience}
 
 <p>Skills:</p>
 <ul>
-	<#list job.getSkillList() as skillRank>
-        <li>${skillRank.getSkill().getName()}</li>
+	<#list job.skills as skillRank>
+        <li>${skillRank.skill.name}: ${skillRank.rank}</li>
 	<#else>
         No skills
 	</#list>
