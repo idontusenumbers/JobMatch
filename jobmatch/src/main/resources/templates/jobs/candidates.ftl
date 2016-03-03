@@ -10,8 +10,8 @@ ${job.jobTitle}
 </a>
 <p>Candidates:</p>
 <ul>
-	<#list candidates as candidate>
-        <li><a href="${s.mvcUrl("UC#viewUser").arg(0,job.id).build()}">${candidate.contact.firstName}</a></li>
+	<#list scoredCandidates as scoredCandidate>
+        <li><a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}"><#if scoredCandidate.user.contact?? >${scoredCandidate.user.contact.firstName}<#else>${scoredCandidate.user.username}</#if></a> Closeness: ${scoredCandidate.closeness} </li>
 	<#else>
         No matching candidates
 	</#list>

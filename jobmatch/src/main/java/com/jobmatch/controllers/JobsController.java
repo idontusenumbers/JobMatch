@@ -54,9 +54,11 @@ public class JobsController extends BaseController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createJob(Model model) {
+        JobPost newJobPost = new JobPost();
         model.addAttribute("title", "Create job post");
+        model.addAttribute("skills", RankedSkill.getSkillsAndRanks(newJobPost.getSkills()));
         model.addAttribute("skillOptions", skillRepository.getMap());
-        model.addAttribute("job", new JobPost());
+        model.addAttribute("job", newJobPost);
         return "/jobs/edit";
     }
 
@@ -118,10 +120,10 @@ public class JobsController extends BaseController {
         enforceSameUserUnlessAdmin(job.getCreator());
 
         Iterable<User> seekers = userRepository.findByRoleId(Role.SEEKER);
-        List<CandidateScore> matchingCandidates = JobCandidateEvaluator.findMatchingCandidates(job, seekers);
+        List<CandidateScore> scoredCandidates = JobCandidateEvaluator.findMatchingCandidates(job, seekers);
 
         model.addAttribute("job", job);
-        model.addAttribute("candidates", matchingCandidates);
+        model.addAttribute("scoredCandidates", scoredCandidates);
 
         return "/jobs/candidates";
     }

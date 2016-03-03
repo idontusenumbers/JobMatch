@@ -10,6 +10,7 @@ public class JobCandidateEvaluator {
 
     public static final int CLOSENESS_THRESHOLD = 100;
     public static final Comparator<CandidateScore> JOB_MATCH_COMPARATOR = (o1, o2) -> o1.getCloseness() - o2.getCloseness();
+    private static final int MIN_DISTANCE = 5;
 
 
     static public List<CandidateScore> findMatchingJobs(User user, Iterable<JobPost> allJobPosts) {
@@ -51,6 +52,8 @@ public class JobCandidateEvaluator {
             for (RankedSkill u : us) {
                 if (jp.equals(u)) {
                     result += Math.abs(jp.getRank() - u.getRank());
+                }else{
+                    result+=MIN_DISTANCE;
                 }
             }
         }
