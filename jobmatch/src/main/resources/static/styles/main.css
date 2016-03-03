@@ -336,3 +336,32 @@ section[data-page]:not(:first-of-type){
 }
 
 a[data-favorite="true"]{background-color:red;}
+
+#nobg a:link {
+    color: darkorange;
+}
+#nobg a:hover {
+    color: lightsalmon;
+}
+
+
+table {
+    width:50%;
+    border-collapse:collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t1 tr:nth-child(even) {
+    background-color: #F2F2F2;
+}
+table#t1 tr:nth-child(odd) {
+    background-color:#FFF;
+}
+table#t1 th	{
+    background-color: #5E5E5E;
+    color: white;
+    font-size: large;
+    padding: 10px;
+}
