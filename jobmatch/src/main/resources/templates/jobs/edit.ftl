@@ -21,7 +21,7 @@
 
     <table id="t1" align="center">
         <tr>
-            <th colspan="2">Edit a Job Post</th>
+            <th colspan="2">Post a Job</th>
         </tr>
         <tr>
             <td><h2>Job Title:</h2></td>

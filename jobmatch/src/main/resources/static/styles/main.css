@@ -254,7 +254,7 @@ ul.title-matches-list>li>div.matches{
     float: right
 }
 
-#bg a:link, a:visited, a:hover {
+#bg a:link, #bg a:visited, #bg a:hover {
     color: white;
 }
 
