@@ -2,6 +2,7 @@ package com.jobmatch.controllers;
 
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
+import com.jobmatch.repositories.CompanyRepository;
 import com.jobmatch.repositories.ContactRepository;
 import com.jobmatch.repositories.CultureRepository;
 import com.jobmatch.repositories.EducationRepository;
@@ -36,6 +37,8 @@ public class BaseController extends WebMvcConfigurerAdapter {
     protected static final Logger log = LoggerFactory.getLogger(BaseController.class);
     @Autowired
     protected UserRepository userRepository;
+    @Autowired
+    protected CompanyRepository companyRepository;
     @Autowired
     protected ContactRepository contactRepository;
     @Autowired

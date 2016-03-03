@@ -1,6 +1,7 @@
 package com.jobmatch.controllers;
 
 import com.jobmatch.configuration.SecurityConfiguration;
+import com.jobmatch.models.Company;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
 import org.springframework.stereotype.Controller;
@@ -69,6 +70,11 @@ public class IndexController extends BaseController {
             result.addError(new FieldError("user", "optIn", "You must opt in"));
 
 
+        switch(user.getRole().getId()){
+            case Role.EMPLOYER:
+                user.setCompany(new Company());
+                break;
+        }
         if (result.hasErrors()) {
             return  getView(getRegisterForm(user, model));
         } else {

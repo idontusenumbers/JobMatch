@@ -16,7 +16,7 @@ You forgot to include the dashboard body
 
 	<div id="sidebar">
 		<div style="text-align:center;">
-			<#if currentUser.contact??>
+			<#if currentUser.contact?? && ( currentUser.contact.firstName?has_content || currentUser.contact.lastName?has_content)>
 				<h2 class="company">${currentUser.contact.firstName} ${currentUser.contact.lastName}</h2>
 			<#else>
 				<h2 class="company">${currentUser.username}</h2>
@@ -56,7 +56,7 @@ You forgot to include the dashboard body
 						<li><a href="${s.mvcUrl("UC#getQualifications").arg(0,currentUser.id).build()}">Qualifications</a></li>
 						<#break>
 					<#case "Employer">
-
+						<li><a href="${s.mvcUrl("CC#getCompany").arg(0,currentUser.company.id).build()}">My company</a></li>
 						<#break>
 					<#default>
 

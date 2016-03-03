@@ -1,9 +1,15 @@
 package com.jobmatch.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Company {
@@ -17,6 +23,11 @@ public class Company {
     private String address;
     private String zipcode;
     private String website;
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    protected Set<RankedCulture> cultures = new HashSet<>();
+
 
     public Company() {
     }
@@ -69,16 +80,23 @@ public class Company {
         this.website = website;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Set<RankedCulture> getCultures() {
+        return cultures;
+    }
 
     @Override
     public String toString() {
         return "Company{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", zipcode='" + zipcode + '\'' +
-                ", website='" + website + '\'' +
-                '}';
+               "id=" + id +
+               ", name='" + name + '\'' +
+               ", phone='" + phone + '\'' +
+               ", address='" + address + '\'' +
+               ", zipcode='" + zipcode + '\'' +
+               ", website='" + website + '\'' +
+               '}';
     }
 }

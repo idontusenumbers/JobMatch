@@ -31,24 +31,5 @@ action="profile" name="user" method="post"
 	</div>
 </section>
 
-
-<section data-page="3">
-	<div class="form-field">
-		<br><@spring.formInput path="user.company.name" attributes='class="form-input" placeholder="Company Name"' />
-	</div>
-	<div class="form-field">
-		<br><@spring.formInput path="user.company.phone" attributes='class="form-input" placeholder="Company phone"' />
-	</div>
-	<div class="form-field">
-		<br><@spring.formInput path="user.company.address" attributes='class="form-input" placeholder="Company address"' />
-	</div>
-	<div class="form-field">
-		<br><@spring.formInput path="user.company.zipcode" attributes='class="form-input" placeholder="Company zipcode"' />
-	</div>
-	<div class="form-field">
-		<br><@spring.formInput path="user.company.website" attributes='class="form-input" placeholder="Company website"' />
-	</div>
-</section>
-
 </#macro>
 <@display_page/>

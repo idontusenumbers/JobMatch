@@ -1,6 +1,7 @@
 package com.jobmatch.controllers;
 
 import com.github.javafaker.Faker;
+import com.jobmatch.models.Company;
 import com.jobmatch.models.Culture;
 import com.jobmatch.models.Education;
 import com.jobmatch.models.JobPost;
@@ -65,7 +66,7 @@ public class UserController extends BaseController {
         enforceSameUserUnlessAdmin(userId);
 
         User user = userRepository.findOne(userId);
-        BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn", "contact.email", "resume", "references");
+        BeanUtils.copyProperties(updatedUser, user, "id", "username", "password", "role", "optIn", "contact.email", "resume", "references", "company");
         userRepository.save(user);
 
         return getRedirectView("/");
@@ -77,7 +78,7 @@ public class UserController extends BaseController {
         enforceSameUserUnlessAdmin(user);
         model.addAttribute("user", user);
         model.addAttribute("skills", RankedSkill.getSkillsAndRanks(user.getSkills()));
-        model.addAttribute("cultures", RankedCulture.getCulturesAndRanks( user.getCultures()));
+        model.addAttribute("cultures", RankedCulture.getCulturesAndRanks(user.getCultures()));
         model.addAttribute("resume", user.getResume());
         model.addAttribute("references", user.getReferences());
 
@@ -116,6 +117,10 @@ public class UserController extends BaseController {
             return getRedirectView("/logout");
         }
     }
+
+
+
+
 
     /**
      * Adds Random Education to user (for now)
