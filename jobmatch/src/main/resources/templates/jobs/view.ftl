@@ -5,7 +5,6 @@
 </#macro>
 <#macro dashboard_body>
 
-<!--<table style="width:50%" align="center" cellpadding="5px">-->
 <table id="t1" align="center">
     <tr>
         <th colspan="2">${jobPost.jobTitle}</th>
@@ -39,12 +38,12 @@
         </td>
     </tr>
     <tr>
-        <td><a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,jobPost.id).build()}">Delete</a></td>
-        <td><a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,jobPost.id).build()}">Edit</a></td>
+        <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,jobPost.id).build()}">Delete</a></td>
+        <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,jobPost.id).build()}">Edit</a></td>
     </tr>
     <tr>
         <td colspan="2">
-            <div id="nobg"><a href="${s.mvcUrl("JC#findCandidates").arg(0,jobPost.id).build()}">View candidates</a></div>
+            <div id="nobg" align="center"><a href="${s.mvcUrl("JC#findCandidates").arg(0,jobPost.id).build()}">View candidates</a></div>
         </td>
     </tr>
 </table>
