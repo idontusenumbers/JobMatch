@@ -8,7 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,7 +38,8 @@ public class User implements Serializable {
     @Email
     private String email;
 
-    private String resume;
+    @Size(max = 1000)
+    protected String resume;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
@@ -179,6 +182,10 @@ public class User implements Serializable {
 
     public Set<Education> getEducation() {
         return education;
+    }
+
+    public List<Education> getEducationList() {
+        return new ArrayList<>(getEducation());
     }
 
     public Set<RankedSkill> getSkills() {

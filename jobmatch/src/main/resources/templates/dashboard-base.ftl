@@ -53,7 +53,9 @@ You forgot to include the dashboard body
 
 						<#break>
 					<#case "Seeker">
-						<li><a href="${s.mvcUrl("UC#getQualifications").arg(0,currentUser.id).build()}">Qualifications</a></li>
+                        <li>
+                            <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}">Qualifications</a>
+                        </li>
 						<li><a href="${s.mvcUrl("JC#listFavoriteJobPosts").arg(0,currentUser.id).build()}">Favorites</a></li>
 					<#break>
 					<#case "Employer">

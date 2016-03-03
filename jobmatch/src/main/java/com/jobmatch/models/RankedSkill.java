@@ -60,6 +60,10 @@ public class RankedSkill implements Serializable {
                         rankedSkill -> String.valueOf(rankedSkill.getRank())));
     }
 
+    /*public static List<RankedSkill> getSkillsAndRanks(Set<RankedSkill> skills) {
+        return new ArrayList<>(skills);
+    }*/
+
     public static void updateSkillSet(String[] skills, String[] ranks, Set<RankedSkill> skillSet, SkillRepository skillRepository) {
         skillSet.clear();
         for (int i = 0; i < skills.length; i++) {

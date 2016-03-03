@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -15,12 +16,13 @@ public class Education implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String schoolName;
-    private String country;
-    private String degree;
-    private String major;
-    private int yearGraduated;
+    protected int id;
+    protected String schoolName;
+    protected String country;
+    protected String degree;
+    protected String major;
+    @Size(min = 4, max = 4)
+    protected String yearGraduated;
 
     public Education() {
     }
@@ -34,7 +36,7 @@ public class Education implements Serializable {
      * @param major
      * @param yearGraduated
      */
-    public Education(String schoolName, String country, String degree, String major, int yearGraduated) {
+    public Education(String schoolName, String country, String degree, String major, String yearGraduated) {
         this.schoolName = schoolName;
         this.country = country;
         this.degree = degree;
@@ -78,11 +80,11 @@ public class Education implements Serializable {
         this.major = major;
     }
 
-    public int getYearGraduated() {
+    public String getYearGraduated() {
         return yearGraduated;
     }
 
-    public void setYearGraduated(int yearGraduated) {
+    public void setYearGraduated(String yearGraduated) {
         this.yearGraduated = yearGraduated;
     }
 
@@ -93,21 +95,21 @@ public class Education implements Serializable {
 
         Education education = (Education) o;
 
-        if (yearGraduated != education.yearGraduated) return false;
-        if (!schoolName.equals(education.schoolName)) return false;
-        if (!country.equals(education.country)) return false;
-        if (!degree.equals(education.degree)) return false;
-        return major.equals(education.major);
+        if (schoolName != null ? !schoolName.equals(education.schoolName) : education.schoolName != null) return false;
+        if (country != null ? !country.equals(education.country) : education.country != null) return false;
+        if (degree != null ? !degree.equals(education.degree) : education.degree != null) return false;
+        if (major != null ? !major.equals(education.major) : education.major != null) return false;
+        return yearGraduated != null ? yearGraduated.equals(education.yearGraduated) : education.yearGraduated == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = schoolName.hashCode();
-        result = 31 * result + country.hashCode();
-        result = 31 * result + degree.hashCode();
-        result = 31 * result + major.hashCode();
-        result = 31 * result + yearGraduated;
+        int result = schoolName != null ? schoolName.hashCode() : 0;
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (degree != null ? degree.hashCode() : 0);
+        result = 31 * result + (major != null ? major.hashCode() : 0);
+        result = 31 * result + (yearGraduated != null ? yearGraduated.hashCode() : 0);
         return result;
     }
 
