@@ -17,13 +17,14 @@
             <#list scoredCandidates as scoredCandidate>
                 <td>
                     <div id="nobg">
-                    <a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}">
-                        <#if scoredCandidate.user.contact?? >
-                        ${scoredCandidate.user.contact.firstName}
-                    <#else>
-                        ${scoredCandidate.user.username}</#if>
-                    </a>
-                        </div>
+                        <a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}">
+                            <#if scoredCandidate.user.contact?? >
+                            ${scoredCandidate.user.contact.firstName}
+                            <#else>
+                            ${scoredCandidate.user.username}
+                            </#if>
+                        </a>
+                    </div>
                 </td>
                 <td>Closeness: ${scoredCandidate.closeness}</td>
             <#else>

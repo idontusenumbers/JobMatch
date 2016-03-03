@@ -4,21 +4,43 @@
 
 <#macro dashboard_body>
 
-${company.name}
-${company.phone}
-${company.address}
-${company.zipcode}
-${company.website}
-
-<p>Culture attributes:</p>
-<ul>
-	<#list company.cultures as cultureRank>
-        <li>${cultureRank.culture.name}: ${cultureRank.rank}</li>
-	<#else>
-        No culture attributes
-	</#list>
-</ul>
-
+<table id="t1" align="center">
+    <tr>
+        <th colspan="2">Qualifications</th>
+    </tr>
+    <tr>
+        <td><h2>Company Name:</h2></td>
+        <td>${company.name}</td>
+    </tr>
+    <tr>
+        <td><h2>Phone:</h2></td>
+        <td>${company.phone}</td>
+    </tr>
+    <tr>
+        <td><h2>Address:</h2></td>
+        <td>${company.address}</td>
+    </tr>
+    <tr>
+        <td><h2>Zip Code:</h2></td>
+        <td>${company.zipcode}</td>
+    </tr>
+    <tr>
+        <td><h2>Website:</h2></td>
+        <td>${company.website}</td>
+    </tr>
+    <tr>
+        <td><h2>Culture:</h2></td>
+        <td>
+            <ul>
+                <#list company.cultures as cultureRank>
+                    <li>${cultureRank.culture.name}: ${cultureRank.rank}</li>
+                <#else>
+                    No culture attributes
+                </#list>
+            </ul>
+        </td>
+    </tr>
+</table>
 
 </#macro>
 <@display_page/>
