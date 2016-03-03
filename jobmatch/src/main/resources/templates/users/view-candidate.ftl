@@ -10,37 +10,53 @@
         <h2>Candidate</h2>
     </div>
     <div class="view-job">
-        <h3>Candidate Name</h3>
-        ${user.name}
+        <h3>Name</h3>
+        <#if user.contact?? && ( user.contact.firstName?has_content || user.contact.lastName?has_content)>
+        ${user.contact.firstName} ${user.contact.lastName}
+        <#else>
+        ${user.username}
+        </#if>
     </div>
     <div class="view-job">
-        <h3>Candidate Experience</h3>
+        <h3>Experience</h3>
+        <#if user.experience?? && ( user.experience.title?has_content)>
+            <#list experiences as experience>
+            ${user.experiences}
+            </#list>
+        <#else>
+            No experience listed.
+        </#if>
     </div>
     <div class="view-job">
-        <h3>Candidate Contact Info</h3>
+        <h3>Contact Info</h3>
+        <#if user.contact?? && ( user.contact.contact?has_content)>
+        ${user.contact}
+        <#else>
+            No contact information has been provided.
+        </#if>
     </div>
-    <div style="float:left">
-        <h3>Skills</h3>
-        <ul>
-            <li>First item</li>
-            <li>Second item</li>
-            <li>Third item</li>
-            <li>Fourth item</li>
-            <li>Fifth item</li>
-        </ul>
-    </div>
+    <div class="view-job">
+        <h3>Skills & Culture</h3>
+        <div style="float:left">
+            <ol type="1">
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item</li>
+                <li>Fourth item</li>
+                <li>Fifth item</li>
+            </ol>
+        </div>
 
-    <div style="float:left">
-        <h3>Culture Traits</h3>
-        <ul>
-            <li>First item</li>
-            <li>Second item</li>
-            <li>Third item</li>
-            <li>Fourth item</li>
-            <li>Fifth item</li>
-        </ul>
+        <div style="float:right">
+            <ol type="1">
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item</li>
+                <li>Fourth item</li>
+                <li>Fifth item</li>
+            </ol>
+        </div>
     </div>
-
 </div>
 
 </#macro>
