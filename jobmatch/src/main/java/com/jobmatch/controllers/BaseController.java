@@ -1,5 +1,6 @@
 package com.jobmatch.controllers;
 
+import com.jobmatch.models.JobPost;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
 import com.jobmatch.repositories.CompanyRepository;
@@ -30,6 +31,8 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 
 @Controller
@@ -84,6 +87,10 @@ public class BaseController extends WebMvcConfigurerAdapter {
 
         model.addAttribute("auth", getAuth());
         model.addAttribute("currentUser", getCurrentUser());
+        if (getCurrentUser() != null) {
+            model.addAttribute("faves", StreamSupport.stream(getCurrentUser().getFavePosts().spliterator(), false)
+                    .map(jobPost -> String.valueOf(jobPost.getId())).collect(Collectors.toList()));
+        }
     }
 
 
@@ -123,7 +130,7 @@ public class BaseController extends WebMvcConfigurerAdapter {
                     throw new HttpClientErrorException(HttpStatus.FORBIDDEN);
         }
     }
-        protected void enforceSameUserOrEmployer(int userId) {
+    protected void enforceSameUserOrEmployer(int userId) {
         enforceSameUserOrEmployer(userRepository.findOne(userId));
     }
 }

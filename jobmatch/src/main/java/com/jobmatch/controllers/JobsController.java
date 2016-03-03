@@ -4,6 +4,7 @@ import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.*;
 import com.jobmatch.viewmodels.CountedJobPost;
+import com.jobmatch.viewmodels.FavoritePayload;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
@@ -45,8 +47,11 @@ public class JobsController extends BaseController {
 
     @RequestMapping(value = "/favorites", method = RequestMethod.GET)
     public String listFavoriteJobPosts(Model model) {
-        model.addAttribute("posts", getCurrentUser().getFavePosts());
-        return "/jobs/list";
+
+        List<CandidateScore> matchingJobs = JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), getCurrentUser().getFavePosts());
+        model.addAttribute("jobs", matchingJobs);
+        return "/jobs/scored-list";
+
     }
 
 
@@ -56,7 +61,7 @@ public class JobsController extends BaseController {
         model.addAttribute("title", "Create job post");
         model.addAttribute("skills", RankedSkill.getSkillsAndRanks(newJobPost.getSkills()));
         model.addAttribute("skillOptions", skillRepository.getMap());
-        model.addAttribute("job", newJobPost);
+        model.addAttribute("jobPost", newJobPost);
         return "/jobs/edit";
     }
 
@@ -130,16 +135,19 @@ public class JobsController extends BaseController {
     }
 
 
-    @RequestMapping(value = "/{jobPostId}/favorite", method = RequestMethod.POST)
-    public ResponseEntity setFavorite(@PathVariable int jobPostId, boolean favorited) {
+    @RequestMapping(value = "/favorite", method = RequestMethod.POST)
+    public ResponseEntity setFavorite(@RequestBody FavoritePayload favoritePayload) {
 
-        Set<JobPost> favePosts = getCurrentUser().getFavePosts();
-        JobPost jobPost = jobPostRepository.findOne(jobPostId);
 
-        if (favorited)
+        User currentUser = getCurrentUser();
+        Set<JobPost> favePosts = currentUser.getFavePosts();
+        JobPost jobPost = jobPostRepository.findOne(favoritePayload.getJobPostId());
+
+        if (favoritePayload.getIsFavorite())
             favePosts.add(jobPost);
         else
             favePosts.remove(jobPost);
+        userRepository.save(currentUser);
 
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }

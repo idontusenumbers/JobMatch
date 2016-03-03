@@ -54,16 +54,16 @@ You forgot to include the dashboard body
 						<#break>
 					<#case "Seeker">
 						<li><a href="${s.mvcUrl("UC#getQualifications").arg(0,currentUser.id).build()}">Qualifications</a></li>
-						<#break>
+						<li><a href="${s.mvcUrl("JC#listFavoriteJobPosts").arg(0,currentUser.id).build()}">Favorites</a></li>
+					<#break>
 					<#case "Employer">
-						<li><a href="${s.mvcUrl("CC#getCompany").arg(0,currentUser.company.id).build()}">My company</a></li>
-						<#break>
+					<li><a href="${s.mvcUrl("CC#getCompany").arg(0,currentUser.company.id).build()}">My company</a></li>
+					<#break>
 					<#default>
 
-						Unknown role ${currentUser.role.name}
-						<#break>
+					Unknown role ${currentUser.role.name}
+					<#break>
 				</#switch>
-
 				<li><a href="/logout">Logout</a></li>
 			</ul>
 		</nav>

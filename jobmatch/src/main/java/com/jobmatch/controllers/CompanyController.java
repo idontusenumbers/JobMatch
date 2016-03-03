@@ -27,7 +27,7 @@ public class CompanyController extends BaseController {
         model.addAttribute("cultures", RankedCulture.getCulturesAndRanks(company.getCultures()));
 
         User user = getCurrentUser();
-        if (user.getRole().getId() == Role.ADMIN || user.getCompany().getId() == companyId) {
+        if (user.getRole().getId() == Role.ADMIN || (user.getCompany() != null && user.getCompany().getId() == companyId)) {
             model.addAttribute("cultureOptions", cultureRepository.getMap());
             return "companies/edit";
         } else {

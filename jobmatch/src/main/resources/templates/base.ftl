@@ -35,6 +35,11 @@
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic'
 			  rel='stylesheet' type='text/css'>
 		<@page_head/>
+		<script>
+			window.FAVE_URL = '${s.mvcUrl("JC#setFavorite").build()}';
+			window.CSRF = '${_csrf.token}';
+
+		</script>
 	</head>
 	<body>
 <#--
