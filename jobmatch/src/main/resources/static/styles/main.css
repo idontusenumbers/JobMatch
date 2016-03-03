@@ -13,7 +13,7 @@ html, body {
 }
 
 header{
-    text-align:center;
+    text-align:left;
     background:#F2F2F2;
     color:#999999;
     height:50px;
@@ -38,7 +38,8 @@ h3{
 }
 
 .headline{
-    padding-left:320px;
+    padding-left:20%;
+    text-align:center;
 }
 
 .logo {
@@ -47,6 +48,7 @@ h3{
 }
 
 #sidebar {
+    padding-top: 20px;
     float: left;
     width: 20%;
     height: 100%;
