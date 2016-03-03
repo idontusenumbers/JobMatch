@@ -234,18 +234,15 @@ p.note{
 
 .jobs-list>ul>li{
     font-family: "Montserrat", sans-serif;
-    color: #6B6B6B;
     margin-bottom: 5px;
     padding: 25px;
-    background-color: #F2F2F2;
-    border: 2px solid #AEAEAE;
-    border-radius: 2px;
+    background-color: #FF9933;
+    color:white;
 }
 
 .jobs-list>ul>li:hover{
     color: white;
-    background-color: #FF9933;
-    border: 2px solid #FF9933;
+    background-color: #6B6B6B;
     cursor: pointer;
 }
 
@@ -256,6 +253,15 @@ ul.title-matches-list>li>div.title{
 ul.title-matches-list>li>div.matches{
     float: right
 }
+
+#bg a:link, a:visited, a:hover {
+    color: white;
+}
+
+#bg a:hover {
+    color: #FF9933;
+}
+
 .call-to-action,
 .button{
     padding:10px 20px 10px 20px;
