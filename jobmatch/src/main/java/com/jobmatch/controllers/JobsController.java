@@ -2,12 +2,8 @@ package com.jobmatch.controllers;
 
 import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
-import com.jobmatch.models.JobPost;
-import com.jobmatch.models.RankedSkill;
-import com.jobmatch.models.Role;
-import com.jobmatch.models.Skill;
-import com.jobmatch.models.User;
-import com.jobmatch.repositories.SkillRepository;
+import com.jobmatch.models.*;
+import com.jobmatch.viewmodels.CountedJobPost;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +30,11 @@ public class JobsController extends BaseController {
                 model.addAttribute("jobs", allJobs);
                 return "/jobs/list"; // TODO once this controller is working, maybe we could make these redirects relative? I don't know if it works like that
             case Role.EMPLOYER:
-                Iterable<JobPost> myJobs = jobPostRepository.findByCreator(getCurrentUser());
-                model.addAttribute("jobs", myJobs);
-                return "/jobs/list";
+
+                model.addAttribute("countedMatches", CountedJobPost.countJobs(
+                        jobPostRepository.findByCreator(getCurrentUser()), getSeekers()
+                ));
+                return "/jobs/counted-list";
             case Role.SEEKER:
                 List<CandidateScore> matchingJobs = JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
                 model.addAttribute("jobs", matchingJobs);
@@ -75,7 +73,7 @@ public class JobsController extends BaseController {
     public String viewJob(@PathVariable int jobPostId, Model model) {
         JobPost jobPost = jobPostRepository.findOne(jobPostId);
 
-        model.addAttribute("job", jobPost);
+        model.addAttribute("jobPost", jobPost);
         model.addAttribute("title", jobPost.getJobTitle());
         return "/jobs/view";
     }
@@ -84,7 +82,7 @@ public class JobsController extends BaseController {
     public String updateJob(@PathVariable int jobPostId, Model model) {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
-        model.addAttribute("job", existingPost);
+        model.addAttribute("jobPost", existingPost);
         model.addAttribute("skills", RankedSkill.getSkillsAndRanks(existingPost.getSkills()));
         model.addAttribute("skillOptions", skillRepository.getMap());
         model.addAttribute("title", "Update " + existingPost.getJobTitle());
@@ -119,13 +117,16 @@ public class JobsController extends BaseController {
         JobPost job = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(job.getCreator());
 
-        Iterable<User> seekers = userRepository.findByRoleId(Role.SEEKER);
-        List<CandidateScore> scoredCandidates = JobCandidateEvaluator.findMatchingCandidates(job, seekers);
+        List<CandidateScore> scoredCandidates = JobCandidateEvaluator.findMatchingCandidates(job, getSeekers());
 
-        model.addAttribute("job", job);
+        model.addAttribute("jobPost", job);
         model.addAttribute("scoredCandidates", scoredCandidates);
 
         return "/jobs/candidates";
+    }
+
+    private Iterable<User> getSeekers() {
+        return userRepository.findByRoleId(Role.SEEKER);
     }
 
 

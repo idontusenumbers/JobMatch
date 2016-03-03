@@ -6,24 +6,24 @@
 <#macro dashboard_body>
 
 
-${job.jobTitle}
-${job.jobCountry}
-${job.industry}
-${job.jobType}
-${job.yearsExperience}
+${jobPost.jobTitle}
+${jobPost.jobCountry}
+${jobPost.industry}
+${jobPost.jobType}
+${jobPost.yearsExperience}
 
 <p>Skills:</p>
 <ul>
-	<#list job.skills as skillRank>
+	<#list jobPost.skills as skillRank>
         <li>${skillRank.skill.name}: ${skillRank.rank}</li>
 	<#else>
         No skills
 	</#list>
 </ul>
-<a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,job.id).build()}">Delete</a>
-<a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,job.id).build()}">Edit</a>
+<a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,jobPost.id).build()}">Delete</a>
+<a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,jobPost.id).build()}">Edit</a>
 
-<a  href="${s.mvcUrl("JC#findCandidates").arg(0,job.id).build()}">View candidates</a>
+<a  href="${s.mvcUrl("JC#findCandidates").arg(0,jobPost.id).build()}">View candidates</a>
 
 </#macro>
 

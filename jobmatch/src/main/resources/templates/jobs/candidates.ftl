@@ -5,8 +5,8 @@
 </#macro>
 <#macro dashboard_body>
 
-<a href="${s.mvcUrl("JC#viewJob").arg(0,job.id).build()}">
-${job.jobTitle}
+<a href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">
+${jobPost.jobTitle}
 </a>
 <p>Candidates:</p>
 <ul>

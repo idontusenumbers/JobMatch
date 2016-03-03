@@ -8,12 +8,12 @@
 <div class="jobs-list">
 	<ul class="title-matches-list">
 
-		<#list jobs as scoredJob>
-			<#assign jobPost = scoredJob.jobPost />
-			<#assign closeness = scoredJob.closeness />
+		<#list countedMatches as countedMatch>
+			<#assign jobPost = countedMatch.jobPost />
+			<#assign count = countedMatch.count />
 			<li>
 				<div class="title"><a href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">${jobPost.jobTitle}</a></div>
-				<div class="matches">Closeness: ${closeness}</div>
+				<div class="matches">Matches: ${count}</div>
 			</li>
 		<#else>
 			No matching jobs
