@@ -28,6 +28,7 @@ header{
 
 .logo-link {
     text-decoration: none;
+    color: inherit;
 }
 
 h1{
