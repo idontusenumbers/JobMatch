@@ -10,8 +10,8 @@ You forgot to include the dashboard body
 <#macro page_body>
 <div id="wrapper">
 	<header>
-		<h1 class="headline"><span class="logo">JobMatch</span> | <span
-				class="role-name">${currentUser.role.name}</span></h1>
+        <h1 class="headline"><a href="/" class="logo-link"><span class="logo">JobMatch</span> | <span
+                class="role-name">${currentUser.role.name}</span></a></h1>
 	</header>
 
 	<div id="sidebar">
