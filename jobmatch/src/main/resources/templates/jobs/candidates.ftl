@@ -12,25 +12,26 @@
             <div id="nobg"><a href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">${jobPost.jobTitle}</a></div>
         </th>
     </tr>
-    <tr>
-        <ul>
-            <#list scoredCandidates as scoredCandidate>
-                <td>
-                    <div id="nobg">
-                        <a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}">
-                            <#if scoredCandidate.user.contact?? >
+    <ul>
+        <#list scoredCandidates as scoredCandidate>
+        <tr>
+            <td>
+                <div id="nobg">
+                    <a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}">
+                        <#if scoredCandidate.user.contact?? >
                             ${scoredCandidate.user.contact.firstName}
                             <#else>
-                            ${scoredCandidate.user.username}
-                            </#if>
-                        </a>
-                    </div>
-                </td>
-                <td>Closeness: ${scoredCandidate.closeness}</td>
-            <#else>
-                No matching candidates
-            </#list>
-        </ul>
+                        ${scoredCandidate.user.username}
+                        </#if>
+                    </a>
+                </div>
+            </td>
+            <td>Closeness: ${scoredCandidate.closeness}</td>
+        <#else>
+            No matching candidates
+        </tr>
+        </#list>
+    </ul>
     </tr>
 </table>
 

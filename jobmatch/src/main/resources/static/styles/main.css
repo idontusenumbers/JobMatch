@@ -131,8 +131,6 @@ h2.company {
 /*job posting*/
 #job-post{
     width:100%;
-    padding-left:25%;
-    padding-right:25%;
 }
 
 /*sortable list*/
@@ -233,6 +231,10 @@ p.note{
 
 .jobs-list>ul{
     list-style-type: none;
+    align:left;
+    margin-left:10%;
+    margin-right:10%;
+    padding-left:0px;
 }
 
 .jobs-list>ul>li{
@@ -241,7 +243,6 @@ p.note{
     padding: 25px;
     background-color: #FF9933;
     color:white;
-    align:center;
 }
 
 .jobs-list>ul>li:hover{
