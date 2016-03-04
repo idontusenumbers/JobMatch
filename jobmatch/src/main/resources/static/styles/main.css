@@ -31,6 +31,10 @@ header{
     color: inherit;
 }
 
+.logo-link:hover {
+    text-decoration: none;
+}
+
 h1{
     font-family:'Montserrat',sans-serif;
     font-weight:400;
