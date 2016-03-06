@@ -26,7 +26,7 @@ oops, you forgot to implement an paged_dashboard_page_body in your template!
 
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-			<progress id="progress"></progress>
+            <div id="progress"></div>
 
 
 			<@paged_dashboard_page_body/>

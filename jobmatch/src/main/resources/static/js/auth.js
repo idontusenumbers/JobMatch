@@ -3,6 +3,14 @@ var $pages = $('section[data-page]');
 var $back = $('#back');
 var $next = $('#next');
 var $form = $('form');
+
+$(function () {
+    $progress.progressbar({
+        value: getCurrentPageNumber(),
+        max: $pages.length - 1
+    });
+});
+
 function onLastPage() {
     return getCurrentPageNumber() == $pages.length - 1;
 }
@@ -20,6 +28,10 @@ var changePage = function (step) {
     var current = getCurrentPageNumber();
     var next = Math.max(Math.min(current + step, $pages.length - 1), 0);
 
+    $progress.progressbar({
+        value: next
+    });
+
     $pages.hide().eq(next).show();
     updateButtons();
 }
@@ -33,12 +45,7 @@ $next.on("click", function () {
     else
         changePage(1);
 });
-
-$progress.attr({
-    'max': $pages.length,
-    'value': 0
-});
-changePage(-1000);
+changePage(0);
 updateButtons();
 
 // TODO handle focus, required field checking, and enter key to advance to next field
