@@ -1,18 +1,12 @@
 package com.jobmatch.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Company {
+public class Company implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +18,10 @@ public class Company {
     private String zipcode;
     private String website;
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "COMPANY_CULTURES",
+            joinColumns = @JoinColumn(name = "company_id"),
+            inverseJoinColumns = @JoinColumn(name = "ranked_culture_id"))
     protected Set<RankedCulture> cultures = new HashSet<>();
 
 
@@ -91,12 +87,12 @@ public class Company {
     @Override
     public String toString() {
         return "Company{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
-               ", phone='" + phone + '\'' +
-               ", address='" + address + '\'' +
-               ", zipcode='" + zipcode + '\'' +
-               ", website='" + website + '\'' +
-               '}';
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                ", website='" + website + '\'' +
+                '}';
     }
 }
