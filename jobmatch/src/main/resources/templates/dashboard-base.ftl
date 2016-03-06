@@ -36,7 +36,7 @@ You forgot to include the dashboard body
 				<#break>
 			<#default>
 
-				Unknown role ${currentUser.role.name}
+				Unknown role [${currentUser.role.name}]
 				<#break>
 		</#switch>
 

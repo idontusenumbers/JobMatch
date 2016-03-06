@@ -5,6 +5,7 @@ import com.jobmatch.algorithm.JobCandidateEvaluator;
 import com.jobmatch.models.*;
 import com.jobmatch.viewmodels.CountedJobPost;
 import com.jobmatch.viewmodels.FavoritePayload;
+import com.jobmatch.viewmodels.RankMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,7 +60,7 @@ public class JobsController extends BaseController {
     public String createJob(Model model) {
         JobPost newJobPost = new JobPost();
         model.addAttribute("title", "Create job post");
-        model.addAttribute("skills", RankedSkill.getSkillsAndRanks(newJobPost.getSkills()));
+        model.addAttribute("skills", new RankMap<>(newJobPost.getSkills()));
         model.addAttribute("skillOptions", skillRepository.getMap());
         model.addAttribute("jobPost", newJobPost);
         return "/jobs/edit";
@@ -80,6 +81,8 @@ public class JobsController extends BaseController {
 
         model.addAttribute("jobPost", jobPost);
         model.addAttribute("title", jobPost.getJobTitle());
+        model.addAttribute("skills", new RankMap<>(jobPost.getSkills()));
+
         return "/jobs/view";
     }
 
@@ -88,7 +91,7 @@ public class JobsController extends BaseController {
         JobPost existingPost = jobPostRepository.findOne(jobPostId);
         enforceSameUserUnlessAdmin(existingPost.getCreator());
         model.addAttribute("jobPost", existingPost);
-        model.addAttribute("skills", RankedSkill.getSkillsAndRanks(existingPost.getSkills()));
+        model.addAttribute("skills", new RankMap<>(existingPost.getSkills()));
         model.addAttribute("skillOptions", skillRepository.getMap());
         model.addAttribute("title", "Update " + existingPost.getJobTitle());
         return "/jobs/edit";

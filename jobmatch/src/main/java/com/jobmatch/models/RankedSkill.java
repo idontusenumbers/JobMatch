@@ -6,13 +6,10 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.*;
 
 @Entity
-public class RankedSkill implements Serializable {
+public class RankedSkill implements RankedIdentifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,15 +51,15 @@ public class RankedSkill implements Serializable {
         this.rank = rank;
     }
 
-    public static Map<String, String> getSkillsAndRanks(Set<RankedSkill> skills) {
-        return StreamSupport.stream(skills.spliterator(), false)
-                .collect(Collectors.toMap(rankedSkill -> String.valueOf(rankedSkill.getSkill().getId()),
-                        rankedSkill -> String.valueOf(rankedSkill.getRank())));
+    @Override
+    public int getRankedId() {
+        return skill.getId();
     }
 
-    /*public static List<RankedSkill> getSkillsAndRanks(Set<RankedSkill> skills) {
-        return new ArrayList<>(skills);
-    }*/
+    @Override
+    public String getRankedName() {
+        return skill.getName();
+    }
 
     public static void updateSkillSet(String[] skills, String[] ranks, Set<RankedSkill> skillSet, SkillRepository skillRepository) {
         skillSet.clear();

@@ -4,6 +4,7 @@ import com.jobmatch.models.Company;
 import com.jobmatch.models.RankedCulture;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
+import com.jobmatch.viewmodels.RankMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class CompanyController extends BaseController {
     public String getCompany(@PathVariable int companyId, Model model) {
         Company company = companyRepository.findOne(companyId);
         model.addAttribute("company", company);
-        model.addAttribute("cultures", RankedCulture.getCulturesAndRanks(company.getCultures()));
+        model.addAttribute("cultures", new RankMap<>(company.getCultures()));
 
         User user = getCurrentUser();
         if (user.getRole().getId() == Role.ADMIN || (user.getCompany() != null && user.getCompany().getId() == companyId)) {

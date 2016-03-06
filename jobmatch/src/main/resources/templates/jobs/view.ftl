@@ -28,13 +28,13 @@
     <tr>
         <td><h2>Skills:</h2></td>
         <td>
-            <ul>
-                <#list jobPost.skills as skillRank>
-                    <li>${skillRank.skill.name}: ${skillRank.rank}</li>
+            <ol>
+                <#list skills.sortedRankables as skillRank>
+                    <li>${skillRank.skill.name}</li>
                 <#else>
                     No skills
                 </#list>
-            </ul>
+            </ol>
         </td>
     </tr>
     <tr>

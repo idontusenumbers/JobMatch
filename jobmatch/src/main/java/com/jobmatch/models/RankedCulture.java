@@ -6,13 +6,10 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.*;
 
 @Entity
-public class RankedCulture implements Serializable {
+public class RankedCulture implements RankedIdentifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +19,8 @@ public class RankedCulture implements Serializable {
     @JoinColumn(nullable = false)
     protected Culture culture;
 
-    @Min(0) @Max(10)
+    @Min(0)
+    @Max(10)
     protected int rank;
 
     public RankedCulture() {
@@ -45,12 +43,23 @@ public class RankedCulture implements Serializable {
         this.culture = culture;
     }
 
+    @Override
     public int getRank() {
         return rank;
     }
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    @Override
+    public int getRankedId() {
+        return culture.getId();
+    }
+
+    @Override
+    public String getRankedName() {
+        return culture.getName();
     }
 
     @Override
@@ -93,9 +102,8 @@ public class RankedCulture implements Serializable {
             }
         }
     }
-       public static Map<String, String> getCulturesAndRanks(Set<RankedCulture> cultures) {
-                return StreamSupport.stream(cultures.spliterator(), false)
-                .collect(Collectors.toMap(rankedCulture -> String.valueOf(rankedCulture.getCulture().getId()),
-                                          rankedCulture -> String.valueOf(rankedCulture.getRank())));
-    }
+
+
+
+
 }

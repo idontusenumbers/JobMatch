@@ -4,6 +4,7 @@ import com.jobmatch.models.Education;
 import com.jobmatch.models.RankedCulture;
 import com.jobmatch.models.RankedSkill;
 import com.jobmatch.models.User;
+import com.jobmatch.viewmodels.RankMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +39,8 @@ public class UserQualificationsController extends BaseController {
         User user = userRepository.findOne(userId);
         enforceSameUserUnlessAdmin(user);
         model.addAttribute("user", user);
-        model.addAttribute("skills", RankedSkill.getSkillsAndRanks(user.getSkills()));
-        model.addAttribute("cultures", RankedCulture.getCulturesAndRanks(user.getCultures()));
+        model.addAttribute("skills", new RankMap<>(user.getSkills()));
+        model.addAttribute("cultures", new RankMap<>(user.getCultures()));
         model.addAttribute("resume", user.getResume());
         model.addAttribute("references", user.getReferences());
         model.addAttribute("education", new Education());

@@ -143,19 +143,22 @@ h2.company {
 }
 
 /*sortable list*/
-ul.sortable-list{
+ol.sortable-list,
+ul.checkbox-list{
     padding:0;
+    display:inline-block;
+    vertical-align: top;
 }
 
-ul.sortable-list li{
+ol.sortable-list li,
+ul.checkbox-list li{
     display:block;
-    width: 150px;
-    margin-bottom: 10px;
-    background-color: white;
 }
-
-ul.sortable-list li:hover,
-ul.sortable-list li:hover{
+ol.sortable-list li{
+    padding: 2px 5px;
+    margin: 1px;
+    background-color: #FF9933;
+    color: white;
     cursor: move;
 }
 
@@ -366,7 +369,7 @@ a[data-favorite="true"]{background-color:red;}
 }
 
 table {
-    width:50%;
+    width:80%;
     border-collapse:collapse;
     font-size: 12px;
     color: #5E5E5E;

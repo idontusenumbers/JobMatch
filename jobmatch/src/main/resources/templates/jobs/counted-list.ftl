@@ -13,7 +13,7 @@
             <#assign count = countedMatch.count />
             <li>
                 <div class="title" id="bg"><a
-                        href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">${jobPost.jobTitle}</a></div>
+                        href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">${jobPost.jobTitle}&nbsp;</a></div>
                 <div class="matches">Matches: ${count}</div>
             </li>
         <#else>

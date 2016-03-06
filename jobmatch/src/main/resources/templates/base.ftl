@@ -54,6 +54,7 @@
     <@page_body/>
 
     <script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.js"></script>
     <script type="text/javascript" src="/static/js/main.js"></script>
 
     <@page_body_footer/>
