@@ -37,7 +37,7 @@
             </ol>
         </td>
     </tr>
-    <#if currentUser.role == "1" || currentUser.role == "3">
+    <#if currentUser.role.name == "Admin" || currentUser.role.name == "Employer">
     <tr>
         <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,jobPost.id).build()}">Delete</a></td>
         <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,jobPost.id).build()}">Edit</a></td>
