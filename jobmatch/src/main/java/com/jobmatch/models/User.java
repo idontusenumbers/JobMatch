@@ -73,8 +73,10 @@ public class User implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected Set<Reference> references = new HashSet<>();
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_CULTURES",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "ranked_culture_id"))
     protected Set<RankedCulture> cultures = new HashSet<>();
 
 

@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Set;
 
 @Entity
 public class RankedCulture implements RankedIdentifiable, Serializable {
@@ -15,7 +15,7 @@ public class RankedCulture implements RankedIdentifiable, Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(nullable = false)
     protected Culture culture;
 
@@ -102,8 +102,6 @@ public class RankedCulture implements RankedIdentifiable, Serializable {
             }
         }
     }
-
-
 
 
 }

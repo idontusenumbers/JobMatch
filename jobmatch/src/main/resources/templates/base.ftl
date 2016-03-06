@@ -34,6 +34,9 @@
 		<link rel="stylesheet" href="/static/styles/main.css">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700,400italic,700italic'
 			  rel='stylesheet' type='text/css'>
+        <link href="/static/styles/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/styles/jquery-ui.structure.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/styles/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
 		<@page_head/>
 		<script>
 			window.FAVE_URL = '${s.mvcUrl("JC#setFavorite").build()}';
@@ -54,7 +57,7 @@
     <@page_body/>
 
     <script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/static/js/main.js"></script>
 
     <@page_body_footer/>
