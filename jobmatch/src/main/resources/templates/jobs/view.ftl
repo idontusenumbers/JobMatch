@@ -37,6 +37,7 @@
             </ul>
         </td>
     </tr>
+    <#if currentUser.role == "1" || currentUser.role == "3">
     <tr>
         <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,jobPost.id).build()}">Delete</a></td>
         <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,jobPost.id).build()}">Edit</a></td>
@@ -46,6 +47,7 @@
             <div id="nobg" align="center"><a href="${s.mvcUrl("JC#findCandidates").arg(0,jobPost.id).build()}">View candidates</a></div>
         </td>
     </tr>
+    </#if>
 </table>
 
 </#macro>
