@@ -32,6 +32,11 @@ public class JobPost implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "ranked_skill_id"))
     protected Set<RankedSkill> skills = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "JOB_POST_CULTURES",
+            joinColumns = @JoinColumn(name = "job_post_id"),
+            inverseJoinColumns = @JoinColumn(name = "ranked_culture_id"))
+    protected Set<RankedCulture> cultures = new HashSet<>();
 
     @OneToOne
     @JoinColumn
@@ -102,6 +107,10 @@ public class JobPost implements Serializable {
 
     public Set<RankedSkill> getSkills() {
         return skills;
+    }
+
+    public Set<RankedCulture> getCultures() {
+        return cultures;
     }
 
     public User getCreator() {

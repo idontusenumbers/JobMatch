@@ -2,6 +2,7 @@ package com.jobmatch.algorithm;
 
 import com.jobmatch.models.JobPost;
 import com.jobmatch.models.RankedSkill;
+import com.jobmatch.models.RankedCulture;
 import com.jobmatch.models.User;
 
 import java.util.*;
@@ -45,6 +46,8 @@ public class JobCandidateEvaluator {
         int result = 0;
         Set<RankedSkill> us = user.getSkills();
         Set<RankedSkill> jps = jobPost.getSkills();
+        Set<RankedCulture> ugc = user.getCultures();
+        Set<RankedCulture> jpgc = jobPost.getCultures();
 
         // TODO using hashmaps might make this more efficient
 
@@ -52,6 +55,16 @@ public class JobCandidateEvaluator {
             for (RankedSkill u : us) {
                 if (jp.equals(u)) {
                     result += Math.abs(jp.getRank() - u.getRank());
+                }else{
+                    result+=MIN_DISTANCE;
+                }
+            }
+        }
+
+        for (RankedCulture j : jpgc) {
+            for (RankedCulture u : ugc) {
+                if (j.equals(u)) {
+                    result += Math.abs(j.getRank() - u.getRank());
                 }else{
                     result+=MIN_DISTANCE;
                 }
