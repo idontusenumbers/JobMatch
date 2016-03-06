@@ -15,28 +15,28 @@ oops, you forgot to implement an paged_dashboard_page_body in your template!
 
 
 <div class="site-container">
-	<div class="grid-container">
-		<@error_list errors/>
+    <div class="grid-container">
+        <@error_list errors/>
 
 
-		<form <@form_attributes/> class="form form-login">
+        <form <@form_attributes/> class="form form-login">
 
-			<@spring.bind "user" />
-			<@spring.showErrors '*', 'errors' />
+            <@spring.bind "user" />
+            <@spring.showErrors '*', 'errors' />
 
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <div id="progress"></div>
 
 
-			<@paged_dashboard_page_body/>
+            <@paged_dashboard_page_body/>
 
-			<input id="back" type="button" value="&lt; back" class="button">
-			<input id="next" type="button" value="" class="call-to-action">
-			<p><a href="${s.mvcUrl("UC#delete").arg(0,user.id).build()}">Delete My Account</a></p>
+            <input id="back" type="button" value="&lt; back" class="button">
+            <input id="next" type="button" value="" class="call-to-action">
+            <p><a href="${s.mvcUrl("UC#delete").arg(0,user.id).build()}">Delete My Account</a></p>
 
-		</form>
-	</div>
+        </form>
+    </div>
 </div>
 
 
