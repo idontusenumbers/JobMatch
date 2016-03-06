@@ -17,23 +17,23 @@
         </tr>
         <tr>
             <td><h2>Company Name:</h2></td>
-            <td><@spring.formInput path="company.name" attributes='class="form-input" placeholder="Company Name"' /></td>
+            <td><@spring.formInput path="company.name" attributes='class="form-input" placeholder="Example Company"' /></td>
         </tr>
         <tr>
             <td><h2>Phone:</h2></td>
-            <td><@spring.formInput path="company.phone" attributes='class="form-input" placeholder="Company phone"' /></td>
+            <td><@spring.formInput path="company.phone" attributes='class="form-input" placeholder="555-555-5555"' /></td>
         </tr>
         <tr>
             <td><h2>Address:</h2></td>
-            <td><@spring.formInput path="company.address" attributes='class="form-input" placeholder="Company address"' /></td>
+            <td><@spring.formInput path="company.address" attributes='class="form-input" placeholder="123 State St."' /></td>
         </tr>
         <tr>
-            <td><h2>Phone:</h2></td>
-            <td><@spring.formInput path="company.zipcode" attributes='class="form-input" placeholder="Company zipcode"' /></td>
+            <td><h2>Zipcode:</h2></td>
+            <td><@spring.formInput path="company.zipcode" attributes='class="form-input" placeholder="60614"' /></td>
         </tr>
         <tr>
             <td><h2>Website:</h2></td>
-            <td><@spring.formInput path="company.website" attributes='class="form-input" placeholder="Company website"' /></td>
+            <td><@spring.formInput path="company.website" attributes='class="form-input" placeholder="www.example.com"' /></td>
         </tr>
         <tr>
             <td><h2>Culture:</h2></td>

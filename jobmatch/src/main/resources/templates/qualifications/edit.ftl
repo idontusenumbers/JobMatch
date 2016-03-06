@@ -64,6 +64,7 @@
             <td><h2>Year Graduated:</h2></td>
             <td>${education.yearGraduated}</td>
         </tr>
+    <th colspan="2"></th>
     </#list>
 </table>
 <br>
@@ -73,7 +74,7 @@
 
     <table id="t1" align="center">
         <tr>
-            <th colspan="2">Edit Education</th>
+            <th colspan="2">Add an Education</th>
         </tr>
         <tr>
             <td><h2>School Name:</h2></td>

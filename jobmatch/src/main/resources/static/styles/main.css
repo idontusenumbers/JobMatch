@@ -6,6 +6,8 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
+    color:#5E5E5E;
+
 }
 
 #wrapper {
@@ -134,12 +136,13 @@ h2.company {
 #content{
     float:left;
     width:100%;
-    margin-top: 60px;
+    margin-top: 50px;
 }
 
 /*job posting*/
 #job-post{
-    width:100%;
+    width:50%;
+    margin-left:25%;
 }
 
 /*sortable list*/
@@ -178,6 +181,12 @@ textarea{
     width:90%;
     height:100px;
     border-radius:3px;
+}
+
+.form-input{
+    border:1px solid #E4E4E4;
+    border-radius:3px;
+    padding:10px;
 }
 
 .form-jobpost select{
@@ -371,8 +380,9 @@ a[data-favorite="true"]{background-color:red;}
 table {
     width:80%;
     border-collapse:collapse;
-    font-size: 12px;
+    font-size: 13px;
     color: #5E5E5E;
+    margin-top: 20px;
 }
 th, td {
     padding: 10px;
