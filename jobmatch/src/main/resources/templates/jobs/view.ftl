@@ -28,7 +28,7 @@
     <tr>
         <td><h2>Skills:</h2></td>
         <td>
-            <ul>
+            <ul style="list-style-type: none; padding:0px">
                 <#list jobPost.skills as skillRank>
                     <li>${skillRank.skill.name}: ${skillRank.rank}</li>
                 <#else>
