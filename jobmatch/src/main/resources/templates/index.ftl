@@ -16,12 +16,14 @@
     </div>
 
     <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Forgot...</a>
-    <input type="submit" value="Login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Login
+    </button>
 </form>
 
 <div class="form-text">
     <p>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
                 onclick="parent.location='/register'">Register
         </button>
     </p>

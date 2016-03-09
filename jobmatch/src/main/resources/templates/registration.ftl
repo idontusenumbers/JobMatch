@@ -35,8 +35,10 @@
         </label>
     </div>
     <a href="/login" class="forgot-password">&lt; login</a>
-    <input type="submit" value="create"
-           class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    <button type="submit" value="create"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Register
+    </button>
 </form>
 
 
