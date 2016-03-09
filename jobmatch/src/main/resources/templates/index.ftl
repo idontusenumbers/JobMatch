@@ -14,7 +14,6 @@
         <input class="mdl-textfield__input" type="password" id="login-password" name="password" required>
         <label class="mdl-textfield__label" for="login-password">Password</label>
     </div>
-    <br />
 
     <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Forgot...</a>
     <input type="submit" value="Login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
@@ -22,7 +21,9 @@
 
 <div class="form-text">
     <p>
-        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="parent.location='/register'">Register</button>
+        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+                onclick="parent.location='/register'">Register
+        </button>
     </p>
 </div>
 </#macro>
