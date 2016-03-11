@@ -21,13 +21,13 @@
         <h3>Education</h3>
         <#if user.education??>
             <#list user.education as edu>
-            <b>Name:</b> ${edu.schoolName} <br>
-            <b>Country:</b> ${edu.country} <br>
-            <b>Degree:</b> ${edu.degree} <br>
-            <b>Country:</b> ${edu.country} <br>
-            <b>Degree:</b> ${edu.degree} <br>
-            <b>Major:</b> ${edu.major} <br>
-            <b>Year Graduated:</b> ${edu.yearGraduated} <br>
+                <b>Name:</b> ${edu.schoolName} <br>
+                <b>Country:</b> ${edu.country} <br>
+                <b>Degree:</b> ${edu.degree} <br>
+                <b>Country:</b> ${edu.country} <br>
+                <b>Degree:</b> ${edu.degree} <br>
+                <b>Major:</b> ${edu.major} <br>
+                <b>Year Graduated:</b> ${edu.yearGraduated} <br>
             </#list>
         <#else>
             No education listed.
@@ -40,15 +40,23 @@
             ${user.experiences}
             </#list>
         <#else>
-            No experience listed.
+            <font color="red">this section needs to be fixed, yo</font>
         </#if>
     </div>
     <div class="view-job">
         <h3>Contact Info</h3>
-        <#if user.contact?? && ( user.contact.contact?has_content)>
-        ${user.contact}
+        <#if user.contact??>
+            <b>Phone: </b> ${user.contact.phone} <br>
+            <b>Address: </b> ${user.contact.address} <br>
+            <b>Zip code: </b> ${user.contact.zipcode} <br>
+            <b>Website: </b>
+            <#if user.contact.website??>
+            ${user.contact.website} <br>
+            <#else>
+                n/a
+            </#if>
         <#else>
-            No contact information has been provided.
+            No contact information found.
         </#if>
     </div>
     <div class="view-job">
