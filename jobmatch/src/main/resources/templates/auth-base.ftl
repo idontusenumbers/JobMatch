@@ -11,7 +11,7 @@
 <#macro page_body>
 <div class="site-container">
     <div class="grid-container">
-        <h1><span class="logo">JobMatch</span> <@header/></h1>
+        <h1><span class="logo"><a href="/">JobMatch</a></span> <@header/></h1>
         <hr>
         <@error_list errors/>
         <@auth_page_body/>
