@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.jobmatch.models.Education;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
+import com.jobmatch.viewmodels.RankMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,8 @@ public class UserController extends BaseController {
         User user = userRepository.findOne(userId);
         enforceSameUserOrEmployer(user);
         model.addAttribute("user", user);
+        model.addAttribute("skills", new RankMap<>(user.getSkills()));
+        model.addAttribute("cultures", new RankMap<>(user.getCultures()));
         return "users/view-candidate";
     }
 
