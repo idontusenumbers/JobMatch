@@ -75,6 +75,12 @@ var setFavorite = function (el) {
 
         success: function () {
             $el.attr('data-favorite', newValue);
+
+            if (newValue == true) {
+                $el.find('.material-icons').text('favorite');
+            } else {
+                $el.find('.material-icons').text('favorite_border');
+            }
         }
 
     })

@@ -367,8 +367,6 @@ section[data-page]:not(:first-of-type){
     color: #999999;
 }
 
-a[data-favorite="true"]{background-color:red;}
-
 #nobg a:link, #nobg a:visited {
     color: darkorange;
 }
