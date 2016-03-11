@@ -38,25 +38,27 @@
     <div class="view-job">
         <h3>Skills & Culture</h3>
         <div style="float:left">
-            <ol type="1">
-                <li>First item</li>
-                <li>Second item</li>
-                <li>Third item</li>
-                <li>Fourth item</li>
-                <li>Fifth item</li>
-            </ol>
+            <#if user.skills ?? && ( user.skills?has_content)>
+                <#list user.skills as skill>
+                ${skill.rank}. ${skill.skill.name} <br>
+                </#list>
+            <#else>
+                User hasn't ranked skills.
+            </#if>
         </div>
 
         <div style="float:right">
-            <ol type="1">
-                <li>First item</li>
-                <li>Second item</li>
-                <li>Third item</li>
-                <li>Fourth item</li>
-                <li>Fifth item</li>
-            </ol>
+            <#if user.culture ?? && ( user.cultures?has_content)>
+                <#list user.cultures as culture>
+                ${culture.rank}. ${culture.culture.name} <br>
+                </#list>
+            <#else>
+                User hasn't ranked culture.
+            </#if>
         </div>
     </div>
+
+
 </div>
 
 </#macro>
