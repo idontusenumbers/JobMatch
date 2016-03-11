@@ -10,13 +10,50 @@
         <h2>Candidate</h2>
     </div>
     <div class="view-job">
-        <h3>Name</h3>
+        <h3>Contact</h3>
+        <b>Name: </b>
         <#if user.contact?? && ( user.contact.firstName?has_content || user.contact.lastName?has_content)>
         ${user.contact.firstName} ${user.contact.lastName}
         <#else>
         ${user.username}
+        </#if><br>
+        <#if user.contact??>
+            <b>Phone: </b> ${user.contact.phone} <br>
+            <b>Address: </b> ${user.contact.address} <br>
+            <b>Zip code: </b> ${user.contact.zipcode} <br>
+            <#if user.contact.website??>
+                <b>Website: </b> ${user.contact.website} <br>
+            </#if>
+        <#else>
+            No contact information found.
         </#if>
     </div>
+    <div class="view-job">
+        <h3>Skills & Culture</h3>
+        <table align="center">
+            <tr>
+                <td>
+                    <ol>
+                        <#list skills.sortedRankables as skillRank>
+                            <li>${skillRank.skill.name}</li>
+                        <#else>
+                            User hasn't ranked skills.
+                        </#list>
+                    </ol>
+                </td>
+                <td>
+                    <ol>
+                        <#list cultures.sortedRankables as cultureRank>
+                            <li>${cultureRank.culture.name}</li>
+                        <#else>
+                            User hasn't ranked culture.
+                        </#list>
+                    </ol>
+                </td>
+            </tr>
+        </table>
+    </div>
+
     <div class="view-job">
         <h3>Education</h3>
         <#if user.education??>
@@ -44,42 +81,17 @@
         </#if>
     </div>
     <div class="view-job">
-        <h3>Contact Info</h3>
-        <#if user.contact??>
-            <b>Phone: </b> ${user.contact.phone} <br>
-            <b>Address: </b> ${user.contact.address} <br>
-            <b>Zip code: </b> ${user.contact.zipcode} <br>
-            <b>Website: </b>
-            <#if user.contact.website??>
-            ${user.contact.website} <br>
-            <#else>
-                n/a
-            </#if>
+        <h3>References</h3>
+        <#if user.references??>
+            <#list user.references as ref>
+                <b>Name:</b> ${ref.firstName} ${ref.lastName} <br>
+                <b>Title:</b> ${ref.title} <br>
+                <b>Company:</b> ${ref.companyName} <br>
+                <b>Phone:</b> ${ref.phone} <br><br>
+            </#list>
         <#else>
-            No contact information found.
+            No references listed.
         </#if>
-    </div>
-    <div class="view-job">
-        <h3>Skills & Culture</h3>
-        <div style="float:left">
-            <ol>
-                <#list skills.sortedRankables as skillRank>
-                    <li>${skillRank.skill.name}</li>
-                <#else>
-                    User hasn't ranked skills.
-                </#list>
-            </ol>
-        </div>
-
-        <div style="float:right">
-            <ol>
-                <#list cultures.sortedRankables as cultureRank>
-                    <li>${cultureRank.culture.name}</li>
-                <#else>
-                    User hasn't ranked culture.
-                </#list>
-            </ol>
-        </div>
     </div>
 </div>
 
