@@ -1,9 +1,6 @@
 package com.jobmatch.controllers;
 
-import com.jobmatch.models.Education;
-import com.jobmatch.models.RankedCulture;
-import com.jobmatch.models.RankedSkill;
-import com.jobmatch.models.User;
+import com.jobmatch.models.*;
 import com.jobmatch.viewmodels.RankMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
@@ -42,7 +39,10 @@ public class UserQualificationsController extends BaseController {
         model.addAttribute("skills", new RankMap<>(user.getSkills()));
         model.addAttribute("cultures", new RankMap<>(user.getCultures()));
         model.addAttribute("resume", user.getResume());
-        model.addAttribute("references", user.getReferences());
+
+        model.addAttribute("reference", new Reference());
+        model.addAttribute("referenceList", user.getReferences());
+
         model.addAttribute("education", new Education());
         model.addAttribute("educationList", user.getEducationList());
 
@@ -50,6 +50,15 @@ public class UserQualificationsController extends BaseController {
         model.addAttribute("skillOptions", skillRepository.getMap());
 
         return "qualifications/edit";
+    }
+
+    @RequestMapping("/addReference")
+    public View addReference(@PathVariable Integer userId, @ModelAttribute Reference reference) {
+        User user = userRepository.findOne(userId);
+        user.getReferences().add(reference);
+        userRepository.save(user);
+
+        return getRedirectView("/");
     }
 
     @RequestMapping(value = "/addEducation", method = RequestMethod.POST)

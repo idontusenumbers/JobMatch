@@ -55,7 +55,7 @@
         <th class="mdl-data-table__cell--non-numeric" colspan="2">References</th>
     </tr>
     </thead>
-    <#list references as reference>
+    <#list referenceList as reference>
         <tbody>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
@@ -98,9 +98,73 @@
             </td>
         </tr>
         </tbody>
+        <th colspan="2"></th>
     </#list>
 </table>
 <br>
+<form action="${s.mvcUrl("UQC#addReference").arg(0, user.id).build()}" name="reference" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric" colspan="2">Add Reference</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h2>First Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="firstName" name="firstName" required>
+                    <label class="mdl-textfield__label" for="firstName">John</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Last Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="lastName" name="lastName" required>
+                    <label class="mdl-textfield__label" for="lastName">Doe</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Title:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="title" name="title" required>
+                    <label class="mdl-textfield__label" for="title">CTO</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Company Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="companyName" name="companyName" required>
+                    <label class="mdl-textfield__label" for="companyName">John Doe, LLC</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Phone:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="tel" id="phone" name="phone" required>
+                    <label class="mdl-textfield__label" for="phone">1234567890</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Add Reference" class="sidebar-button"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<br>
+<form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="reference" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
     <thead>
     <tr>
@@ -108,7 +172,7 @@
     </tr>
     </thead>
     <tbody>
-    <#list educationList as education>
+        <#list educationList as education>
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
             <td class="mdl-data-table__cell--non-numeric">${education.schoolName}</td>
@@ -129,12 +193,11 @@
             <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
             <td class="mdl-data-table__cell--non-numeric">${education.yearGraduated}</td>
         </tr>
-    <th colspan="2"></th>
-    </#list>
+        <th colspan="2"></th>
+        </#list>
     </tbody>
 </table>
-<br>
-<br>
+    <br/>
 <form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="education" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -148,7 +211,7 @@
         <tbody>
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
-            <td>
+            <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="schoolName" name="schoolName" required>
                     <label class="mdl-textfield__label" for="schoolName">DePaul University</label>
@@ -157,7 +220,7 @@
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
-            <td>
+            <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="country" name="country" required>
                     <label class="mdl-textfield__label" for="country">United States</label>
@@ -166,7 +229,7 @@
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
-            <td>
+            <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="degree" name="degree" required>
                     <label class="mdl-textfield__label" for="degree">Bachelor of Science</label>
@@ -175,7 +238,7 @@
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
-            <td>
+            <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="major" name="major" required>
                     <label class="mdl-textfield__label" for="major">Computer Science</label>
@@ -184,7 +247,7 @@
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
-            <td>
+            <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="yearGraduated" pattern="-?[0-9]*(\.[0-9]+)?"
                            name="yearGraduated" required>
@@ -195,12 +258,7 @@
         </tr>
         </tbody>
         <tr>
-            <td colspan="2">
-                <button type="submit" value="Submit"
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                    Add
-                </button>
-            </td>
+            <td colspan="2"><input type="submit" value="Add Education" class="sidebar-button"></td>
         </tr>
     </table>
 </form>

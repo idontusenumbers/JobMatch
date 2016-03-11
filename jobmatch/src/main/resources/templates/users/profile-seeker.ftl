@@ -26,7 +26,7 @@ action="profile" name="user" method="post"
 </section>
 <section data-page="2">
     <div class="form-field">
-		<br><@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' />
+        <br><@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' fieldType="tel" />
     </div>
 </section>
 

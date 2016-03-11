@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.jobmatch.models.Education;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
+import com.jobmatch.viewmodels.RankMap;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,7 @@ public class UserController extends BaseController {
     public String viewUser(@PathVariable int userId, Model model) {
         User user = userRepository.findOne(userId);
         enforceSameUserOrEmployer(user);
+        model.addAttribute("skills", new RankMap<>(user.getSkills()));
         model.addAttribute("user", user);
         return "users/view-candidate";
     }
@@ -80,7 +82,6 @@ public class UserController extends BaseController {
             return getRedirectView("/logout");
         }
     }
-
 
     /**
      * Adds Random Education to user (for now)
