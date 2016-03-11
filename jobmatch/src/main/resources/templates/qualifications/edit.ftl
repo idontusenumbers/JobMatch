@@ -12,25 +12,36 @@
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-    <table id="t1" align="center">
+    <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
         <tr>
-            <th colspan="2">Edit Qualifications</th>
+            <th colspan="2" class="mdl-data-table__cell--non-numeric">Edit Qualifications</th>
+        </tr>
+        </thead>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Resume:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <textarea class="mdl-textfield__input" type="text" rows="3" name="resume" id="resume"></textarea>
+                    <label class="mdl-textfield__label" for="resume">Resume...</label>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td><h2>Resume:</h2></td>
-            <td><@spring.formTextarea path="user.resume" attributes='class="" placeholder="Resume"' /></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h2>Skills:</h2>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <@rankedChoiceList fieldName="skills" availableChoices=skillOptions chosenChoices=skills />
+            </td>
         </tr>
         <tr>
-            <td><h2>Skills:</h2></td>
-            <td><@rankedChoiceList fieldName="skills" availableChoices=skillOptions chosenChoices=skills /></td>
-        </tr>
-        <tr>
-            <td><h2>Culture:</h2></td>
-            <td><@rankedChoiceList fieldName="cultures" availableChoices=cultureOptions chosenChoices=cultures /></td>
-        </tr>
-        <tr>
-            <td><h2>References:</h2></td>
-            <td>need to do</td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h2>Culture:</h2>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <@rankedChoiceList fieldName="cultures" availableChoices=cultureOptions chosenChoices=cultures />
+            </td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Submit" class="sidebar-button"></td>
@@ -38,66 +49,158 @@
     </table>
 </form>
 <br>
-<br>
-<table id="t1" align="center">
+<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <thead>
     <tr>
-        <th colspan="2">Education</th>
+        <th class="mdl-data-table__cell--non-numeric" colspan="2">References</th>
     </tr>
+    </thead>
+    <#list references as reference>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h2>First Name:</h2>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+            ${reference.firstName}
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h2>Last Name:</h2>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+            ${reference.lastName}
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h2>Title:</h2>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+            ${reference.title}
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h2>Company Name:</h2>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+            ${reference.companyName}
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h2>Phone:</h2>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+            ${reference.phone}
+            </td>
+        </tr>
+        </tbody>
+    </#list>
+</table>
+<br>
+<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric" colspan="2">Education</th>
+    </tr>
+    </thead>
+    <tbody>
     <#list educationList as education>
         <tr>
-            <td><h2>School Name:</h2></td>
-            <td>${education.schoolName}</td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">${education.schoolName}</td>
         </tr>
         <tr>
-            <td><h2>Country:</h2></td>
-            <td>${education.country}</td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">${education.country}</td>
         </tr>
         <tr>
-            <td><h2>Degree:</h2></td>
-            <td>${education.degree}</td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">${education.degree}</td>
         </tr>
         <tr>
-            <td><h2>Major:</h2></td>
-            <td>${education.major}</td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">${education.major}</td>
         </tr>
         <tr>
-            <td><h2>Year Graduated:</h2></td>
-            <td>${education.yearGraduated}</td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric">${education.yearGraduated}</td>
         </tr>
     <th colspan="2"></th>
     </#list>
+    </tbody>
 </table>
 <br>
 <br>
 <form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="education" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-    <table id="t1" align="center">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="t1" align="center">
+        <thead>
         <tr>
-            <th colspan="2">Add an Education</th>
+            <th class="mdl-data-table__cell--non-numeric">Add Education</th>
+            <th class="mdl-data-table__cell--non-numeric"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="schoolName" name="schoolName" required>
+                    <label class="mdl-textfield__label" for="schoolName">DePaul University</label>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td><h2>School Name:</h2></td>
-            <td><@spring.formInput path="education.schoolName" attributes='class="" placeholder="School Name"' /></td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="country" name="country" required>
+                    <label class="mdl-textfield__label" for="country">United States</label>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td><h2>Country:</h2></td>
-            <td><@spring.formInput path="education.country" attributes='class="" placeholder="Country"' /></td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="degree" name="degree" required>
+                    <label class="mdl-textfield__label" for="degree">Bachelor of Science</label>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td><h2>Degree:</h2></td>
-            <td><@spring.formInput path="education.degree" attributes='class="" placeholder="Degree"' /></td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="major" name="major" required>
+                    <label class="mdl-textfield__label" for="major">Computer Science</label>
+                </div>
+            </td>
         </tr>
         <tr>
-            <td><h2>Major:</h2></td>
-            <td><@spring.formInput path="education.major" attributes='class="" placeholder="Major"' /></td>
+            <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
+            <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="yearGraduated" pattern="-?[0-9]*(\.[0-9]+)?"
+                           name="yearGraduated" required>
+                    <label class="mdl-textfield__label" for="yearGraduated">2016</label>
+                    <span class="mdl-textfield__error">Input is not a number!</span>
+                </div>
+            </td>
         </tr>
+        </tbody>
         <tr>
-            <td><h2>Year Graduated:</h2></td>
-            <td><@spring.formInput path="education.yearGraduated" attributes='class="" placeholder="Year Graduated"' /></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" value="Submit" class="sidebar-button"/></td>
+            <td colspan="2">
+                <button type="submit" value="Submit"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    Add
+                </button>
+            </td>
         </tr>
     </table>
 </form>

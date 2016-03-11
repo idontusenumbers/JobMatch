@@ -36,7 +36,7 @@
     </div>
     <a href="/login" class="forgot-password">&lt; login</a>
     <button type="submit" value="create"
-            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
         Register
     </button>
 </form>
