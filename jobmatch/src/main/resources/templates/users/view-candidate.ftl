@@ -18,6 +18,22 @@
         </#if>
     </div>
     <div class="view-job">
+        <h3>Education</h3>
+        <#if user.education??>
+            <#list user.education as edu>
+            <b>Name:</b> ${edu.schoolName} <br>
+            <b>Country:</b> ${edu.country} <br>
+            <b>Degree:</b> ${edu.degree} <br>
+            <b>Country:</b> ${edu.country} <br>
+            <b>Degree:</b> ${edu.degree} <br>
+            <b>Major:</b> ${edu.major} <br>
+            <b>Year Graduated:</b> ${edu.yearGraduated} <br>
+            </#list>
+        <#else>
+            No education listed.
+        </#if>
+    </div>
+    <div class="view-job">
         <h3>Experience</h3>
         <#if user.experience?? && ( user.experience.title?has_content)>
             <#list experiences as experience>
@@ -57,8 +73,6 @@
             </ol>
         </div>
     </div>
-
-
 </div>
 
 </#macro>
