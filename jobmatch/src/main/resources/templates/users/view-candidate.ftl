@@ -38,25 +38,27 @@
     <div class="view-job">
         <h3>Skills & Culture</h3>
         <div style="float:left">
-            <ol type="1">
-                <li>First item</li>
-                <li>Second item</li>
-                <li>Third item</li>
-                <li>Fourth item</li>
-                <li>Fifth item</li>
+            <ol>
+                <#list skills.sortedRankables as skillRank>
+                    <li>${skillRank.skill.name}</li>
+                <#else>
+                    User hasn't ranked skills.
+                </#list>
             </ol>
         </div>
 
         <div style="float:right">
-            <ol type="1">
-                <li>First item</li>
-                <li>Second item</li>
-                <li>Third item</li>
-                <li>Fourth item</li>
-                <li>Fifth item</li>
+            <ol>
+                <#list cultures.sortedRankables as cultureRank>
+                    <li>${cultureRank.culture.name}</li>
+                <#else>
+                    User hasn't ranked culture.
+                </#list>
             </ol>
         </div>
     </div>
+
+
 </div>
 
 </#macro>
