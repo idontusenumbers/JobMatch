@@ -1,17 +1,8 @@
 package com.jobmatch.controllers;
 
-import com.jobmatch.models.JobPost;
 import com.jobmatch.models.Role;
 import com.jobmatch.models.User;
-import com.jobmatch.repositories.CompanyRepository;
-import com.jobmatch.repositories.ContactRepository;
-import com.jobmatch.repositories.CultureRepository;
-import com.jobmatch.repositories.EducationRepository;
-import com.jobmatch.repositories.JobPostRepository;
-import com.jobmatch.repositories.RankedSkillRepository;
-import com.jobmatch.repositories.RoleRepository;
-import com.jobmatch.repositories.SkillRepository;
-import com.jobmatch.repositories.UserRepository;
+import com.jobmatch.repositories.*;
 import com.jobmatch.services.UserRepositoryUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
