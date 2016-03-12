@@ -28,8 +28,9 @@
             No contact information found.
         </#if>
     </div>
+
     <div class="view-job">
-        <h3>Skills & Culture</h3>
+        <h3>Ranked Skills & Culture Attributes</h3>
         <table align="center">
             <tr>
                 <td>
@@ -67,19 +68,35 @@
                 <b>Year Graduated:</b> ${edu.yearGraduated} <br>
             </#list>
         <#else>
-            No education listed.
+            No education information found.
         </#if>
     </div>
+
+    <div class="view-job">
+        <h3>Resume Description</h3>
+        <#if user.resume??>
+        ${user.resume}
+        <#else>
+            No resume submitted.
+        </#if>
+    </div>
+
     <div class="view-job">
         <h3>Experience</h3>
-        <#if user.experience?? && ( user.experience.title?has_content)>
-            <#list experiences as experience>
-            ${user.experiences}
+        <#if user.experiences??>
+            <#list user.experiences as exp>
+            ${exp.title}
+            ${exp.companyName}
+            ${exp.companyAddress}
+            ${exp.startDate}
+            ${exp.endDate}
+            ${exp.responsbilities}
             </#list>
         <#else>
-            <font color="red">this section needs to be fixed, yo</font>
+            No experience listed.
         </#if>
     </div>
+
     <div class="view-job">
         <h3>References</h3>
         <#if user.references??>

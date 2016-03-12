@@ -37,7 +37,6 @@ public class UserController extends BaseController {
         enforceSameUserOrEmployer(user);
         model.addAttribute("skills", new RankMap<>(user.getSkills()));
         model.addAttribute("user", user);
-        model.addAttribute("skills", new RankMap<>(user.getSkills()));
         model.addAttribute("cultures", new RankMap<>(user.getCultures()));
         return "users/view-candidate";
     }
