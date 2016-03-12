@@ -407,6 +407,10 @@ table#t1 th	{
     margin: 0 auto;
 }
 
+.mdl-button.mdl-button--colored.form-button {
+    color: #FFFFFF;
+}
+
 .col-centered {
     float: none;
     margin: 0 auto;

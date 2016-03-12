@@ -43,11 +43,11 @@ public class User implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
-    protected Contact contact;
+    protected Contact contact = new Contact();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
-    protected Company company;
+    protected Company company = new Company();
 
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -84,6 +84,8 @@ public class User implements Serializable {
      * Default Constructor
      */
     public User() {
+        contact = new Contact();
+        company = new Company();
         this.optIn = false;
     }
 

@@ -31,8 +31,13 @@ oops, you forgot to implement an paged_dashboard_page_body in your template!
 
             <@paged_dashboard_page_body/>
 
-            <input id="back" type="button" value="&lt; back" class="button">
-            <input id="next" type="button" value="" class="call-to-action">
+            <button id="back" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                &lt; Back
+            </button>
+            <button id="next" type="button"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored form-button">
+                Next &gt;
+            </button>
             <p><a href="${s.mvcUrl("UC#delete").arg(0,user.id).build()}">Delete My Account</a></p>
 
         </form>

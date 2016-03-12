@@ -48,12 +48,12 @@ public class UserController extends BaseController {
         User user = userRepository.findOne(userId);
         enforceSameUserUnlessAdmin(user);
         model.addAttribute("user", user);
+
         switch (user.getRole().getId()) {
             case Role.ADMIN:
+            case Role.EMPLOYER:
             case Role.SEEKER:
                 return "users/profile-seeker";
-            case Role.EMPLOYER:
-                return "users/profile-employer";
             default:
                 throw new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
         }
