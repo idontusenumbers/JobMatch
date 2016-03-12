@@ -9,7 +9,7 @@ $(function () {
 
     var sortLists = $(".sortable-list");
 
-    var setRanks = function () {
+    window.setRanks = function () {
 
         sortLists.each(function () {
             var $sortList = $(this);
@@ -51,7 +51,7 @@ $(function () {
 
 
 var disableUnchecked = function (pairs) {
-
+    window.setRanks();
     for (var k in pairs) {
         $('[name=' + k + ']').each(function (i) {
             var $this = $(this);
