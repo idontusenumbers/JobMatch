@@ -1,3 +1,4 @@
+<#ftl strip_whitespace=true>
 <#include "../paged-dashboard-base.ftl">
 
 <#macro header>PROFILE</#macro>
@@ -6,7 +7,6 @@
 action="profile" name="user" method="post"
 </#macro>
 <#macro paged_dashboard_page_body>
-
 <section data-page="0">
 	<div class="form-field">
 		<br><@spring.formInput path="user.contact.firstName" attributes='class="form-input" placeholder="first Name"' />
@@ -26,7 +26,16 @@ action="profile" name="user" method="post"
 </section>
 <section data-page="2">
     <div class="form-field">
-        <br><@spring.formInput path="user.contact.phone" attributes='class="form-input" placeholder="phone"' fieldType="tel" />
+        <br/>
+        <@spring.bind "user.contact.phone"/>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="tel" id="contact.phone" name="contact.phone"
+                   pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" placeholder="(783) 310-456"
+                   value="${spring.status.value}" required>
+            <label class="mdl-textfield__label" for="contact.phone">Phone Number</label>
+            <span class="mdl-textfield__error">Input is not a valid phone number!</span>
+        </div>
+        <p></p>
     </div>
 </section>
 

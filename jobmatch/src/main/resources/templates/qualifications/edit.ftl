@@ -15,7 +15,8 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th colspan="2" class="mdl-data-table__cell--non-numeric">Edit Qualifications</th>
+            <th class="mdl-data-table__cell--non-numeric">Edit Qualifications</th>
+            <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
         <tr>
@@ -44,7 +45,12 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Submit" class="sidebar-button"></td>
+            <td colspan="2">
+                <button type="submit"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button">
+                    Save Changes
+                </button>
+            </td>
         </tr>
     </table>
 </form>
@@ -52,7 +58,8 @@
 <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
     <thead>
     <tr>
-        <th class="mdl-data-table__cell--non-numeric" colspan="2">References</th>
+        <th class="mdl-data-table__cell--non-numeric">References</th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
     </tr>
     </thead>
     <#list referenceList as reference>
@@ -107,7 +114,8 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric" colspan="2">Add Reference</th>
+            <th class="mdl-data-table__cell--non-numeric">Add Reference</th>
+            <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
         <tbody>
@@ -151,13 +159,19 @@
             <td class="mdl-data-table__cell--non-numeric"><h2>Phone:</h2></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="tel" id="phone" name="phone" required>
-                    <label class="mdl-textfield__label" for="phone">1234567890</label>
+                    <input class="mdl-textfield__input" type="tel" id="phone" name="phone"
+                           pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required>
+                    <label class="mdl-textfield__label" for="phone">(783) 310-456</label>
+                    <span class="mdl-textfield__error">Input is not a valid phone number!</span>
                 </div>
             </td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Add Reference" class="sidebar-button"></td>
+            <td colspan="2">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button">
+                    Add Reference
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -165,103 +179,108 @@
 <br>
 <form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="reference" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-    <thead>
-    <tr>
-        <th class="mdl-data-table__cell--non-numeric" colspan="2">Education</th>
-    </tr>
-    </thead>
-    <tbody>
-        <#list educationList as education>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">${education.schoolName}</td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">${education.country}</td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">${education.degree}</td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">${education.major}</td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">${education.yearGraduated}</td>
-        </tr>
-        <th colspan="2"></th>
-        </#list>
-    </tbody>
-</table>
-    <br/>
-<form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="education" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="t1" align="center">
+    <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric">Add Education</th>
-            <th class="mdl-data-table__cell--non-numeric"></th>
+            <th class="mdl-data-table__cell--non-numeric" colspan="2">Education</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="schoolName" name="schoolName" required>
-                    <label class="mdl-textfield__label" for="schoolName">DePaul University</label>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="country" name="country" required>
-                    <label class="mdl-textfield__label" for="country">United States</label>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="degree" name="degree" required>
-                    <label class="mdl-textfield__label" for="degree">Bachelor of Science</label>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="major" name="major" required>
-                    <label class="mdl-textfield__label" for="major">Computer Science</label>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
-            <td class="mdl-data-table__cell--non-numeric">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="yearGraduated" pattern="-?[0-9]*(\.[0-9]+)?"
-                           name="yearGraduated" required>
-                    <label class="mdl-textfield__label" for="yearGraduated">2016</label>
-                    <span class="mdl-textfield__error">Input is not a number!</span>
-                </div>
-            </td>
-        </tr>
+            <#list educationList as education>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">${education.schoolName}</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">${education.country}</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">${education.degree}</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">${education.major}</td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">${education.yearGraduated}</td>
+            </tr>
+            <th colspan="2"></th>
+            </#list>
         </tbody>
-        <tr>
-            <td colspan="2"><input type="submit" value="Add Education" class="sidebar-button"></td>
-        </tr>
     </table>
-</form>
+    <br/>
+    <form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="education" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="t1" align="center">
+            <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Add Education</th>
+                <th class="mdl-data-table__cell--non-numeric"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="schoolName" name="schoolName" required>
+                        <label class="mdl-textfield__label" for="schoolName">DePaul University</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="country" name="country" required>
+                        <label class="mdl-textfield__label" for="country">United States</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="degree" name="degree" required>
+                        <label class="mdl-textfield__label" for="degree">Bachelor of Science</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="major" name="major" required>
+                        <label class="mdl-textfield__label" for="major">Computer Science</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="number" id="yearGraduated" name="yearGraduated"
+                               required>
+                        <label class="mdl-textfield__label" for="yearGraduated">2016</label>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tr>
+                <td colspan="2">
+                    <button type="submit"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button">
+                        Add Education
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+<p>
 
 </#macro>
 <@display_page/>

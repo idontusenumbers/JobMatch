@@ -3,6 +3,10 @@ $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
 });
 
 $(function () {
+    $('.fav-toggle').click(function () {
+        setFavorite(this)
+    });
+
     var sortLists = $(".sortable-list");
 
     var setRanks = function () {

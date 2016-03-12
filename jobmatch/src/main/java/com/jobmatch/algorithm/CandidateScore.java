@@ -3,7 +3,7 @@ package com.jobmatch.algorithm;
 import com.jobmatch.models.JobPost;
 import com.jobmatch.models.User;
 
-public class CandidateScore {
+public class CandidateScore implements Comparable<CandidateScore> {
     private User user;
     private JobPost jobPost;
     private int closeness;
@@ -52,5 +52,10 @@ public class CandidateScore {
                 ", jobPost=" + jobPost +
                 ", closeness=" + closeness +
                 '}';
+    }
+
+    @Override
+    public int compareTo(CandidateScore candidateScore) {
+        return Integer.compare(this.closeness, candidateScore.closeness);
     }
 }

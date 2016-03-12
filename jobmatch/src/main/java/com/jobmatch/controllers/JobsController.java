@@ -2,7 +2,10 @@ package com.jobmatch.controllers;
 
 import com.jobmatch.algorithm.CandidateScore;
 import com.jobmatch.algorithm.JobCandidateEvaluator;
-import com.jobmatch.models.*;
+import com.jobmatch.models.JobPost;
+import com.jobmatch.models.RankedSkill;
+import com.jobmatch.models.Role;
+import com.jobmatch.models.User;
 import com.jobmatch.viewmodels.CountedJobPost;
 import com.jobmatch.viewmodels.FavoritePayload;
 import com.jobmatch.viewmodels.RankMap;
@@ -11,13 +14,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.View;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -40,6 +40,9 @@ public class JobsController extends BaseController {
                 return "/jobs/counted-list";
             case Role.SEEKER:
                 List<CandidateScore> matchingJobs = JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), jobPostRepository.findAll());
+                // sort in reverse order (higher closeness)
+                matchingJobs.sort(Collections.reverseOrder());
+
                 model.addAttribute("jobs", matchingJobs);
                 return "/jobs/scored-list";
         }

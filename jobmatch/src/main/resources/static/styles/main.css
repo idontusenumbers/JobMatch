@@ -397,3 +397,21 @@ table#t1 th	{
     font-size: large;
     padding: 15px;
 }
+
+/*
+ * Material Design
+ */
+.mdl-button.mdl-button--colored.submit-button {
+    color: #FFFFFF;
+    display: block;
+    margin: 0 auto;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.mdl-card-wide.mdl-card {
+    width: 100%;
+}
