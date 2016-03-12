@@ -151,10 +151,12 @@ ul.checkbox-list{
     display:inline-block;
     vertical-align: top;
 }
+ol.sortable-list li{
+    list-style-position: inside;
+}
 
-ol.sortable-list li,
 ul.checkbox-list li{
-    display:block;
+    list-style-type: none;
 }
 ol.sortable-list li{
     padding: 2px 5px;
