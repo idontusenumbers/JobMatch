@@ -49,7 +49,6 @@ $(function () {
 
 });
 
-
 var disableUnchecked = function (pairs) {
     window.setRanks();
     for (var k in pairs) {

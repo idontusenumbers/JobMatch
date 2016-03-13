@@ -27,6 +27,8 @@ public class CompanyController extends BaseController {
         model.addAttribute("company", company);
         model.addAttribute("cultures", new RankMap<>(company.getCultures()));
 
+        log.info(company.toString());
+
         User user = getCurrentUser();
         if (user.getRole().getId() == Role.ADMIN || (user.getCompany() != null && user.getCompany().getId() == companyId)) {
             model.addAttribute("cultureOptions", cultureRepository.getMap());
@@ -42,6 +44,7 @@ public class CompanyController extends BaseController {
                               String[] cultures, String[] culturesRanks, Model model) {
         Company existingCompany = companyRepository.findOne(companyId);
         User user = getCurrentUser();
+        log.warn(company.toString());
 
         if (user.getRole().getId() == Role.ADMIN || user.getCompany().getId() == companyId) {
             BeanUtils.copyProperties(company, existingCompany, "id");
