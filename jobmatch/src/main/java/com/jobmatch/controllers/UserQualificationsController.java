@@ -28,7 +28,11 @@ public class UserQualificationsController extends BaseController {
         RankedCulture.updateCultureSet(cultures, culturesRanks, existingUser.getCultures(), cultureRepository);
 
         userRepository.save(existingUser);
-        return getRedirectView("/");
+        return getQualificationsSavedRedirectView(existingUser);
+    }
+
+    private View getQualificationsSavedRedirectView(User existingUser) {
+        return getRedirectView("/users/{userId}/qualifications/".replace("{userId}", String.valueOf(existingUser.getId())));
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -52,14 +56,20 @@ public class UserQualificationsController extends BaseController {
         return "qualifications/edit";
     }
 
+    //TODO remove reference
+    //TODO update reference
+
     @RequestMapping("/addReference")
     public View addReference(@PathVariable Integer userId, @ModelAttribute Reference reference) {
         User user = userRepository.findOne(userId);
         user.getReferences().add(reference);
         userRepository.save(user);
 
-        return getRedirectView("/");
+        return getQualificationsSavedRedirectView(user);
     }
+
+    // TODO remove education
+    // TODO update education
 
     @RequestMapping(value = "/addEducation", method = RequestMethod.POST)
     public View addEducation(@PathVariable int userId, @ModelAttribute Education education) {
@@ -67,6 +77,6 @@ public class UserQualificationsController extends BaseController {
         user.getEducation().add(education);
         userRepository.save(user);
 
-        return getRedirectView("/");
+        return getQualificationsSavedRedirectView(user);
     }
 }

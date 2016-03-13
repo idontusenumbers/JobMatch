@@ -1,29 +1,30 @@
-*{
+* {
     box-sizing: border-box;
 }
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    color:#5E5E5E;
+    color: #5E5E5E;
     font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
 #wrapper {
     height: 100%;
-    margin-left:20%;
+    margin-left: 20%;
     width: 80%;
     position: relative;
 }
 
-header{
-    text-align:left;
-    background:#F2F2F2;
-    color:#999999;
-    height:50px;
-    padding:10px;
-    width:100%;
-    position:absolute;
+header {
+    text-align: left;
+    background: #F2F2F2;
+    color: #999999;
+    height: 50px;
+    padding: 10px;
+    width: 100%;
+    position: absolute;
     /*z-index:-1;*/
 }
 
@@ -36,22 +37,22 @@ header{
     text-decoration: none;
 }
 
-h1{
-    font-family:'Montserrat',sans-serif;
-    font-weight:400;
-    margin:5px;
-    font-size:20px;
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin: 5px;
+    font-size: 20px;
 }
 
-h3{
-    font-family:'Montserrat',sans-serif;
-    font-weight:200;
-    margin:5px;
-    font-size:20px;
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    margin: 5px;
+    font-size: 20px;
 }
 
-.headline{
-    text-align:center;
+.headline {
+    text-align: center;
 }
 
 .logo {
@@ -81,6 +82,7 @@ h2 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
+    max-width: 80%;
 }
 
 h2.company {
@@ -132,33 +134,35 @@ h2.company {
     color: white;
 }
 
-#content{
-    float:left;
-    width:100%;
+#content {
+    float: left;
+    width: 100%;
     margin-top: 50px;
 }
 
 /*job posting*/
-#job-post{
-    width:50%;
-    margin-left:25%;
+#job-post {
+    width: 50%;
+    margin-left: 25%;
 }
 
 /*sortable list*/
 ol.sortable-list,
-ul.checkbox-list{
-    padding:0;
-    display:inline-block;
+ul.checkbox-list {
+    padding: 0;
+    display: inline-block;
     vertical-align: top;
 }
-ol.sortable-list li{
+
+ol.sortable-list li {
     list-style-position: inside;
 }
 
-ul.checkbox-list li{
+ul.checkbox-list li {
     list-style-type: none;
 }
-ol.sortable-list li{
+
+ol.sortable-list li {
     padding: 2px 5px;
     margin: 1px;
     background-color: #FF9933;
@@ -166,51 +170,51 @@ ol.sortable-list li{
     cursor: move;
 }
 
-.form-field{
-    margin:0 auto;
-    position:relative;
-    margin-bottom:20px;
+.form-field {
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 20px;
 }
 
-.form-jobpost input[type="text"]{
-    width:88%;
-    border-radius:3px;
-    padding:15px;
+.form-jobpost input[type="text"] {
+    width: 88%;
+    border-radius: 3px;
+    padding: 15px;
 }
 
-textarea{
-    width:90%;
-    height:100px;
-    border-radius:3px;
+textarea {
+    width: 90%;
+    height: 100px;
+    border-radius: 3px;
 }
 
-.form-input{
-    border:1px solid #E4E4E4;
-    border-radius:3px;
-    padding:10px;
+.form-input {
+    border: 1px solid #E4E4E4;
+    border-radius: 3px;
+    padding: 10px;
 }
 
-.form-jobpost select{
-    width:36%;
-    border-radius:3px;
-    padding:15px;
+.form-jobpost select {
+    width: 36%;
+    border-radius: 3px;
+    padding: 15px;
 }
 
-.form-jobpost label{
-    padding:5px;
+.form-jobpost label {
+    padding: 5px;
 }
 
-.radio-button{
-    display:inline;
-    padding:10px;
+.radio-button {
+    display: inline;
+    padding: 10px;
     border: 1px solid #E4E4E4;
 }
 
 .form-jobpost select,
 .form-jobpost input[type="text"],
-.form-jobpost textarea{
-    background-color:white;
-    border:1px solid #E4E4E4;
+.form-jobpost textarea {
+    background-color: white;
+    border: 1px solid #E4E4E4;
 }
 
 .form-jobpost select:focus,
@@ -218,66 +222,67 @@ textarea{
 .form-jobpost input[type="text"]:focus,
 .form-jobpost input[type="text"]:hover,
 .form-jobpost textarea:focus,
-.form-jobpost textarea:hover{
-    background-color:white;
-    border:1px solid #D7D7D7;
+.form-jobpost textarea:hover {
+    background-color: white;
+    border: 1px solid #D7D7D7;
 }
 
-.form-jobpost input, textarea, select{
-    font-family:'Open Sans',sans-serif;
+.form-jobpost input, textarea, select {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.select-text{
-    margin:1px;
+.select-text {
+    margin: 1px;
 }
 
-.form-jobpost textarea{
-    padding:15px 0 0 15px;
-}
-.form-jobpost input[type="submit"]:hover{
-    background:#E58A2E;
-    text-decoration:none;
-    cursor:pointer;
+.form-jobpost textarea {
+    padding: 15px 0 0 15px;
 }
 
-p.note{
+.form-jobpost input[type="submit"]:hover {
+    background: #E58A2E;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p.note {
     font-style: italic;
     font-size: .8em;
     margin-top: 0;
 }
 
 /*jobs list, leaderboard*/
-.jobs-list{
+.jobs-list {
     width: 100%;
 }
 
-.jobs-list>ul{
+.jobs-list > ul {
     list-style-type: none;
-    align:left;
-    margin-left:10%;
-    margin-right:10%;
-    padding-left:0px;
+    align: left;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 0px;
 }
 
-.jobs-list>ul>li{
+.jobs-list > ul > li {
     font-family: "Montserrat", sans-serif;
     margin-bottom: 5px;
     padding: 25px;
     background-color: #FF9933;
-    color:white;
+    color: white;
 }
 
-.jobs-list>ul>li:hover{
+.jobs-list > ul > li:hover {
     color: white;
     background-color: #6B6B6B;
     cursor: pointer;
 }
 
-ul.title-matches-list>li>div.title{
+ul.title-matches-list > li > div.title {
     float: left
 }
 
-ul.title-matches-list>li>div.matches{
+ul.title-matches-list > li > div.matches {
     float: right
 }
 
@@ -290,27 +295,26 @@ ul.title-matches-list>li>div.matches{
 }
 
 .call-to-action,
-.button{
-    padding:10px 20px 10px 20px;
+.button {
+    padding: 10px 20px 10px 20px;
     text-decoration: none;
-    border-radius:5px;
-    text-transform:uppercase;
+    border-radius: 5px;
+    text-transform: uppercase;
 
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
 }
 
-.call-to-action{
-    color:white;
-    background:#FF9933;
-    border:none;
+.call-to-action {
+    color: white;
+    background: #FF9933;
+    border: none;
 }
 
-.call-to-action:hover{
-    background:#E58A2E;
-    cursor:pointer;
+.call-to-action:hover {
+    background: #E58A2E;
+    cursor: pointer;
 }
-
 
 .button {
     border-radius: 5px;
@@ -323,15 +327,15 @@ ul.title-matches-list>li>div.matches{
     cursor: pointer;
     border: 1px rgb(255, 153, 51) solid;
 }
-.button[disabled]{
+
+.button[disabled] {
     color: silver;
     border-color: silver;
     cursor: default;
 }
 
-
-section[data-page]:not(:first-of-type){
-    display:none;
+section[data-page]:not(:first-of-type) {
+    display: none;
 }
 
 .view-job h2 {
@@ -372,28 +376,33 @@ section[data-page]:not(:first-of-type){
 #nobg a:link, #nobg a:visited {
     color: darkorange;
 }
+
 #nobg a:hover {
     color: lightsalmon;
 }
 
 table {
-    width:80%;
-    border-collapse:collapse;
+    width: 80%;
+    border-collapse: collapse;
     font-size: 13px;
     color: #5E5E5E;
     margin-top: 20px;
 }
+
 th, td {
     padding: 10px;
     text-align: left;
 }
+
 table#t1 tr:nth-child(even) {
     background-color: #F2F2F2;
 }
+
 table#t1 tr:nth-child(odd) {
-    background-color:#FFF;
+    background-color: #FFF;
 }
-table#t1 th	{
+
+table#t1 th {
     background-color: #5E5E5E;
     color: white;
     font-size: large;
@@ -420,4 +429,9 @@ table#t1 th	{
 
 .mdl-card-wide.mdl-card {
     width: 100%;
+}
+
+.mdl-card__actions .mdl-badge {
+    float: right;
+    margin-top: 10px;
 }

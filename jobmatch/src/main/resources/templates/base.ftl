@@ -56,6 +56,9 @@
     <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
+
+    <!--TODO download local copy of remote files -->
+
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="/static/styles/jquery-ui.min.css" rel="stylesheet" type="text/css">

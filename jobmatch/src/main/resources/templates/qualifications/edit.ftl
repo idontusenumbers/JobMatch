@@ -159,10 +159,8 @@
             <td class="mdl-data-table__cell--non-numeric"><h2>Phone:</h2></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="tel" id="phone" name="phone"
-                           pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required>
+                    <input class="mdl-textfield__input" type="tel" id="phone" name="phone" required>
                     <label class="mdl-textfield__label" for="phone">(783) 310-456</label>
-                    <span class="mdl-textfield__error">Input is not a valid phone number!</span>
                 </div>
             </td>
         </tr>
