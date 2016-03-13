@@ -6,11 +6,8 @@
 
 <table id="t1" align="center">
     <tr>
-        <th colspan="2">Qualifications</th>
-    </tr>
-    <tr>
-        <td><h2>Company Name:</h2></td>
-        <td>${company.name}</td>
+        <!-- TODO link to company page-->
+        <th colspan="2">${company.name}</th>
     </tr>
     <tr>
         <td><h2>Phone:</h2></td>

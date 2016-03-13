@@ -170,6 +170,9 @@ ol.sortable-list li {
     cursor: move;
 }
 
+form.form-profile{
+    text-align: center;
+}
 .form-field {
     margin: 0 auto;
     position: relative;
@@ -436,7 +439,10 @@ table#t1 th {
     margin-top: 10px;
 }
 
-
-.mdl-badge[data-badge]:after{
+.mdl-badge[data-badge]:after {
     color: white;
+}
+
+.mdl-textfield {
+    width: 100%;
 }
