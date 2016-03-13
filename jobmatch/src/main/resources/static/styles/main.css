@@ -435,3 +435,8 @@ table#t1 th {
     float: right;
     margin-top: 10px;
 }
+
+
+.mdl-badge[data-badge]:after{
+    color: white;
+}
