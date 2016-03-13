@@ -8,26 +8,29 @@ oops, you forgot to implement an paged_dashboard_page_body in your template!
 
 
 <#macro dashboard_body>
+<div class="mdl-grid">
+    <div class="mdl-cell--4-offset-desktop mdl-cell--2-offset-tablet mdl-cell mdl-cell--4-col">
+        <@error_list errors/>
+    </div>
+    <div class="mdl-cell mdl-cell--3-offset-desktop mdl-cell--6-col-desktop mdl-cell--8-col-tablet">
+        <div class="mdl-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">Edit Profile</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <form <@form_attributes/> class="form form-profile js-page-container">
+
+                    <@spring.bind "user" />
+                    <@spring.showErrors '*', 'errors' />
+
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+                    <div id="progress"></div>
 
 
-<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-    <tr>
-        <td class="mdl-data-table__cell--non-numeric">
-            <@error_list errors/>
-
-
-            <form <@form_attributes/> class="form form-profile js-page-container">
-
-                <@spring.bind "user" />
-                <@spring.showErrors '*', 'errors' />
-
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-                <div id="progress"></div>
-
-
-                <@paged_dashboard_page_body/>
-
+                    <@paged_dashboard_page_body/>
+            </div>
+            <div class="mdl-card__actions mdl-card--border mdl-typography--text-center">
                 <button id="back" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect">
                     &lt; Back
                 </button>
@@ -36,11 +39,10 @@ oops, you forgot to implement an paged_dashboard_page_body in your template!
                     Next &gt;
                 </button>
                 <p><a href="${s.mvcUrl("UC#delete").arg(0,user.id).build()}">Delete My Account</a></p>
+            </div>
 
             </form>
-
-        </td>
-    </tr>
-</table>
-
+        </div>
+    </div>
+</div>
 </#macro>
