@@ -66,6 +66,11 @@
     <link href="/static/styles/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
     <link href="/static/styles/material.min.css" rel="stylesheet" type="text/css">
     <link href="/static/styles/main.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/static/js/material.min.js"></script>
+
     <@page_head/>
     <script>
         window.FAVE_URL = '${s.mvcUrl("JC#setFavorite").build()}';
@@ -75,7 +80,9 @@
 </head>
 <body>
     <@page_body/>
-    <@import_js/>
+
+    <script type="text/javascript" src="/static/js/main.js"></script>
+
     <@page_body_footer/>
 </body>
 </html>

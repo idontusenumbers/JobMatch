@@ -16,7 +16,7 @@ oops, you forgot to implement an paged_dashboard_page_body in your template!
             <@error_list errors/>
 
 
-            <form <@form_attributes/> class="form form-profile">
+            <form <@form_attributes/> class="form form-profile js-page-container">
 
                 <@spring.bind "user" />
                 <@spring.showErrors '*', 'errors' />

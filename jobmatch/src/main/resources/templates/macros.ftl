@@ -29,10 +29,3 @@
 
 
 </#macro>
-
-<#macro import_js>
-<script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/static/js/material.min.js"></script>
-<script type="text/javascript" src="/static/js/main.js"></script>
-</#macro>

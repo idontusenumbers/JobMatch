@@ -20,7 +20,7 @@ var updateButtons = function () {
     $next.attr('value', onLastPage() ? 'Submit' : 'next >');
     $progress.val(currentPageNumber);
 
-}
+};
 function getCurrentPageNumber() {
     return $pages.filter(':visible').first().data('page');
 }
@@ -32,9 +32,11 @@ var changePage = function (step) {
         value: next
     });
 
-    $pages.hide().eq(next).show();
+    var $nextPage = $pages.hide().eq(next);
+    $nextPage.show();
+    $nextPage.find('input, textarea').first().focus();
     updateButtons();
-}
+};
 
 $back.on("click", function () {
     changePage(-1);
@@ -45,6 +47,15 @@ $next.on("click", function () {
     else
         changePage(1);
 });
+
+$('.js-page-container').each(function(){
+    var $container = $(this);
+    $container.find('input').on("keypress", function(ev){
+        if (ev.charCode == 13) // enter key
+            $next.trigger("click");
+    })
+})
+
 changePage(0);
 updateButtons();
 

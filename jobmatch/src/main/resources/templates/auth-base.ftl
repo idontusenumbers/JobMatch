@@ -20,5 +20,5 @@
 </#macro>
 
 <#macro page_body_footer>
-<script type="text/javascript" src="/static/js/auth.js"></script>
+<script type="text/javascript" src="/static/js/paged.js"></script>
 </#macro>

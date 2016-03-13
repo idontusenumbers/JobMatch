@@ -9,7 +9,7 @@
         <input class="mdl-textfield__input" type="text" id="login-username" name="username" required>
         <label class="mdl-textfield__label" for="login-username">Username</label>
     </div>
-    <br />
+    <br/>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="password" id="login-password" name="password" required>
         <label class="mdl-textfield__label" for="login-password">Password</label>
@@ -28,5 +28,10 @@
         </button>
     </p>
 </div>
+<script>
+    $(function () {
+        $('#login-username').focus();
+    })
+</script>
 </#macro>
 <@display_page/>
