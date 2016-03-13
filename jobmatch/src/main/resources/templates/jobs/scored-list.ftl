@@ -13,10 +13,9 @@
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">${jobPost.jobTitle}</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris sagittis pellentesque lacus eleifend lacinia...
-                </div>
+                <div class="mdl-card__supporting-text">Country: ${jobPost.jobCountry}</div>
+                <div class="mdl-card__supporting-text">Industry: ${jobPost.industry}</div>
+                <div class="mdl-card__supporting-text">Type: ${jobPost.jobType}</div>
                 <div class="mdl-card__actions mdl-card--border">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                        href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">
@@ -38,6 +37,8 @@
                 Favorite
             </div>
         </div>
+    <#else>
+        ${noJobsMessage}
     </#list>
 </div>
 </#macro>

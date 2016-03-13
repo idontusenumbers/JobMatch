@@ -44,6 +44,7 @@ public class JobsController extends BaseController {
                 matchingJobs.sort(Collections.reverseOrder());
 
                 model.addAttribute("jobs", matchingJobs);
+                model.addAttribute("noJobsMessage", "No matching jobs");
                 return "/jobs/scored-list";
         }
         throw new RuntimeException("Unknown Role");
@@ -54,6 +55,7 @@ public class JobsController extends BaseController {
 
         List<CandidateScore> matchingJobs = JobCandidateEvaluator.findMatchingJobs(getCurrentUser(), getCurrentUser().getFavePosts());
         model.addAttribute("jobs", matchingJobs);
+        model.addAttribute("noJobsMessage", "You haven't favorited any jobs yet!");
         return "/jobs/scored-list";
 
     }
