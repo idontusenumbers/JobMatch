@@ -16,6 +16,7 @@ public class JobPost implements Serializable {
     private String jobCountry;
     private String industry;
     private String jobType;
+    private String description;
 
     @Min(0)
     private int yearsExperience;
@@ -121,6 +122,13 @@ public class JobPost implements Serializable {
         this.creator = creator;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description.trim();
+    }
 
     @Override
     public boolean equals(Object o) {

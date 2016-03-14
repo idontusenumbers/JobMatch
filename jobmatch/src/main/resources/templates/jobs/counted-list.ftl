@@ -14,8 +14,7 @@
                     <h2 class="mdl-card__title-text">${jobPost.jobTitle}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris sagittis pellentesque lacus eleifend lacinia...
+                ${jobPost.getDescription()}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

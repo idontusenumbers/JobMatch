@@ -86,7 +86,7 @@
         </tr>
         <tr>
             <td colspan="2" class="mdl-data-table__cell--non-numeric">
-                <button id="demo-show-toast" type="submit"
+                <button type="submit"
                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored
                         submit-button">
                     Save Changes

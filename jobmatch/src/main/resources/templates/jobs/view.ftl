@@ -10,6 +10,10 @@
         <th colspan="2">${jobPost.jobTitle}</th>
     </tr>
     <tr>
+        <td><h2>Description:</h2></td>
+        <td>${jobPost.description}</td>
+    </tr>
+    <tr>
         <td><h2>Location:</h2></td>
         <td>${jobPost.jobCountry}</td>
     </tr>
@@ -39,8 +43,18 @@
     </tr>
     <#if currentUser.role.name == "Admin" || currentUser.role.name == "Employer">
     <tr>
-        <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#deleteJob").arg(0,jobPost.id).build()}">Delete</a></td>
-        <td width="50%"><a class="sidebar-button" href="${s.mvcUrl("JC#updateJob").arg(0,jobPost.id).build()}">Edit</a></td>
+        <td width="50%">
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button"
+               href="${s.mvcUrl("JC#deleteJob").arg(0,jobPost.id).build()}">
+                Delete
+            </a>
+        </td>
+        <td width="50%">
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button"
+               href="${s.mvcUrl("JC#updateJob").arg(0,jobPost.id).build()}">
+                Edit
+            </a>
+        </td>
     </tr>
     <tr>
         <td colspan="2">
