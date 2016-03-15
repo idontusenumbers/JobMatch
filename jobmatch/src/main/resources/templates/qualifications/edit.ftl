@@ -175,44 +175,8 @@
         </tbody>
     </table>
 </form>
-<br>
-<form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="reference" method="post">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-        <thead>
-        <tr>
-            <th class="mdl-data-table__cell--non-numeric" id="tblEducation"><h5>Education</h5></th>
-            <th class="mdl-data-table__cell--non-numeric"></th>
-        </tr>
-        </thead>
-        <tbody>
-            <#list educationList as education>
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h6>School Name:</h6></td>
-                <td class="mdl-data-table__cell--non-numeric"><h6>${education.schoolName}</h6></td>
-            </tr>
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h6>Country:</h6></td>
-                <td class="mdl-data-table__cell--non-numeric"><h6>${education.country}</h6></td>
-            </tr>
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h6>Degree:</h6></td>
-                <td class="mdl-data-table__cell--non-numeric"><h6>${education.degree}</h6></td>
-            </tr>
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h6>Major:</h6></td>
-                <td class="mdl-data-table__cell--non-numeric"><h6>${education.major}</h6></td>
-            </tr>
-            <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h6>Year Graduated:</h6></td>
-                <td class="mdl-data-table__cell--non-numeric"><h6>${education.yearGraduated}</h6></td>
-            </tr>
-            <th colspan="2"></th>
-            </#list>
-        </tbody>
-    </table>
     <br/>
-    <form action="${s.mvcUrl("UQC#addEducation").arg(0, user.id).build()}" name="education" method="post">
+<form action="${s.mvcUrl("EC#updateEducation").arg(0, user.id).build()}" name="education" method="post">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="t1" align="center">

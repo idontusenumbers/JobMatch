@@ -6,7 +6,7 @@
 <form action="/login" name="user" method="post" class="form form-login">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="login-username" name="username" required>
+        <input class="mdl-textfield__input" type="text" id="login-username" name="username" required autofocus>
         <label class="mdl-textfield__label" for="login-username">Username</label>
     </div>
     <br/>
@@ -28,10 +28,5 @@
         </button>
     </p>
 </div>
-<script>
-    $(function () {
-        $('#login-username').focus();
-    })
-</script>
 </#macro>
 <@display_page/>

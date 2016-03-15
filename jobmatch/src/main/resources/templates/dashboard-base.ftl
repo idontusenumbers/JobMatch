@@ -57,7 +57,7 @@ You forgot to include the dashboard body
                             <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}#tblQualifications">Qualifications</a>
                         </li>
                         <li>
-                            <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}#tblEducation"">Education</a>
+                            <a href="${s.mvcUrl("EC#viewEducation").arg(0, currentUser.id).build()}">Education</a>
                         </li>
                         <li>
                             <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}#tblReferences">References</a>
