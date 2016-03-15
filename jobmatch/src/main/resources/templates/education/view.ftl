@@ -7,7 +7,13 @@
     <thead>
     <tr>
         <th class="mdl-data-table__cell--non-numeric"><h5>Education</h5></th>
-        <th class="mdl-data-table__cell--non-numeric"></th>
+        <th class="mdl-data-table__cell--non-numeric">
+            <button id="addEducationToggle"
+                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+                    style="float: right;">
+                <i class="material-icons">add</i>
+            </button>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -47,5 +53,86 @@
     </tbody>
 </table>
 <br/>
+<form action="${s.mvcUrl("EC#addEducation").arg(0, currentUser.id).build()}" name="education" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="tAddEducation" align="center">
+        <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric"><h5>Add Education</h5></th>
+            <th class="mdl-data-table__cell--non-numeric"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h6>School Name:</h6></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="schoolName" name="schoolName" required>
+                    <label class="mdl-textfield__label" for="schoolName">DePaul University</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Country:</h6></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input class="mdl-textfield__input" type="text" id="country" name="country" value="United States"
+                           readonly tabIndex="-1">
+                    <label for="country">
+                        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                    </label>
+                    <ul for="country" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <li class="mdl-menu__item">Germany</li>
+                        <li class="mdl-menu__item">Belarus</li>
+                        <li class="mdl-menu__item">Russia</li>
+                        <li class="mdl-menu__item">United States</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Degree:</h6></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="degree" name="degree" required>
+                    <label class="mdl-textfield__label" for="degree">Bachelor of Science</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Major:</h6></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="major" name="major" required>
+                    <label class="mdl-textfield__label" for="major">Computer Science</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Year Graduated:</h6></td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="number" id="yearGraduated" name="yearGraduated"
+                           required>
+                    <label class="mdl-textfield__label" for="yearGraduated">2016</label>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+        <tr>
+            <td colspan="2">
+                <button type="submit"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button">
+                    Add Education
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+<p></p>
+</#macro>
+<#macro page_body_footer>
+<script type="text/javascript" src="/static/js/education.js" defer></script>
 </#macro>
 <@display_page/>

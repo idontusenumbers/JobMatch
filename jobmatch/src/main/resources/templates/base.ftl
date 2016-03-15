@@ -36,7 +36,7 @@
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Web Starter Kit">
+    <meta name="application-name" content="JobMatch">
     <link rel="icon" sizes="192x192" href="/static/styles/images/touch/chrome-touch-icon-192x192.png">
 
     <!-- Add to homescreen for Safari on iOS -->
@@ -65,6 +65,7 @@
     <link href="/static/styles/jquery-ui.structure.min.css" rel="stylesheet" type="text/css">
     <link href="/static/styles/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
     <link href="/static/styles/material.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/styles/getmdl-select.min.css" rel="stylesheet" type="text/css">
     <link href="/static/styles/main.css" rel="stylesheet" type="text/css">
 
     <@page_head/>
@@ -77,10 +78,11 @@
 <body>
     <@page_body/>
 
-    <script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/static/js/material.min.js"></script>
-    <script type="text/javascript" src="/static/js/main.js"></script>
+<script type="text/javascript" src="/static/js/jquery-2.2.0.min.js" defer></script>
+<script type="text/javascript" src="/static/js/jquery-ui.min.js" defer></script>
+<script type="text/javascript" src="/static/js/material.min.js" defer></script>
+<script type="text/javascript" src="/static/js/getmdl-select.min.js" defer></script>
+<script type="text/javascript" src="/static/js/main.js" defer></script>
     <@page_body_footer/>
 </body>
 </html>

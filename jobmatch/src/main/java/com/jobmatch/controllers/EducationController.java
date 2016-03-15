@@ -34,6 +34,16 @@ public class EducationController extends BaseController {
         return "education/edit";
     }
 
+    @RequestMapping(value = "/store", method = RequestMethod.POST)
+    public View addEducation(@PathVariable int userId, @ModelAttribute Education education) {
+        enforceSameUserUnlessAdmin(userId);
+        User user = getCurrentUser();
+        user.getEducation().add(education);
+        userRepository.save(user);
+
+        return getRedirectView("/users/{userId}/education/".replace("{userId}", String.valueOf(userId)));
+    }
+
     @RequestMapping(value = "/{educationId}", method = RequestMethod.POST)
     public View updateEducation(@PathVariable int userId, @PathVariable int educationId, @ModelAttribute Education education) {
         enforceSameUserUnlessAdmin(userId);
