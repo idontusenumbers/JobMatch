@@ -2890,7 +2890,7 @@ ul, ol {
     background: 0 0;
     border: none;
     border-radius: 2px;
-    color: #000;
+    color: #999;
     position: relative;
     height: 36px;
     margin: 0;
@@ -3183,7 +3183,7 @@ input.mdl-button[type="submit"] {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    color: #000;
+    color: #5E5E5E;
     display: block;
     display: -webkit-flex;
     display: -ms-flexbox;
