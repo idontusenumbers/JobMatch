@@ -127,7 +127,7 @@ public class JobPost implements Serializable {
     }
 
     public String getDescription() {
-        return description.trim();
+        return description;
     }
 
     @Override
@@ -162,9 +162,12 @@ public class JobPost implements Serializable {
                 ", jobCountry='" + jobCountry + '\'' +
                 ", industry='" + industry + '\'' +
                 ", jobType='" + jobType + '\'' +
+                ", description='" + description + '\'' +
                 ", yearsExperience=" + yearsExperience +
                 ", users=" + users +
                 ", skills=" + skills +
+                ", cultures=" + cultures +
+                ", creator=" + creator +
                 '}';
     }
 }

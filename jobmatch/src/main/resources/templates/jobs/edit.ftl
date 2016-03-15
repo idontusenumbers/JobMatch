@@ -45,9 +45,8 @@
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.description"/>
                 <div class="mdl-textfield mdl-js-textfield">
-                    <textarea class="mdl-textfield__input" type="text" rows="3" name="description" id="description">
-                        <#if spring.status.value??>${spring.status.value}</#if>
-                    </textarea>
+                    <textarea class="mdl-textfield__input" type="text" rows="3" name="description" id="description"
+                    ><#if spring.status.value??>${spring.status.value}</#if></textarea>
                     <label class="mdl-textfield__label" for="description"></label>
                 </div>
             </td>

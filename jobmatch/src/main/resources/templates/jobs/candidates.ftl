@@ -18,7 +18,7 @@
             <td>
                 <div id="nobg">
                     <a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}">
-                        <#if scoredCandidate.user.contact?? >
+                        <#if scoredCandidate.user.contact?? && scoredCandidate.user.contact.firstName?has_content >
                             ${scoredCandidate.user.contact.firstName}
                             <#else>
                         ${scoredCandidate.user.username}

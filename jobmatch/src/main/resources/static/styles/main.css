@@ -437,6 +437,7 @@ table#t1 th {
 .mdl-card__actions .mdl-badge {
     float: right;
     margin-top: 10px;
+    color: #d5d5d5;
 }
 
 .mdl-badge[data-badge]:after {
@@ -445,4 +446,8 @@ table#t1 th {
 
 .mdl-textfield {
     width: 100%;
+}
+
+.mdl-card-wide > .mdl-card__supporting-text{
+    min-height: 90px;
 }

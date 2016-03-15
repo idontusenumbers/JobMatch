@@ -21,9 +21,10 @@
                        href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">
                         View Job
                     </a>
+                    <span class="mdl-badge" data-badge="${closeness}">Closeness</span>
+
                 </div>
                 <div class="mdl-card__menu">
-                    <span class="mdl-badge" data-badge="${closeness}">Closeness</span>
                     <button class="fav-toggle mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
                             data-favorite="${faves?seq_contains(jobPost.id?string)?string("true", "false")}"
                             data-job-post-id="${jobPost.id}"
