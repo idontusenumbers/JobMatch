@@ -15,22 +15,23 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric">Edit Qualifications</th>
+            <th class="mdl-data-table__cell--non-numeric"><h5>Edit Qualifications</h5></th>
             <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Resume:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Resume:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <textarea class="mdl-textfield__input" type="text" rows="3" name="resume" id="resume"></textarea>
+                    <textarea class="mdl-textfield__input" type="text" rows="3" name="resume"
+                              id="resume"><#if user.resume??>${user.resume}</#if></textarea>
                     <label class="mdl-textfield__label" for="resume">Resume...</label>
                 </div>
             </td>
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
-                <h2>Skills:</h2>
+                <h6>Skills:</h6>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@rankedChoiceList fieldName="skills" availableChoices=skillOptions chosenChoices=skills />
@@ -38,7 +39,7 @@
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
-                <h2>Culture:</h2>
+                <h6>Culture:</h6>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@rankedChoiceList fieldName="cultures" availableChoices=cultureOptions chosenChoices=cultures />
@@ -46,7 +47,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <button type="submit"
+                <button id="show-toast" type="submit"
                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button">
                     Save Changes
                 </button>
@@ -58,7 +59,7 @@
 <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
     <thead>
     <tr>
-        <th class="mdl-data-table__cell--non-numeric">References</th>
+        <th class="mdl-data-table__cell--non-numeric"><h5>References</h5></th>
         <th class="mdl-data-table__cell--non-numeric"></th>
     </tr>
     </thead>
@@ -66,31 +67,31 @@
         <tbody>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
-                <h2>First Name:</h2>
+                <h6>First Name:</h6>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-            ${reference.firstName}
-            </td>
-        </tr>
-        <tr>
-            <td class="mdl-data-table__cell--non-numeric">
-                <h2>Last Name:</h2>
-            </td>
-            <td class="mdl-data-table__cell--non-numeric">
-            ${reference.lastName}
+                <h6>${reference.firstName}</h6>
             </td>
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
-                <h2>Title:</h2>
+                <h6>Last Name:</h6>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-            ${reference.title}
+                <h6>${reference.lastName}</h6>
             </td>
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
-                <h2>Company Name:</h2>
+                <h6>Title:</h6>
+            </td>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h6>${reference.title}</h6>
+            </td>
+        </tr>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">
+                <h6>Company Name:</h6>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
             ${reference.companyName}
@@ -98,10 +99,10 @@
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
-                <h2>Phone:</h2>
+                <h6>Phone:</h6>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-            ${reference.phone}
+                <h6>${reference.phone}</h6>
             </td>
         </tr>
         </tbody>
@@ -114,13 +115,13 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric">Add Reference</th>
+            <th class="mdl-data-table__cell--non-numeric"><h5>Add Reference</h5></th>
             <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>First Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>First Name:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="firstName" name="firstName" required>
@@ -129,7 +130,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Last Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Last Name:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="lastName" name="lastName" required>
@@ -138,7 +139,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Title:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Title:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="title" name="title" required>
@@ -147,7 +148,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Company Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Company Name:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="companyName" name="companyName" required>
@@ -156,7 +157,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Phone:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Phone:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="tel" id="phone" name="phone" required>
@@ -180,30 +181,31 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric" colspan="2">Education</th>
+            <th class="mdl-data-table__cell--non-numeric"><h5>Education</h5></th>
+            <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
         <tbody>
             <#list educationList as education>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
-                <td class="mdl-data-table__cell--non-numeric">${education.schoolName}</td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>School Name:</h6></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>${education.schoolName}</h6></td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
-                <td class="mdl-data-table__cell--non-numeric">${education.country}</td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Country:</h6></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>${education.country}</h6></td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
-                <td class="mdl-data-table__cell--non-numeric">${education.degree}</td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Degree:</h6></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>${education.degree}</h6></td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
-                <td class="mdl-data-table__cell--non-numeric">${education.major}</td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Major:</h6></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>${education.major}</h6></td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
-                <td class="mdl-data-table__cell--non-numeric">${education.yearGraduated}</td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Year Graduated:</h6></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>${education.yearGraduated}</h6></td>
             </tr>
             <th colspan="2"></th>
             </#list>
@@ -216,13 +218,13 @@
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="t1" align="center">
             <thead>
             <tr>
-                <th class="mdl-data-table__cell--non-numeric">Add Education</th>
+                <th class="mdl-data-table__cell--non-numeric"><h5>Add Education</h5></th>
                 <th class="mdl-data-table__cell--non-numeric"></th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>School Name:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>School Name:</h6></td>
                 <td class="mdl-data-table__cell--non-numeric">
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" id="schoolName" name="schoolName" required>
@@ -231,7 +233,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Country:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Country:</h6></td>
                 <td class="mdl-data-table__cell--non-numeric">
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" id="country" name="country" required>
@@ -240,7 +242,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Degree:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Degree:</h6></td>
                 <td class="mdl-data-table__cell--non-numeric">
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" id="degree" name="degree" required>
@@ -249,7 +251,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Major:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Major:</h6></td>
                 <td class="mdl-data-table__cell--non-numeric">
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="text" id="major" name="major" required>
@@ -258,7 +260,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="mdl-data-table__cell--non-numeric"><h2>Year Graduated:</h2></td>
+                <td class="mdl-data-table__cell--non-numeric"><h6>Year Graduated:</h6></td>
                 <td class="mdl-data-table__cell--non-numeric">
                     <div class="mdl-textfield mdl-js-textfield">
                         <input class="mdl-textfield__input" type="number" id="yearGraduated" name="yearGraduated"
@@ -278,7 +280,12 @@
             </tr>
         </table>
     </form>
-<p>
+    <p>
+
+    <div id="toast-notification" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
 
 </#macro>
 <@display_page/>

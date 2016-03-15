@@ -54,6 +54,11 @@ public class CompanyController extends BaseController {
             throw new HttpServerErrorException(HttpStatus.UNAUTHORIZED);
         }
 
-        return getRedirectView("/");
+        return getCompanySavedRedirectView(getCurrentUser().getCompany().getId());
+    }
+
+    private View getCompanySavedRedirectView(int companyId) {
+        return getRedirectView("/companies/{companyId}/profile/"
+                .replace("{companyId}", String.valueOf(companyId)));
     }
 }

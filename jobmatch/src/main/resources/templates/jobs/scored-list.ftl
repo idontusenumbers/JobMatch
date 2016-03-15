@@ -22,7 +22,6 @@
                         View Job
                     </a>
                     <span class="mdl-badge" data-badge="${closeness}">Closeness</span>
-
                 </div>
                 <div class="mdl-card__menu">
                     <button class="fav-toggle mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
@@ -38,7 +37,7 @@
             </div>
         </div>
     <#else>
-        ${noJobsMessage}
+    ${noJobsMessage}
     </#list>
 </div>
 </#macro>

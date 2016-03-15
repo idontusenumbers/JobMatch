@@ -4,7 +4,7 @@ var $back = $('#back');
 var $next = $('#next');
 var $form = $('form');
 
-$(function () {
+$(document).ready(function () {
     $progress.progressbar({
         value: getCurrentPageNumber(),
         max: $pages.length - 1
@@ -17,9 +17,8 @@ function onLastPage() {
 var updateButtons = function () {
     var currentPageNumber = getCurrentPageNumber();
     $back.attr('disabled', currentPageNumber == 0 ? 'disabled' : null);
-    $next.attr('value', onLastPage() ? 'Submit' : 'next >');
+    $next.html(onLastPage() ? 'Save' : 'Next >');
     $progress.val(currentPageNumber);
-
 };
 function getCurrentPageNumber() {
     return $pages.filter(':visible').first().data('page');
@@ -29,7 +28,8 @@ var changePage = function (step) {
     var next = Math.max(Math.min(current + step, $pages.length - 1), 0);
 
     $progress.progressbar({
-        value: next
+        value: next,
+        max: $pages.length - 1
     });
 
     var $nextPage = $pages.hide().eq(next);
@@ -42,15 +42,16 @@ $back.on("click", function () {
     changePage(-1);
 });
 $next.on("click", function () {
-    if (onLastPage())
+    if (onLastPage()) {
         $form.submit();
-    else
+    } else {
         changePage(1);
+    }
 });
 
-$('.js-page-container').each(function(){
+$('.js-page-container').each(function () {
     var $container = $(this);
-    $container.find('input').on("keypress", function(ev){
+    $container.find('input').on("keypress", function (ev) {
         if (ev.charCode == 13) // enter key
             $next.trigger("click");
     })

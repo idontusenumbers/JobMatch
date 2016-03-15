@@ -6,31 +6,35 @@
 <#macro dashboard_body>
 
 <table id="t1" align="center">
+    <thead>
     <tr>
-        <th colspan="2">${jobPost.jobTitle}</th>
+        <th class="mdl-data-table__cell--non-numeric"><h5>${jobPost.jobTitle}</h5></th>
+        <th class="mdl-data-table__cell--non-numeric"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><h6>Description:</h6></td>
+        <td><h6>${jobPost.description}</h6></td>
     </tr>
     <tr>
-        <td><h2>Description:</h2></td>
-        <td>${jobPost.description}</td>
+        <td><h6>Location:</h6></td>
+        <td><h6>${jobPost.jobCountry}</h6></td>
     </tr>
     <tr>
-        <td><h2>Location:</h2></td>
-        <td>${jobPost.jobCountry}</td>
+        <td><h6>Industry:</h6></td>
+        <td><h6>${jobPost.industry}</h6></td>
     </tr>
     <tr>
-        <td><h2>Industry:</h2></td>
-        <td>${jobPost.industry}</td>
+        <td><h6>Job Type:</h6></td>
+        <td><h6>${jobPost.jobType}</h6></td>
     </tr>
     <tr>
-        <td><h2>Job Type:</h2></td>
-        <td>${jobPost.jobType}</td>
+        <td><h6>Years of Experience:</h6></td>
+        <td><h6>${jobPost.yearsExperience}</h6></td>
     </tr>
     <tr>
-        <td><h2>Years of Experience:</h2></td>
-        <td>${jobPost.yearsExperience}</td>
-    </tr>
-    <tr>
-        <td><h2>Skills:</h2></td>
+        <td><h6>Skills:</h6></td>
         <td>
             <ol>
                 <#list skills.sortedRankables as skillRank>
@@ -61,6 +65,7 @@
             <div id="nobg" align="center"><a href="${s.mvcUrl("JC#findCandidates").arg(0,jobPost.id).build()}">View candidates</a></div>
         </td>
     </tr>
+    </tbody>
     </#if>
 </table>
 

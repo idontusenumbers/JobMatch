@@ -37,22 +37,23 @@ header {
     text-decoration: none;
 }
 
-h1 {
+/*h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     margin: 5px;
     font-size: 20px;
-}
+}*/
 
-h3 {
+/*h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
     margin: 5px;
     font-size: 20px;
-}
+}*/
 
 .headline {
     text-align: center;
+    margin: auto;
 }
 
 .logo {
@@ -76,16 +77,16 @@ img.avatar {
     padding: 30px 0 0 0;
 }
 
-h2 {
+/*h2 {
     margin: 5px;
     font-size: 15px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     max-width: 80%;
-}
+}*/
 
-h2.company {
+.company {
     display: inline;
 }
 
@@ -170,9 +171,10 @@ ol.sortable-list li {
     cursor: move;
 }
 
-form.form-profile{
+form.form-profile {
     text-align: center;
 }
+
 .form-field {
     margin: 0 auto;
     position: relative;
@@ -415,6 +417,10 @@ table#t1 th {
 /*
  * Material Design
  */
+.mdl-button.mdl-button--colored.white-font-button {
+    color: #FFFFFF;
+}
+
 .mdl-button.mdl-button--colored.submit-button {
     color: #FFFFFF;
     display: block;
@@ -437,7 +443,7 @@ table#t1 th {
 .mdl-card__actions .mdl-badge {
     float: right;
     margin-top: 10px;
-    color: #d5d5d5;
+    color: #9E9E9E;
 }
 
 .mdl-badge[data-badge]:after {

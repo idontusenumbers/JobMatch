@@ -34,9 +34,9 @@
             <input type="checkbox" id="optIn" name="optIn" class="mdl-checkbox__input"/> Opt in
         </label>
     </div>
-    <a href="/login" class="forgot-password">&lt; login</a>
+    <a href="/login" class="mdl-button mdl-js-button mdl-js-ripple-effect">&lt; login</a>
     <button type="submit" value="create"
-            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored white-font-button">
         Register
     </button>
 </form>

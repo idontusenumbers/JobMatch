@@ -14,13 +14,13 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric">Edit Company</th>
+            <th class="mdl-data-table__cell--non-numeric"><h5>Edit Company</h5></th>
             <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Company Name:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Company Name:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "company.name"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -31,7 +31,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Phone:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Phone:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "company.phone"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -44,7 +44,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Address:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Address:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "company.address"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -55,7 +55,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Zipcode:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Zipcode:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <div class="mdl-textfield mdl-js-textfield">
                     <@spring.bind "company.zipcode"/>
@@ -68,7 +68,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Website:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Website:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "company.website"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -79,14 +79,14 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Culture:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Culture:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@rankedChoiceList fieldName="cultures" availableChoices=cultureOptions chosenChoices=cultures />
             </td>
         </tr>
         <tr>
             <td colspan="2" class="mdl-data-table__cell--non-numeric">
-                <button type="submit"
+                <button id="show-toast" type="submit"
                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored
                         submit-button">
                     Save Changes
@@ -96,6 +96,11 @@
         </tbody>
     </table>
 </form>
+
+<div id="toast-notification" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
+</div>
 
 </#macro>
 <@display_page/>

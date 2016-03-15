@@ -10,16 +10,16 @@ You forgot to include the dashboard body
 <#macro page_body>
 <div id="wrapper">
     <header>
-        <h1 class="headline"><a href="/" class="logo-link"><span class="logo">JobMatch</span> | <span
-                class="role-name">${currentUser.role.name}</span></a></h1>
+        <h4 class="headline"><a href="/" class="logo-link"><span class="logo">JobMatch</span> | <span
+                class="role-name">${currentUser.role.name}</span></a></h4>
     </header>
 
     <div id="sidebar">
         <div style="text-align:center;">
             <#if currentUser.contact?? && ( currentUser.contact.firstName?has_content || currentUser.contact.lastName?has_content)>
-                <h2 class="company">${currentUser.contact.firstName} ${currentUser.contact.lastName}</h2>
+                <h5 class="company">${currentUser.contact.firstName} ${currentUser.contact.lastName}</h5>
             <#else>
-                <h2 class="company">${currentUser.username}</h2>
+                <h5 class="company">${currentUser.username}</h5>
             </#if>
         </div>
         <br>

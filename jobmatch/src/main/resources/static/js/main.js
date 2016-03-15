@@ -42,11 +42,26 @@ $(function () {
                 $sortList.find('li[data-choice=' + choice + ']').remove();
             }
         })
+    });
 
+    var snackbarContainer = document.querySelector('#toast-notification');
+    var showToastButton = document.querySelector('#show-toast');
+    if(showToastButton != null) {
+        showToastButton.addEventListener('click', function () {
+            'use strict';
+            console.log('button saved');
+            localStorage.setItem("saved-qualifications", "true");
+        });
 
-    })
-
-
+        if (localStorage.getItem("saved-qualifications") == "true") {
+            // We have to delay to wait for DOM to fully load before calling method because JS is loaded before DOM.
+            // and wait for all the other scripts to finish initializing.
+            setTimeout(function () {
+                snackbarContainer.MaterialSnackbar.showSnackbar({message: "Your changes were saved!"});
+                localStorage.setItem("saved-qualifications", "false");
+            }, 1000);
+        }
+    }
 });
 
 var disableUnchecked = function (pairs) {
@@ -58,7 +73,6 @@ var disableUnchecked = function (pairs) {
             toEnable.attr('disabled', $this.is(':checked') ? null : 'disabled');
         });
     }
-
 };
 
 var setFavorite = function (el) {
@@ -75,7 +89,6 @@ var setFavorite = function (el) {
         }),
         contentType: "application/json; charset=utf-8",
 
-
         success: function () {
             $el.attr('data-favorite', newValue);
 
@@ -86,7 +99,5 @@ var setFavorite = function (el) {
             }
         }
 
-    })
-    ;
-
-}
+    });
+};

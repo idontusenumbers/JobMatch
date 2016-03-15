@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar jobmatch/target/jobmatch-0.0.1-SNAPSHOT.war

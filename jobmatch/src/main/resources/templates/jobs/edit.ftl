@@ -22,13 +22,13 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric">Post a Job</th>
+            <th class="mdl-data-table__cell--non-numeric"><h5>Post a Job</h5></th>
             <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Job Title:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Job Title:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.jobTitle"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -40,19 +40,18 @@
         </tr>
         <tr>
             <td class="mdl-data-table__cell--non-numeric">
-                <h2>Description:</h2>
+                <h6>Description:</h6>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.description"/>
                 <div class="mdl-textfield mdl-js-textfield">
-                    <textarea class="mdl-textfield__input" type="text" rows="3" name="description" id="description"
-                    ><#if spring.status.value??>${spring.status.value}</#if></textarea>
+                    <textarea class="mdl-textfield__input" type="text" rows="3" name="description" id="description"><#if spring.status.value??>${spring.status.value?trim}</#if></textarea>
                     <label class="mdl-textfield__label" for="description"></label>
                 </div>
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Location:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Location:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.jobCountry"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -63,7 +62,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Industry:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Industry:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.industry"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -74,7 +73,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Job Type:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Job Type:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.jobType"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -85,7 +84,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Years of Experience:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Years of Experience:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.yearsExperience"/>
                 <div class="mdl-textfield mdl-js-textfield">
@@ -96,7 +95,7 @@
             </td>
         </tr>
         <tr>
-            <td class="mdl-data-table__cell--non-numeric"><h2>Skills:</h2></td>
+            <td class="mdl-data-table__cell--non-numeric"><h6>Skills:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
                 <@rankedChoiceList fieldName="skills" availableChoices=skillOptions chosenChoices=skills />
             </td>
