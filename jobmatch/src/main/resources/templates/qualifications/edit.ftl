@@ -15,7 +15,7 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric"><h5>Edit Qualifications</h5></th>
+            <th class="mdl-data-table__cell--non-numeric" id="tblQualifications"><h5>Edit Qualifications</h5></th>
             <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>
@@ -59,7 +59,7 @@
 <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
     <thead>
     <tr>
-        <th class="mdl-data-table__cell--non-numeric"><h5>References</h5></th>
+        <th class="mdl-data-table__cell--non-numeric" id="tblReferences"><h5>References</h5></th>
         <th class="mdl-data-table__cell--non-numeric"></th>
     </tr>
     </thead>
@@ -181,7 +181,7 @@
     <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
         <tr>
-            <th class="mdl-data-table__cell--non-numeric"><h5>Education</h5></th>
+            <th class="mdl-data-table__cell--non-numeric" id="tblEducation"><h5>Education</h5></th>
             <th class="mdl-data-table__cell--non-numeric"></th>
         </tr>
         </thead>

@@ -54,13 +54,13 @@ You forgot to include the dashboard body
                         <#break>
                     <#case "Seeker">
                         <li>
-                            <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}">Qualifications</a>
+                            <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}#tblQualifications">Qualifications</a>
                         </li>
                         <li>
-                            <a href="#">Education</a>
+                            <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}#tblEducation"">Education</a>
                         </li>
                         <li>
-                            <a href="#">References</a>
+                            <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}#tblReferences">References</a>
                         </li>
                         <li><a href="${s.mvcUrl("JC#listFavoriteJobPosts").arg(0,currentUser.id).build()}">Favorites</a>
                         </li>
