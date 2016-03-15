@@ -40,10 +40,12 @@ public class IndexController extends BaseController {
 
     @RequestMapping("/register")
     public String getRegisterForm(@ModelAttribute User user, Model model) {
-        // TODO prevent logged in users from registering
 
         model.addAttribute("user", user);
-
+        // prevent logged in users from registering
+        if (getCurrentUser() != null){
+            return "forward:/jobs/";
+        }
         /*
          * Populate radio buttons dynamically from the database for account role.
          * Exclude Admin role for obvious reasons.
@@ -60,8 +62,9 @@ public class IndexController extends BaseController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public View postRegister(@ModelAttribute @Valid User user, BindingResult result, Model model) {
-        // TODO prevent logged in users from registering
-
+        // prevent logged in users from registering
+        if (getCurrentUser() != null)
+            result.addError(new ObjectError("role", "Cannot register if logged in"));
         if (user.getRole().getId() == Role.ADMIN)
             result.addError(new ObjectError("role", "You cannot create an admin"));
         if (userRepository.findByUsername(user.getUsername()) != null)
