@@ -88,7 +88,6 @@ public class JobsController extends BaseController {
         model.addAttribute("jobPost", jobPost);
         model.addAttribute("title", jobPost.getJobTitle());
         model.addAttribute("skills", new RankMap<>(jobPost.getSkills()));
-
         return "/jobs/view";
     }
 
@@ -100,6 +99,7 @@ public class JobsController extends BaseController {
         model.addAttribute("skills", new RankMap<>(existingPost.getSkills()));
         model.addAttribute("skillOptions", skillRepository.getMap());
         model.addAttribute("title", "Update " + existingPost.getJobTitle());
+        model.addAttribute("countries", existingPost.getCountries());
         return "/jobs/edit";
     }
 
