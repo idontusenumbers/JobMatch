@@ -45,7 +45,8 @@
             <td class="mdl-data-table__cell--non-numeric">
                 <@spring.bind "jobPost.description"/>
                 <div class="mdl-textfield mdl-js-textfield">
-                    <textarea class="mdl-textfield__input" type="text" rows="3" name="description" id="description"><#if spring.status.value??>${spring.status.value?trim}</#if></textarea>
+                    <textarea class="mdl-textfield__input" type="text" rows="3" name="description"
+                              id="description"><#if spring.status.value??>${spring.status.value?trim}</#if></textarea>
                     <label class="mdl-textfield__label" for="description"></label>
                 </div>
             </td>
@@ -53,12 +54,15 @@
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h6>Location:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
-                <@spring.bind "jobPost.jobCountry"/>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="jobCountry" name="jobCountry" required
-                           <#if spring.status.value??>value="${spring.status.value}"</#if>>
-                    <label class="mdl-textfield__label" for="jobCountry">Job Country</label>
-                </div>
+            <#--<@spring.bind "jobPost.jobCountry"/>-->
+                <#--<div class="mdl-textfield mdl-js-textfield">-->
+                    <#--<input class="mdl-textfield__input" type="text" id="jobCountry" name="jobCountry" required-->
+                           <#--<#if spring.status.value??>value="${spring.status.value}"</#if>>-->
+                    <#--<label class="mdl-textfield__label" for="jobCountry">Job Country</label>-->
+                   <#--<@spring.formSingleSelect path="jobPost.jobCountry" options=countries>-->
+                <#--</div>-->
+                    <@spring.bind "countries" />
+                    <@spring.formSingleSelect "jobPost.jobCountry", countries, " " />
             </td>
         </tr>
         <tr>
