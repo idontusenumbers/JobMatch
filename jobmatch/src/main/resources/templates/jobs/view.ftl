@@ -5,7 +5,7 @@
 </#macro>
 <#macro dashboard_body>
 
-<table id="t1" align="center">
+<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
     <thead>
     <tr>
         <th class="mdl-data-table__cell--non-numeric"><h5>${jobPost.jobTitle}</h5></th>
@@ -14,28 +14,28 @@
     </thead>
     <tbody>
     <tr>
-        <td><h6>Description:</h6></td>
-        <td><h6>${jobPost.description}</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>Description:</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>${jobPost.description}</h6></td>
     </tr>
     <tr>
-        <td><h6>Location:</h6></td>
-        <td><h6>${jobPost.jobCountry}</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>Location:</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>${jobPost.jobCountry}</h6></td>
     </tr>
     <tr>
-        <td><h6>Industry:</h6></td>
-        <td><h6>${jobPost.industry}</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>Industry:</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>${jobPost.industry}</h6></td>
     </tr>
     <tr>
-        <td><h6>Job Type:</h6></td>
-        <td><h6>${jobPost.jobType}</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>Job Type:</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>${jobPost.jobType}</h6></td>
     </tr>
     <tr>
-        <td><h6>Years of Experience:</h6></td>
-        <td><h6>${jobPost.yearsExperience}</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>Years of Experience:</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>${jobPost.yearsExperience}</h6></td>
     </tr>
     <tr>
-        <td><h6>Skills:</h6></td>
-        <td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>Skills:</h6></td>
+        <td class="mdl-data-table__cell--non-numeric">
             <ol>
                 <#list skills.sortedRankables as skillRank>
                     <li>${skillRank.skill.name}</li>
