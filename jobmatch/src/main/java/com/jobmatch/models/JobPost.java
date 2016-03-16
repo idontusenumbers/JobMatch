@@ -3,9 +3,7 @@ package com.jobmatch.models;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class JobPost implements Serializable {
@@ -154,10 +152,19 @@ public class JobPost implements Serializable {
         result = 31 * result + yearsExperience;
         return result;
     }
-    public static HashMap<String,String> getCountries() { return countries; }
-    public static final HashMap<String, String> countries;
-    static{
-        HashMap<String, String> map = new HashMap<>();
+
+    public static Map<String, String> getCountries() {
+        return countries;
+    }
+
+    public static List<String> getCountryList() {
+        return new ArrayList<>(countries.values());
+    }
+
+    public static final Map<String, String> countries;
+
+    static {
+        Map<String, String> map = new LinkedHashMap<>();
         map.put("AF", "Afghanistan");
         map.put("AL", "Albania");
         map.put("DZ", "Algeria");

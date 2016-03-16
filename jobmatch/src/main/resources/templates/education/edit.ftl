@@ -28,10 +28,19 @@
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h6>Country:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="country" name="country" required
-                           <#if education.country??>value="${education.country}" </#if>>
-                    <label class="mdl-textfield__label" for="country">United States</label>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input class="mdl-textfield__input" type="text" id="country" name="country"
+                           value="${education.country!}"
+                           readonly tabIndex="-1">
+                    <label for="country">
+                        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                    </label>
+                    <ul for="country" class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                        style="height: 200px; overflow: auto;">
+                        <#list countries as country>
+                            <li class="mdl-menu__item">${country}</li>
+                        </#list>
+                    </ul>
                 </div>
             </td>
         </tr>
@@ -66,7 +75,10 @@
             </td>
         </tr>
         <th colspan="2">
-            <input type="submit" value="Save"/>
+            <button type="submit"
+                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored submit-button">
+                Save
+            </button>
         </th>
         </tbody>
     </table>

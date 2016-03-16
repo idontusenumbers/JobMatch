@@ -59,8 +59,8 @@
 
 	<!--TODO download local copy of remote files -->
 
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="/static/styles/jquery-ui.min.css" rel="stylesheet" type="text/css">
 	<link href="/static/styles/jquery-ui.structure.min.css" rel="stylesheet" type="text/css">
 	<link href="/static/styles/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
@@ -68,14 +68,8 @@
 	<link href="/static/styles/getmdl-select.min.css" rel="stylesheet" type="text/css">
 	<link href="/static/styles/main.css" rel="stylesheet" type="text/css">
 
-	<#-- These scripts must be loaded before any other script that uses them,
-		 including scripts that are loaded in <@page_body/> which includes 'paged.js'.
-		 This also means they cannot be deferred. Removing the deferred also helps with
-		 the flash of unstyled content (FOUC) on the login screen -->
-	<script type="text/javascript" src="/static/js/jquery-2.2.0.min.js" ></script>
-	<script type="text/javascript" src="/static/js/jquery-ui.min.js" ></script>
-	<script type="text/javascript" src="/static/js/material.min.js" ></script>
-
+    <script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
 	<@page_head/>
 	<script>
 		window.FAVE_URL = '${s.mvcUrl("JC#setFavorite").build()}';
@@ -87,8 +81,9 @@
 	<@page_body/>
 
 	<#-- These scripts depend on DOM elements and should be loaded after those elements are added to the DOM. -->
-	<script type="text/javascript" src="/static/js/getmdl-select.min.js" defer></script>
-	<script type="text/javascript" src="/static/js/main.js" defer></script>
+<script type="text/javascript" src="/static/js/material.min.js"></script>
+<script type="text/javascript" src="/static/js/getmdl-select.min.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>
 <!-- footer scripts -->
 	<@page_body_footer/>
 </body>

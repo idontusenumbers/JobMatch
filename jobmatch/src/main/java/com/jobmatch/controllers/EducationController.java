@@ -1,6 +1,7 @@
 package com.jobmatch.controllers;
 
 import com.jobmatch.models.Education;
+import com.jobmatch.models.JobPost;
 import com.jobmatch.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ public class EducationController extends BaseController {
         User user = userRepository.findOne(userId);
         model.addAttribute("educationList", user.getEducationList());
         model.addAttribute("currentUser", user);
+        model.addAttribute("countries", JobPost.getCountryList());
 
         return "education/view";
     }
@@ -30,6 +32,7 @@ public class EducationController extends BaseController {
         enforceSameUserUnlessAdmin(userId);
         model.addAttribute("education", educationRepository.findOne(educationId));
         model.addAttribute("user", getCurrentUser());
+        model.addAttribute("countries", JobPost.getCountryList());
 
         return "education/edit";
     }

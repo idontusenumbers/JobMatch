@@ -82,11 +82,11 @@
                     <label for="country">
                         <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
                     </label>
-                    <ul for="country" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                        <li class="mdl-menu__item">Germany</li>
-                        <li class="mdl-menu__item">Belarus</li>
-                        <li class="mdl-menu__item">Russia</li>
-                        <li class="mdl-menu__item">United States</li>
+                    <ul for="country" class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                        style="height: 200px; overflow: auto;">
+                        <#list countries as country>
+                            <li class="mdl-menu__item">${country}</li>
+                        </#list>
                     </ul>
                 </div>
             </td>

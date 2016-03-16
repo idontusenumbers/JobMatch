@@ -55,7 +55,7 @@ $('.js-page-container').each(function () {
         if (ev.charCode == 13) // enter key
             $next.trigger("click");
     })
-})
+});
 
 changePage(0);
 updateButtons();

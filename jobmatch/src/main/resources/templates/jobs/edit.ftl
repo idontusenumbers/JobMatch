@@ -54,15 +54,20 @@
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h6>Location:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
-            <#--<@spring.bind "jobPost.jobCountry"/>-->
-                <#--<div class="mdl-textfield mdl-js-textfield">-->
-                    <#--<input class="mdl-textfield__input" type="text" id="jobCountry" name="jobCountry" required-->
-                           <#--<#if spring.status.value??>value="${spring.status.value}"</#if>>-->
-                    <#--<label class="mdl-textfield__label" for="jobCountry">Job Country</label>-->
-                   <#--<@spring.formSingleSelect path="jobPost.jobCountry" options=countries>-->
-                <#--</div>-->
-                    <@spring.bind "countries" />
-                    <@spring.formSingleSelect "jobPost.jobCountry", countries, " " />
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input class="mdl-textfield__input" type="text" id="jobCountry" name="jobCountry"
+                           value="${jobPost.country!"United States"}"
+                           readonly tabIndex="-1">
+                    <label for="jobCountry">
+                        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                    </label>
+                    <ul for="jobCountry" class="mdl-menu mdl-menu--bottom-left mdl-js-menu"
+                        style="height: 200px; overflow: auto;">
+                        <#list countries as country>
+                            <li class="mdl-menu__item">${country}</li>
+                        </#list>
+                    </ul>
+                </div>
             </td>
         </tr>
         <tr>
