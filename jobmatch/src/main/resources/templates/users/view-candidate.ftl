@@ -17,15 +17,17 @@
         <#else>
         ${user.username}
         </#if><br>
-        <#if user.contact??>
+        <#if user.contact.phone??>
             <b>Phone: </b> ${user.contact.phone} <br>
+        </#if>
+        <#if user.contact.address??>
             <b>Address: </b> ${user.contact.address} <br>
+        </#if>
+        <#if user.contact.zipcode??>
             <b>Zip code: </b> ${user.contact.zipcode} <br>
-            <#if user.contact.website??>
-                <b>Website: </b> ${user.contact.website} <br>
-            </#if>
-        <#else>
-            No contact information found.
+        </#if>
+        <#if user.contact.website??>
+            <b>Website: </b> ${user.contact.website} <br>
         </#if>
     </div>
 
@@ -57,7 +59,7 @@
 
     <div class="view-job">
         <h3>Education</h3>
-        <#if user.education??>
+        <#if user.education?? && user.education?has_content>
             <#list user.education as edu>
                 <b>Name:</b> ${edu.schoolName} <br>
                 <b>Country:</b> ${edu.country} <br>
@@ -74,32 +76,32 @@
 
     <div class="view-job">
         <h3>Resume Description</h3>
-        <#if user.resume??>
+        <#if user.resume?? && user.resume?has_content>
         ${user.resume}
         <#else>
             No resume submitted.
         </#if>
     </div>
 
-    <div class="view-job">
-        <h3>Experience</h3>
-        <#if user.experiences??>
-            <#list user.experiences as exp>
-            ${exp.title}
-            ${exp.companyName}
-            ${exp.companyAddress}
-            ${exp.startDate}
-            ${exp.endDate}
-            ${exp.responsbilities}
-            </#list>
-        <#else>
-            No experience listed.
-        </#if>
-    </div>
+    <#--<div class="view-job">-->
+        <#--<h3>Experience</h3>-->
+        <#--<#if user.experiences?? & user.experiences?has_content>-->
+            <#--<#list user.experiences as exp>-->
+            <#--${exp.title}-->
+            <#--${exp.companyName}-->
+            <#--${exp.companyAddress}-->
+            <#--${exp.startDate}-->
+            <#--${exp.endDate}-->
+            <#--${exp.responsbilities}-->
+            <#--</#list>-->
+        <#--<#else>-->
+            <#--No experience listed.-->
+        <#--</#if>-->
+    <#--</div>-->
 
     <div class="view-job">
         <h3>References</h3>
-        <#if user.references??>
+        <#if user.references?? && user.references?has_content>
             <#list user.references as ref>
                 <b>Name:</b> ${ref.firstName} ${ref.lastName} <br>
                 <b>Title:</b> ${ref.title} <br>
