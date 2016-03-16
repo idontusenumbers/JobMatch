@@ -15,7 +15,7 @@
     <tbody>
     <tr>
         <td class="mdl-data-table__cell--non-numeric"><h6>Description:</h6></td>
-        <td class="mdl-data-table__cell--non-numeric"><h6>${jobPost.description}</h6></td>
+        <td class="mdl-data-table__cell--non-numeric"><h6>${jobPost.description!''}</h6></td>
     </tr>
     <tr>
         <td class="mdl-data-table__cell--non-numeric"><h6>Location:</h6></td>
