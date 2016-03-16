@@ -93,6 +93,7 @@ public class Company implements Serializable {
                 ", address='" + address + '\'' +
                 ", zipcode='" + zipcode + '\'' +
                 ", website='" + website + '\'' +
+                ", culture='" + cultures + '\'' +
                 '}';
     }
 }

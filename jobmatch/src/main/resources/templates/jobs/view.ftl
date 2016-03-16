@@ -45,6 +45,18 @@
             </ol>
         </td>
     </tr>
+<tr>
+    <td class="mdl-data-table__cell--non-numeric"><h6>Culture:</h6></td>
+    <td class="mdl-data-table__cell--non-numeric">
+        <ol>
+            <#list cultures.sortedRankables as cultureRank>
+                <li>${cultureRank.culture.name}</li>
+            <#else>
+                No culture
+            </#list>
+        </ol>
+    </td>
+</tr>
     <#if currentUser.role.name == "Admin" || currentUser.role.name == "Employer">
     <tr>
         <td width="50%">

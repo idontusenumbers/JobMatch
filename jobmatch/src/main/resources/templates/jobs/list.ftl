@@ -10,7 +10,7 @@
             <li>
                 <div class="title" id="bg"><a
                         href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">${jobPost.jobTitle}</a></div>
-                <div class="matches">Match: 89%</div>
+                <div class="matches">Match: n/a</div>
             </li>
         <#else>
             No jobs to list

@@ -47,7 +47,7 @@ public class JobCandidateEvaluator {
         Set<RankedSkill> us = user.getSkills();
         Set<RankedSkill> jps = jobPost.getSkills();
         Set<RankedCulture> ugc = user.getCultures();
-        Set<RankedCulture> jpgc = jobPost.getCultures();
+        Set<RankedCulture> jpgc = jobPost.getCreator().getCompany().getCultures();
 
         // TODO using hashmaps might make this more efficient
 

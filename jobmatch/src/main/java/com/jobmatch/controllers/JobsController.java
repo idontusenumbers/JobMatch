@@ -88,7 +88,7 @@ public class JobsController extends BaseController {
         model.addAttribute("jobPost", jobPost);
         model.addAttribute("title", jobPost.getJobTitle());
         model.addAttribute("skills", new RankMap<>(jobPost.getSkills()));
-
+        model.addAttribute("cultures", new RankMap<>(jobPost.getCreator().getCompany().getCultures()));
         return "/jobs/view";
     }
 
