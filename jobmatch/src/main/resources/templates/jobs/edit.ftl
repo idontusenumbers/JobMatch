@@ -79,11 +79,23 @@
         <tr>
             <td class="mdl-data-table__cell--non-numeric"><h6>Job Type:</h6></td>
             <td class="mdl-data-table__cell--non-numeric">
-                <@spring.bind "jobPost.jobType"/>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="jobType" name="jobType" required
-                           <#if spring.status.value??>value="${spring.status.value}"</#if>>
-                    <label class="mdl-textfield__label" for="jobType">Job Type</label>
+                <#--<@spring.bind "jobPost.jobType"/>-->
+                <#--<div class="mdl-textfield mdl-js-textfield">-->
+                    <#--<input class="mdl-textfield__input" type="text" id="jobType" name="jobType" required-->
+                           <#--<#if spring.status.value??>value="${spring.status.value}"</#if>>-->
+                    <#--<label class="mdl-textfield__label" for="jobType">Job Type</label>-->
+                <#--</div>-->
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+                    <input class="mdl-textfield__input" type="text" id="jobType" name="jobType" value="Full time"
+                           readonly tabIndex="-1">
+                    <label for="jobType">
+                        <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                    </label>
+                    <ul for="jobType" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                        <li class="mdl-menu__item">Full time</li>
+                        <li class="mdl-menu__item">Part time</li>
+                        <li class="mdl-menu__item">Temporary</li>
+                    </ul>
                 </div>
             </td>
         </tr>
