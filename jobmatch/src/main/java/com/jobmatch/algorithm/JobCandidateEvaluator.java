@@ -10,7 +10,7 @@ import java.util.*;
 
 public class JobCandidateEvaluator {
 
-    public static final int CLOSENESS_THRESHOLD = 100;
+    public static final int CLOSENESS_THRESHOLD = 8;
     public static final Comparator<CandidateScore> JOB_MATCH_COMPARATOR = (o1, o2) -> Float.compare(o1.getCloseness(), o2.getCloseness());
     private static final int MIN_DISTANCE = 5;
 
@@ -58,10 +58,11 @@ public class JobCandidateEvaluator {
         int matchCount = 1;
 
         for (RankedSkill jp : jps) {
-            sumDistance += MIN_DISTANCE;
+            float minDistance = MIN_DISTANCE / jps.size();
+            sumDistance += minDistance;
             for (RankedSkill u : us) {
                 if (jp.getSkill().equals(u.getSkill())) {
-                    sumDistance -= MIN_DISTANCE;
+                    sumDistance -= minDistance;
                     sumDistance += Math.abs(jp.getRank() - u.getRank());
                     matchCount++;
                 }
@@ -69,10 +70,11 @@ public class JobCandidateEvaluator {
         }
 
         for (RankedCulture j : jpgc) {
-            sumDistance += MIN_DISTANCE;
+            float minDistance = MIN_DISTANCE / jpgc.size();
+            sumDistance += minDistance;
             for (RankedCulture u : ugc) {
                 if (j.getCulture().equals(u.getCulture())) {
-                    sumDistance -= MIN_DISTANCE;
+                    sumDistance -= minDistance;
                     sumDistance += Math.abs(j.getRank() - u.getRank());
                     matchCount++;
                 }
