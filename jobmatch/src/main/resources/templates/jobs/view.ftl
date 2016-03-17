@@ -38,7 +38,7 @@
         <td class="mdl-data-table__cell--non-numeric">
             <ol>
                 <#list skills.sortedRankables as skillRank>
-                    <li>${skillRank.skill.name}</li>
+                    <li><h6 style="margin: 0;">${skillRank.skill.name}</h6></li>
                 <#else>
                     No skills
                 </#list>
@@ -50,9 +50,9 @@
     <td class="mdl-data-table__cell--non-numeric">
         <ol>
             <#list cultures.sortedRankables as cultureRank>
-                <li>${cultureRank.culture.name}</li>
+                <li><h6>${cultureRank.culture.name}</h6></li>
             <#else>
-                No culture
+                <h6>No culture</h6>
             </#list>
         </ol>
     </td>

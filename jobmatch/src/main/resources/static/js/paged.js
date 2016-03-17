@@ -28,21 +28,20 @@ var changePage = function (step) {
     var next = Math.max(Math.min(current + step, $pages.length - 1), 0);
 
     // Prevent User from advancing when fields aren't filled out
-    if (next > current) {
-        switch (current) {
-            case 0:
-                if (isEmpty($('#firstName').val()) || isEmpty($('#lastName').val())) {
-                    return false;
-                }
-                break;
-            case 1:
-                if (isEmpty($('#address').val()) || isEmpty($('#zipcode').val())) {
-                    return false;
-                }
-                break;
-            default:
-                break;
-        }
+    if ($('[data-page=' + current + '] input[required]:empty')) return false;
+    switch (current) {
+        case 0:
+            if (isEmpty($('#firstName').val()) || isEmpty($('#lastName').val())) {
+                return false;
+            }
+            break;
+        case 1:
+            if (isEmpty($('#address').val()) || isEmpty($('#zipcode').val())) {
+                return false;
+            }
+            break;
+        default:
+            break;
     }
 
     $progress.progressbar({
