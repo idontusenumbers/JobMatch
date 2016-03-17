@@ -12,22 +12,24 @@
     <div class="view-job">
         <h3>Contact</h3>
         <b>Name: </b>
-        <#if user.contact?? && ( user.contact.firstName?has_content || user.contact.lastName?has_content)>
-        ${user.contact.firstName} ${user.contact.lastName}
-        <#else>
-        ${user.username}
-        </#if><br>
-        <#if user.contact.phone??>
-            <b>Phone: </b> ${user.contact.phone} <br>
-        </#if>
-        <#if user.contact.address??>
-            <b>Address: </b> ${user.contact.address} <br>
-        </#if>
-        <#if user.contact.zipcode??>
-            <b>Zip code: </b> ${user.contact.zipcode} <br>
-        </#if>
-        <#if user.contact.website??>
-            <b>Website: </b> ${user.contact.website} <br>
+		<#if user.contact?? &&( user.contact.firstName?has_content || user.contact.lastName?has_content)>
+		${user.contact.firstName} ${user.contact.lastName}
+		<#else>
+		${user.username}
+		</#if><br>
+        <#if user.contact??>
+			<#if user.contact.phone??>
+				<b>Phone: </b> ${user.contact.phone} <br>
+			</#if>
+			<#if user.contact.address??>
+				<b>Address: </b> ${user.contact.address} <br>
+			</#if>
+			<#if user.contact.zipcode??>
+				<b>Zip code: </b> ${user.contact.zipcode} <br>
+			</#if>
+			<#if user.contact.website??>
+				<b>Website: </b> ${user.contact.website} <br>
+			</#if>
         </#if>
     </div>
 

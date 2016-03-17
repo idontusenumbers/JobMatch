@@ -11,7 +11,7 @@ import java.util.*;
 public class JobCandidateEvaluator {
 
     public static final int CLOSENESS_THRESHOLD = 100;
-    public static final Comparator<CandidateScore> JOB_MATCH_COMPARATOR = (o1, o2) -> o1.getCloseness() - o2.getCloseness();
+    public static final Comparator<CandidateScore> JOB_MATCH_COMPARATOR = (o1, o2) -> Float.compare(o1.getCloseness(), o2.getCloseness());
     private static final int MIN_DISTANCE = 5;
 
 
@@ -19,7 +19,7 @@ public class JobCandidateEvaluator {
         List<CandidateScore> userMatchedToJobs = new ArrayList<>();
 
         for (JobPost jobpost : allJobPosts) {
-            int distance = findDistance(user, jobpost);
+            float distance = findDistance(user, jobpost);
             CandidateScore match = new CandidateScore(user, jobpost, distance);
             if (match.getCloseness() < CLOSENESS_THRESHOLD)
                 userMatchedToJobs.add(match);
@@ -33,7 +33,7 @@ public class JobCandidateEvaluator {
         List<CandidateScore> jobsMatchedToCandidates = new ArrayList<>();
 
         for (User user : allUsers) {
-            int distance = findDistance(user, jobPost);
+            float distance = findDistance(user, jobPost);
             CandidateScore match = new CandidateScore(user, jobPost, distance);
             if (match.getCloseness() < CLOSENESS_THRESHOLD)
                 jobsMatchedToCandidates.add(match);
@@ -43,7 +43,7 @@ public class JobCandidateEvaluator {
         return jobsMatchedToCandidates;
     }
 
-    static public int findDistance(User user, JobPost jobPost) {
+    static public float findDistance(User user, JobPost jobPost) {
         Set<RankedSkill> us = user.getSkills();
         Set<RankedSkill> jps = jobPost.getSkills();
         Set<RankedCulture> ugc = user.getCultures();
@@ -54,48 +54,31 @@ public class JobCandidateEvaluator {
         HashSet<RankedCulture> hashsetUserCulture = new HashSet<>();
         HashSet<RankedCulture> hashsetJobCulture = new HashSet<>();
 
-        for (RankedSkill u : us) {
-            hashsetUserSkill.add(u);
-        }
-        for (RankedSkill j : jps) {
-            hashsetJobSkill.add(j);
-        }
-        int sizeBeforeJobSkill = hashsetJobSkill.size();
-        hashsetJobSkill.retainAll(hashsetUserSkill);
-        int sizeAfterJobSkill = hashsetJobSkill.size();
+        float sumDistance = 0;
+        int matchCount = 1;
 
-
-        for (RankedCulture u : ugc) {
-            hashsetUserCulture.add(u);
+        for (RankedSkill jp : jps) {
+            sumDistance += MIN_DISTANCE;
+            for (RankedSkill u : us) {
+                if (jp.getSkill().equals(u.getSkill())) {
+                    sumDistance -= MIN_DISTANCE;
+                    sumDistance += Math.abs(jp.getRank() - u.getRank());
+                    matchCount++;
+                }
+            }
         }
+
         for (RankedCulture j : jpgc) {
-            hashsetJobCulture.add(j);
+            sumDistance += MIN_DISTANCE;
+            for (RankedCulture u : ugc) {
+                if (j.getCulture().equals(u.getCulture())) {
+                    sumDistance -= MIN_DISTANCE;
+                    sumDistance += Math.abs(j.getRank() - u.getRank());
+                    matchCount++;
+                }
+            }
         }
-        int sizeBeforeJobCulture = hashsetJobCulture.size();
-        hashsetJobCulture.retainAll(hashsetUserCulture);
-        int sizeAfterJobCulture = hashsetJobCulture.size();
 
-        int result = ((sizeBeforeJobSkill - sizeAfterJobSkill) + (sizeBeforeJobCulture - sizeAfterJobCulture)) * MIN_DISTANCE;
-
-//        for (RankedSkill jp : jps) {
-//            for (RankedSkill u : us) {
-//                if (jp.equals(u)) {
-//                    result += Math.abs(jp.getRank() - u.getRank());
-//                }else{
-//                    result+=MIN_DISTANCE;
-//                }
-//            }
-//        }
-//
-//        for (RankedCulture j : jpgc) {
-//            for (RankedCulture u : ugc) {
-//                if (j.equals(u)) {
-//                    result += Math.abs(j.getRank() - u.getRank());
-//                }else{
-//                    result+=MIN_DISTANCE;
-//                }
-//            }
-//        }
-        return result;
+        return sumDistance / matchCount;
     }
 }
