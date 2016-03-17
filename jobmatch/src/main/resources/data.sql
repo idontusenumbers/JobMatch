@@ -10,7 +10,7 @@ WHEN NOT MATCHED THEN INSERT VALUES vals.id, TRIM(vals.name);
 -- Seed the skill table with possible user skills
 --
 MERGE INTO SKILL AS t USING (VALUES
-(1,'C++'), (2, 'Java'), (3, 'HTML'), (4, 'CSS'), (5, 'JavaScript'), (6, 'C#'), (7, 'PHP'), (8, 'SQL')
+(1,'C++'), (2, 'Java'), (3, 'HTML'), (4, 'CSS'), (5, 'JavaScript'), (6, 'C#'), (7, 'PHP'), (8, 'SQL'), (9, 'Project Management') , (10, 'Technical Writing') , (11, 'Script language') , (12, 'Objective C') , (13, 'Python') , (14, 'Ruby') , (15, 'Web2Py') , (16, 'Visual Studio') , (17, 'UI/UX') , (18, 'Algorithms') , (19, 'Debugging') , (20, 'System Design') , (21, 'Business Analysis') , (22, 'Web Development') , (23, 'Mobile Development') , (24, 'Operating System Design') , (25, 'System Architecture') , (26, 'System Integration') , (27, 'Artificial Intelligence') , (28, 'Game Programming')
 ) AS vals(a,b)
 ON t.ID=vals.a
 WHEN MATCHED THEN UPDATE SET t.NAME=vals.b
