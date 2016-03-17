@@ -57,11 +57,7 @@ var changePage = function (step) {
 };
 
 var isEmpty = function (val) {
-    if (val === '') {
-        return true;
-    }
-
-    return false;
+    return val === '';
 };
 
 $back.on("click", function () {
