@@ -3,7 +3,7 @@
 <#macro header>REFERENCE</#macro>
 
 <#macro dashboard_body>
-<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp jm-table">
     <thead>
     <tr>
         <th class="mdl-data-table__cell--non-numeric"><h5>References</h5></th>
@@ -76,7 +76,7 @@
 <form action="${s.mvcUrl("RC#addReference").arg(0, currentUser.id).build()}" name="reference" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="tAddEducation" align="center">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp jm-table" id="tAddEducation" align="center">
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric"><h5>Add Reference</h5></th>
