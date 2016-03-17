@@ -5,26 +5,26 @@
 </#macro>
 <#macro dashboard_body>
 
-<table id="t1" align="center">
+<table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <thead>
     <tr>
-        <th>Candidates matched to</th>
-        <th>
-            <div id="nobg"><a href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">${jobPost.jobTitle}</a></div>
-        </th>
+        <th class="mdl-data-table__cell--non-numeric"><h5>Candidates matched to</h5></th>
+        <th class="mdl-data-table__cell--non-numeric"><h5><a
+                href="${s.mvcUrl("JC#viewJob").arg(0,jobPost.id).build()}">${jobPost.jobTitle}</a></h5></th>
     </tr>
+    </thead>
+    <tbody>
     <ul>
         <#list scoredCandidates as scoredCandidate>
         <tr>
-            <td>
-                <div id="nobg">
-                    <a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}">
-                        <#if scoredCandidate.user.contact?? && scoredCandidate.user.contact.firstName?has_content >
-                            ${scoredCandidate.user.contact.firstName}
-                            <#else>
-                        ${scoredCandidate.user.username}
-                        </#if>
-                    </a>
-                </div>
+            <td class="mdl-data-table__cell--non-numeric">
+                <a href="${s.mvcUrl("UC#viewUser").arg(0,scoredCandidate.user.id).build()}">
+                    <#if scoredCandidate.user.contact?? && scoredCandidate.user.contact.firstName?has_content >
+                    <h6>${scoredCandidate.user.contact.firstName}
+                    <#else>
+                    ${scoredCandidate.user.username}</h6>
+                    </#if>
+                </a>
             </td>
             <td>Closeness: ${scoredCandidate.closeness}</td>
         <#else>
@@ -33,9 +33,8 @@
         </#list>
     </ul>
     </tr>
+    </tbody>
 </table>
-
-
 
 </#macro>
 
