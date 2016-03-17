@@ -12,17 +12,17 @@ action="profile" name="user" method="post"
         <br>
         <@spring.bind "user.contact.firstName"/>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="contact.firstName" name="contact.firstName"
-                   <#if spring.status.value??>value="${spring.status.value}"</#if>>
-            <label class="mdl-textfield__label" for="contact.phone">First Name</label>
+            <input class="mdl-textfield__input" type="text" id="firstName" name="contact.firstName"
+                   <#if spring.status.value??>value="${spring.status.value}"</#if> required>
+            <label class="mdl-textfield__label" for="firstName">First Name</label>
         </div>
     </div>
     <div class="form-field">
         <@spring.bind "user.contact.lastName"/>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="contact.lastName" name="contact.lastName"
-                   <#if spring.status.value??>value="${spring.status.value}"</#if>>
-            <label class="mdl-textfield__label" for="contact.phone">Last Name</label>
+            <input class="mdl-textfield__input" type="text" id="lastName" name="contact.lastName"
+                   <#if spring.status.value??>value="${spring.status.value}"</#if> required>
+            <label class="mdl-textfield__label" for="lastName">Last Name</label>
         </div>
         <p></p>
     </div>
@@ -33,18 +33,17 @@ action="profile" name="user" method="post"
         <br>
         <@spring.bind "user.contact.address"/>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="contact.address" name="contact.address"
-                   <#if spring.status.value??>value="${spring.status.value}"</#if>>
-            <label class="mdl-textfield__label" for="contact.address">Address</label>
+            <input class="mdl-textfield__input" type="text" id="address" name="contact.address"
+                   <#if spring.status.value??>value="${spring.status.value}"</#if> required>
+            <label class="mdl-textfield__label" for="address">Address</label>
         </div>
     </div>
     <div class="form-field">
         <@spring.bind "user.contact.zipcode"/>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="contact.zipcode" name="contact.zipcode"
-                   pattern="^\d{5}([\-]?\d{4})?$"
-                   <#if spring.status.value??>value="${spring.status.value}"</#if>>
-            <label class="mdl-textfield__label" for="contact.zipcode">Zip Code</label>
+            <input class="mdl-textfield__input" type="text" id="zipcode" name="contact.zipcode"
+                   <#if spring.status.value??>value="${spring.status.value}"</#if> required>
+            <label class="mdl-textfield__label" for="zipcode">Zip Code</label>
             <span class="mdl-textfield__error">Input is not a valid zip code!</span>
         </div>
         <p></p>
@@ -55,10 +54,10 @@ action="profile" name="user" method="post"
         <br/>
         <@spring.bind "user.contact.phone"/>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="tel" id="contact.phone" name="contact.phone"
+            <input class="mdl-textfield__input" type="tel" id="phone" name="contact.phone"
                    pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" placeholder="(783) 310-456"
-                   <#if spring.status.value??>value="${spring.status.value}"</#if>>
-            <label class="mdl-textfield__label" for="contact.phone">Phone Number</label>
+                   <#if spring.status.value??>value="${spring.status.value}"</#if> required>
+            <label class="mdl-textfield__label" for="phone">Phone Number</label>
             <span class="mdl-textfield__error">Input is not a valid phone number!</span>
         </div>
         <p></p>
