@@ -27,6 +27,24 @@ var changePage = function (step) {
     var current = getCurrentPageNumber();
     var next = Math.max(Math.min(current + step, $pages.length - 1), 0);
 
+    // Prevent User from advancing when fields aren't filled out
+    if (next > current) {
+        switch (current) {
+            case 0:
+                if (isEmpty($('#firstName').val()) || isEmpty($('#lastName').val())) {
+                    return false;
+                }
+                break;
+            case 1:
+                if (isEmpty($('#address').val()) || isEmpty($('#zipcode').val())) {
+                    return false;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     $progress.progressbar({
         value: next,
         max: $pages.length - 1
@@ -38,11 +56,23 @@ var changePage = function (step) {
     updateButtons();
 };
 
+var isEmpty = function (val) {
+    if (val === '') {
+        return true;
+    }
+
+    return false;
+};
+
 $back.on("click", function () {
     changePage(-1);
 });
 $next.on("click", function () {
     if (onLastPage()) {
+        if (isEmpty($('#phone').val())) {
+            return false;
+        }
+
         $form.submit();
     } else {
         changePage(1);
