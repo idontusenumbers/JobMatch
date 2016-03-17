@@ -11,7 +11,7 @@
     <@spring.showErrors '*', 'errors' />
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <table id="t1" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp jm-table">
         <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric"><h5>Edit Company</h5></th>

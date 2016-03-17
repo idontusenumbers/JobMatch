@@ -4,7 +4,7 @@
 
 <#macro dashboard_body>
 
-<table id="t1" align="center">
+<table id="t1" align="center" class="jm-table">
     <tr>
         <!-- TODO link to company page-->
         <th colspan="2">${company.name}</th>
