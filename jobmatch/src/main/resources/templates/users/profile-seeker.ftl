@@ -13,7 +13,7 @@ action="profile" name="user" method="post"
         <@spring.bind "user.contact.firstName"/>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="firstName" name="contact.firstName"
-                   <#if spring.status.value??>value="${spring.status.value}"</#if> required>
+                   <#if spring.status.value??>value="${spring.status.value}"</#if> required autofocus>
             <label class="mdl-textfield__label" for="firstName">First Name</label>
         </div>
     </div>
