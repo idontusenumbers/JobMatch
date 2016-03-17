@@ -6,6 +6,9 @@ import com.jobmatch.models.RankedCulture;
 import com.jobmatch.models.User;
 import org.springframework.util.CollectionUtils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class JobCandidateEvaluator {
@@ -80,7 +83,7 @@ public class JobCandidateEvaluator {
                 }
             }
         }
-
-        return sumDistance / matchCount;
+        float result = Math.round((sumDistance/matchCount)*10.0)/10.0f;
+        return result;
     }
 }
