@@ -60,7 +60,7 @@ You forgot to include the dashboard body
                             <a href="${s.mvcUrl("EC#viewEducation").arg(0, currentUser.id).build()}">Education</a>
                         </li>
                         <li>
-                            <a href="${s.mvcUrl("UQC#getQualifications").arg(0,currentUser.id).build()}#tblReferences">References</a>
+                            <a href="${s.mvcUrl("RC#viewReference").arg(0,currentUser.id).build()}#tblReferences">References</a>
                         </li>
                         <li><a href="${s.mvcUrl("JC#listFavoriteJobPosts").arg(0,currentUser.id).build()}">Favorites</a>
                         </li>
