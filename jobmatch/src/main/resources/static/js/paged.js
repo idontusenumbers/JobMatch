@@ -1,10 +1,10 @@
-var $progress = $('#progress');
-var $pages = $('section[data-page]');
-var $back = $('#back');
-var $next = $('#next');
-var $form = $('form');
-
 $(function () {
+    var $progress = $('#progress');
+    var $pages = $('section[data-page]');
+    var $back = $('#back');
+    var $next = $('#next');
+    var $form = $('form');
+
     $progress.progressbar({
         value: getCurrentPageNumber(),
         max: $pages.length - 1
